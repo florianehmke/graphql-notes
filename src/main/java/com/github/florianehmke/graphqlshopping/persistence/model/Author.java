@@ -5,15 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
 @Setter
-public class Entry extends BaseEntity {
+public class Author extends BaseEntity {
 
-  private String name;
-  private String secretNote;
-
-  @ManyToOne private Author author;
+  private String firstName;
+  private String lastName;
 }
