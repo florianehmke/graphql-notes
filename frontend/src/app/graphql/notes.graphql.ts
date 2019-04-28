@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export interface Author {
   firstName: string;
   lastName: string;
+  noteCount: number;
 }
 
 export interface Note {
@@ -36,6 +37,17 @@ export const notesByAuthorQuery = gql`
         firstName
         lastName
       }
+    }
+  }
+`;
+
+export const authors = gql`
+  {
+    authors {
+      id
+      firstName
+      lastName
+      noteCount
     }
   }
 `;

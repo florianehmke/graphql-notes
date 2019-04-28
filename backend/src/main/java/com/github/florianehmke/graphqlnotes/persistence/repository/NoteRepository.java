@@ -9,4 +9,6 @@ import java.util.Collection;
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long> {
     Collection<Note> findByAuthorId(Long authorId);
+
+    Long countByAuthorId(Long authorId);
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
-import { addNote, notesByAuthorQuery } from '../graphql/notes.graphql';
+import { addNote, authors, notesByAuthorQuery } from '../graphql/notes.graphql';
 
 @Component({
   selector: 'app-form',
@@ -59,6 +59,9 @@ export class FormComponent {
         refetchQueries: [
           {
             query: notesByAuthorQuery
+          },
+          {
+            query: authors
           }
         ]
       })
