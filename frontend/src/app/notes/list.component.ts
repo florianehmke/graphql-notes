@@ -6,8 +6,13 @@ import { Note, notesByAuthorQuery } from './notes.graphql';
 @Component({
   selector: 'app-list',
   template: `
-    <div *ngFor="let note of notes">
-      {{ note.noteTitle | json }}: {{ note.noteContent | json }}
+    <div *ngFor="let note of notes" class="mb-3">
+      <div>
+        <p class="font-weight-bold mb-0 border-bottom">{{ note.noteTitle }}</p>
+      </div>
+      <div>
+        <p class="font-weight-light mb-0">{{ note.noteContent }}</p>
+      </div>
     </div>
   `
 })

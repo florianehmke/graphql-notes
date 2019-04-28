@@ -7,9 +7,18 @@ import { addNote, notesByAuthorQuery } from './notes.graphql';
   selector: 'app-form',
   template: `
     <form [formGroup]="noteForm" (ngSubmit)="onSubmit()" novalidate>
-      <input formControlName="title" />
-      <input formControlName="content" />
-      <button type="submit" [disabled]="noteForm.invalid">Submit</button>
+      <p class="h6 mb-0">Add Note:</p>
+      <div class="row mb-3">
+        <div class="col-sm">
+          <input formControlName="title" />
+        </div>
+        <div class="col-sm">
+          <input formControlName="content" />
+        </div>
+        <div class="col-sm">
+          <button type="submit" [disabled]="noteForm.invalid">Submit</button>
+        </div>
+      </div>
     </form>
   `
 })
