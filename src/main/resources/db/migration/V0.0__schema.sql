@@ -8,12 +8,12 @@ CREATE TABLE author
     PRIMARY KEY (id)
 );
 
-CREATE TABLE entry
+CREATE TABLE note
 (
-    id          BIGINT       NOT NULL,
-    name        VARCHAR(255) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    author_id   BIGINT       NOT NULL,
+    id           BIGINT       NOT NULL,
+    note_title   VARCHAR(255) NOT NULL,
+    note_content TEXT         NOT NULL,
+    author_id    BIGINT       NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (author_id) REFERENCES author (id),
 );

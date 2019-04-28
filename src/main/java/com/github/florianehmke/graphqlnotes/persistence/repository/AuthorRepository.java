@@ -1,6 +1,6 @@
-package com.github.florianehmke.graphqlshopping.persistence.repository;
+package com.github.florianehmke.graphqlnotes.persistence.repository;
 
-import com.github.florianehmke.graphqlshopping.persistence.model.Author;
+import com.github.florianehmke.graphqlnotes.persistence.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

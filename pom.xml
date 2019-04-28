@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.github.florianehmke</groupId>
-    <artifactId>graphql-shopping</artifactId>
+    <artifactId>graphql-notes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>graphql-shopping</name>
-    <description>GraphQL Shopping List</description>
+    <name>graphql-notes</name>
+    <description>GraphQL Notes</description>
 
     <properties>
         <java.version>11</java.version>

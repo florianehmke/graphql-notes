@@ -1,6 +1,6 @@
-package com.github.florianehmke.graphqlshopping.persistence.model;
+package com.github.florianehmke.graphqlnotes.persistence.model;
 
-import com.github.florianehmke.graphqlshopping.persistence.BaseEntity;
+import com.github.florianehmke.graphqlnotes.persistence.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 @Entity
 @Getter
 @Setter
-public class Entry extends BaseEntity {
+public class Note extends BaseEntity {
 
   private String name;
   private String description;

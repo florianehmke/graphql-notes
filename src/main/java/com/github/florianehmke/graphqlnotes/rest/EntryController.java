@@ -1,7 +1,7 @@
-package com.github.florianehmke.graphqlshopping.rest;
+package com.github.florianehmke.graphqlnotes.rest;
 
-import com.github.florianehmke.graphqlshopping.persistence.model.Entry;
-import com.github.florianehmke.graphqlshopping.persistence.repository.EntryRepository;
+import com.github.florianehmke.graphqlnotes.persistence.model.Note;
+import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +13,15 @@ import java.util.List;
 @RequestMapping(path = "/entries")
 public class EntryController {
 
-  private final EntryRepository repository;
+  private final NoteRepository repository;
 
   @Autowired
-  public EntryController(EntryRepository repository) {
+  public EntryController(NoteRepository repository) {
     this.repository = repository;
   }
 
   @GetMapping
-  public List<Entry> getEntries() {
+  public List<Note> getEntries() {
     return this.repository.findAll();
   }
 }

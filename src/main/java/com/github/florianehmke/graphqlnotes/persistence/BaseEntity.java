@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlshopping.persistence;
+package com.github.florianehmke.graphqlnotes.persistence;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;

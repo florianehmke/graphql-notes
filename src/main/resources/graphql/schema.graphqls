@@ -1,6 +1,6 @@
 type Query {
   authors: [Author]
-  entriesByAuthorId(authorId: ID): [Entry]
+  notesByAuthorId(authorId: ID): [Note]
 }
 
 type Author {
@@ -9,9 +9,9 @@ type Author {
   lastName: String
 }
 
-type Entry {
+type Note {
   id: ID
-  name: String
-  description: String
+  noteTitle: String
+  noteContent: String
   author: Author
 }

@@ -1,7 +1,7 @@
-package com.github.florianehmke.graphqlshopping.configuration;
+package com.github.florianehmke.graphqlnotes.configuration;
 
-import com.github.florianehmke.graphqlshopping.persistence.repository.AuthorRepository;
-import com.github.florianehmke.graphqlshopping.persistence.repository.EntryRepository;
+import com.github.florianehmke.graphqlnotes.persistence.repository.AuthorRepository;
+import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;
 import graphql.schema.DataFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,22 +10,22 @@ import org.springframework.stereotype.Component;
 public class GraphQLDataFetchers {
 
   private AuthorRepository authorRepository;
-  private EntryRepository entryRepository;
+  private NoteRepository noteRepository;
 
   @Autowired
-  public GraphQLDataFetchers(AuthorRepository authorRepository, EntryRepository entryRepository) {
+  public GraphQLDataFetchers(AuthorRepository authorRepository, NoteRepository noteRepository) {
     this.authorRepository = authorRepository;
-    this.entryRepository = entryRepository;
+    this.noteRepository = noteRepository;
   }
 
   public DataFetcher getAuthorsDataFetcher() {
     return dataFetchingEnvironment -> authorRepository.findAll();
   }
 
-  public DataFetcher getEntriesByAuthorIdDataFetcher() {
+  public DataFetcher getNotesByAuthorIdDataFetcher() {
     return dataFetchingEnvironment -> {
       Long authorId = Long.valueOf(dataFetchingEnvironment.getArgument("authorId"));
-      return entryRepository.findByAuthorId(authorId);
+      return noteRepository.findByAuthorId(authorId);
     };
   }
 }

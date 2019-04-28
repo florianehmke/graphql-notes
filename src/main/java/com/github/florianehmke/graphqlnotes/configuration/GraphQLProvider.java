@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlshopping.configuration;
+package com.github.florianehmke.graphqlnotes.configuration;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -55,7 +55,7 @@ public class GraphQLProvider {
         .type(
             newTypeWiring("Query")
                 .dataFetcher("authors", graphQLDataFetchers.getAuthorsDataFetcher())
-                .dataFetcher("entriesByAuthorId", graphQLDataFetchers.getEntriesByAuthorIdDataFetcher()))
+                .dataFetcher("notesByAuthorId", graphQLDataFetchers.getNotesByAuthorIdDataFetcher()))
         .build();
   }
 }
