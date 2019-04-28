@@ -1,6 +1,6 @@
 package com.github.florianehmke.graphqlnotes.persistence.model;
 
-import com.github.florianehmke.graphqlnotes.persistence.BaseEntity;
+import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,8 +12,13 @@ import javax.persistence.ManyToOne;
 @Setter
 public class Note extends BaseEntity {
 
-  private String name;
-  private String description;
+  @GraphQLQuery
+  private String noteTitle;
 
-  @ManyToOne private Author author;
+  @GraphQLQuery
+  private String noteContent;
+
+  @GraphQLQuery
+  @ManyToOne
+  private Author author;
 }

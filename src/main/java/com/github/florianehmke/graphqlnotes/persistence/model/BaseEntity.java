@@ -1,6 +1,7 @@
-package com.github.florianehmke.graphqlnotes.persistence;
+package com.github.florianehmke.graphqlnotes.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +15,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
-  @Id @GeneratedValue private Long id;
+  @GraphQLQuery @Id @GeneratedValue private Long id;
 
   @JsonIgnore
   public boolean isTransient() {
