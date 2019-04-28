@@ -1,21 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
-
-const addNote = gql`
-  mutation addNote($title: String!, $content: String!, $authorId: Long) {
-    addNote(title: $title, content: $content, authorId: $authorId) {
-      id
-      noteTitle
-      noteContent
-      author {
-        firstName
-        lastName
-      }
-    }
-  }
-`;
+import { addNote, notesByAuthorQuery } from './notes.graphql';
 
 @Component({
   selector: 'app-form',
@@ -27,7 +13,7 @@ const addNote = gql`
     </form>
   `
 })
-export class FormComponent implements OnInit {
+export class FormComponent {
   noteForm: FormGroup;
 
   constructor(private fb: FormBuilder, private apollo: Apollo) {
@@ -36,11 +22,7 @@ export class FormComponent implements OnInit {
       content: ['', Validators.required]
     });
   }
-
-  ngOnInit() {}
-
   onSubmit() {
-    console.log(this.noteForm.value);
     this.apollo
       .mutate({
         mutation: addNote,
@@ -48,15 +30,13 @@ export class FormComponent implements OnInit {
           title: this.noteForm.value.title,
           content: this.noteForm.value.content,
           authorId: -10
-        }
-      })
-      .subscribe(
-        ({ data }) => {
-          console.log('got data', data);
         },
-        error => {
-          console.log('there was an error sending the query', error);
-        }
-      );
+        refetchQueries: [
+          {
+            query: notesByAuthorQuery
+          }
+        ]
+      })
+      .subscribe();
   }
 }

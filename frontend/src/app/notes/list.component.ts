@@ -1,22 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
 import { Subscription } from 'rxjs';
-import { Note } from './model';
-
-const notesByAuthorQuery = gql`
-  {
-    notesByAuthorId(authorId: -10) {
-      id
-      noteTitle
-      noteContent
-      author {
-        firstName
-        lastName
-      }
-    }
-  }
-`;
+import { Note, notesByAuthorQuery } from './notes.graphql';
 
 @Component({
   selector: 'app-list',
