@@ -12,7 +12,7 @@ CREATE TABLE entry
 (
     id          BIGINT       NOT NULL,
     name        VARCHAR(255) NOT NULL,
-    secret_note VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
     author_id   BIGINT       NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (author_id) REFERENCES author (id),

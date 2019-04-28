@@ -1,5 +1,8 @@
 INSERT INTO author(id, first_name, last_name)
-VALUES (-10, 'Entry 1', 'Much Secret');
+VALUES (-10, 'Florian', 'Ehmke'),
+       (-11, 'Jenny', 'Ehmke');
 
-INSERT INTO entry(id, name, secret_note, author_id)
-VALUES (-1, 'Max', 'Payne', -10);
+INSERT INTO entry(id, name, description, author_id)
+VALUES (nextval('hibernate_sequence'), 'Entry 1', 'Long Description', -10),
+       (nextval('hibernate_sequence'), 'Entry 2', 'Long Description', -10),
+       (nextval('hibernate_sequence'), 'Entry 3', 'Long Description', -11);

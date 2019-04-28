@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 public class Entry extends BaseEntity {
 
   private String name;
-  private String secretNote;
+  private String description;
 
   @ManyToOne private Author author;
 }

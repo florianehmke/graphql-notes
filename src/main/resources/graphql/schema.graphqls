@@ -1,0 +1,17 @@
+type Query {
+  authors: [Author]
+  entriesByAuthorId(authorId: ID): [Entry]
+}
+
+type Author {
+  id: ID
+  firstName: String
+  lastName: String
+}
+
+type Entry {
+  id: ID
+  name: String
+  description: String
+  author: Author
+}
