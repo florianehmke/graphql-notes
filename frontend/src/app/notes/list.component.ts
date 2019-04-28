@@ -1,14 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
-import { Note, notesByAuthorQuery } from './notes.graphql';
+import { Note, notesByAuthorQuery } from '../graphql/notes.graphql';
 
 @Component({
   selector: 'app-list',
   template: `
     <div *ngFor="let note of notes" class="mb-3">
-      <div>
-        <p class="font-weight-bold mb-0 border-bottom">{{ note.noteTitle }}</p>
+      <div class="d-flex justify-content-between border-bottom">
+        <p class="m-0 font-weight-bold">
+          {{ note.noteTitle }}
+        </p>
+        <p class="m-0 text-muted">
+          {{ note.author.firstName }} {{ note.author.lastName }}
+        </p>
       </div>
       <div>
         <p class="font-weight-light mb-0">{{ note.noteContent }}</p>
