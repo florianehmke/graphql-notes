@@ -2,6 +2,7 @@ package com.github.florianehmke.graphqlnotes.graphql;
 
 import com.github.florianehmke.graphqlnotes.persistence.model.Author;
 import com.github.florianehmke.graphqlnotes.persistence.repository.AuthorRepository;
+import io.leangen.graphql.annotations.GraphQLMutation;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,13 @@ public class AuthorController {
   @GraphQLQuery(name = "authors")
   public Collection<Author> authors() {
     return authorRepository.findAll();
+  }
+
+  @GraphQLMutation
+  public Author addAuthor(String firstName, String lastName) {
+    var author = new Author();
+    author.setFirstName(firstName);
+    author.setLastName(lastName);
+    return authorRepository.save(author);
   }
 }
