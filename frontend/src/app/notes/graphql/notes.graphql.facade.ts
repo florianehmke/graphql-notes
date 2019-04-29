@@ -19,12 +19,10 @@ export class NotesGraphqlFacade {
 
   constructor(private apollo: Apollo) {
     this.authors$ = this.watchAuthorsQuery().pipe(
-      tap(v => console.log(v)),
       pluck('data', authorsQueryKey)
     );
 
     this.notesByAuthor$ = this.watchNotesByAuthorQuery().pipe(
-      tap(v => console.log(v)),
       pluck('data', notesByAuthorQueryKey)
     );
   }
