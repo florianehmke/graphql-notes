@@ -1,19 +1,6 @@
 import gql from 'graphql-tag';
 
-export interface Author {
-  firstName: string;
-  lastName: string;
-  noteCount: number;
-}
-
-export interface Note {
-  id: number;
-  noteTitle: string;
-  noteContent: string;
-  author: Author;
-}
-
-export const addNote = gql`
+export const addNoteMutation = gql`
   mutation addNote($title: String!, $content: String!, $authorId: Long) {
     addNote(title: $title, content: $content, authorId: $authorId) {
       id
@@ -27,9 +14,10 @@ export const addNote = gql`
   }
 `;
 
+export const notesByAuthorQueryKey = 'notesByAuthorId';
 export const notesByAuthorQuery = gql`
   {
-    notesByAuthorId(authorId: -10) {
+    ${notesByAuthorQueryKey}(authorId: -10) {
       id
       noteTitle
       noteContent
@@ -41,9 +29,10 @@ export const notesByAuthorQuery = gql`
   }
 `;
 
-export const authors = gql`
+export const authorsQueryKey = 'authors';
+export const authorsQuery = gql`
   {
-    authors {
+    ${authorsQueryKey} {
       id
       firstName
       lastName

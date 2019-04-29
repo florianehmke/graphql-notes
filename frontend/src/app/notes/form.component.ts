@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Apollo } from 'apollo-angular';
-import { addNote, authors, notesByAuthorQuery } from '../graphql/notes.graphql';
+import { NotesGraphqlFacade } from './graphql/notes.graphql.facade';
 
 @Component({
   selector: 'app-form',
@@ -41,30 +40,19 @@ import { addNote, authors, notesByAuthorQuery } from '../graphql/notes.graphql';
 export class FormComponent {
   noteForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apollo: Apollo) {
+  constructor(
+    private fb: FormBuilder,
+    private notesGraphql: NotesGraphqlFacade
+  ) {
     this.noteForm = this.fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required]
     });
   }
   onSubmit() {
-    this.apollo
-      .mutate({
-        mutation: addNote,
-        variables: {
-          title: this.noteForm.value.title,
-          content: this.noteForm.value.content,
-          authorId: -10
-        },
-        refetchQueries: [
-          {
-            query: notesByAuthorQuery
-          },
-          {
-            query: authors
-          }
-        ]
-      })
-      .subscribe();
+    this.notesGraphql.addNote(
+      this.noteForm.value.title,
+      this.noteForm.value.content
+    );
   }
 }

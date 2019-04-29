@@ -1,12 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import { Subscription } from 'rxjs';
-import { Note, notesByAuthorQuery } from '../graphql/notes.graphql';
+import { NotesGraphqlFacade } from './graphql/notes.graphql.facade';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Note } from './graphql/notes.models';
 
 @Component({
   selector: 'app-list',
   template: `
-    <div *ngFor="let note of notes" class="mb-3">
+    <div *ngFor="let note of notes$ | async" class="mb-3">
       <div class="d-flex justify-content-between border-bottom">
         <p class="m-0 font-weight-bold">
           {{ note.noteTitle }}
@@ -21,28 +21,10 @@ import { Note, notesByAuthorQuery } from '../graphql/notes.graphql';
     </div>
   `
 })
-export class ListComponent implements OnInit, OnDestroy {
-  private loading: boolean;
-  private notes: Note[];
-  private errors: any;
+export class ListComponent {
+  notes$: Observable<Note[]>;
 
-  private querySubscription: Subscription;
-
-  constructor(private apollo: Apollo) {}
-
-  ngOnInit() {
-    this.querySubscription = this.apollo
-      .watchQuery<any>({
-        query: notesByAuthorQuery
-      })
-      .valueChanges.subscribe(({ data, loading, errors }) => {
-        this.loading = loading;
-        this.errors = errors;
-        this.notes = data.notesByAuthorId;
-      });
-  }
-
-  ngOnDestroy() {
-    this.querySubscription.unsubscribe();
+  constructor(private notesGraphql: NotesGraphqlFacade) {
+    this.notes$ = notesGraphql.notesByAuthor$;
   }
 }
