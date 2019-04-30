@@ -16,8 +16,8 @@ export const addNoteMutation = gql`
 
 export const notesByAuthorQueryKey = 'notesByAuthorId';
 export const notesByAuthorQuery = gql`
-  {
-    ${notesByAuthorQueryKey}(authorId: -10) {
+  query ${notesByAuthorQueryKey}($authorId: Long) {
+    ${notesByAuthorQueryKey}(authorId: $authorId) {
       id
       noteTitle
       noteContent

@@ -4,10 +4,12 @@ import { map } from 'rxjs/operators';
 
 export interface NotesState {
   selectedAuthorId: number;
+  currentAuthorId: number;
 }
 
 const initialState: NotesState = {
-  selectedAuthorId: null
+  selectedAuthorId: null,
+  currentAuthorId: -10
 };
 
 @Injectable()
