@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Author } from './state/notes.models';
+import { Author } from '../state/notes.models';
 
 @Component({
   selector: 'app-filter-author',

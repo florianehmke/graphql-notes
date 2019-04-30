@@ -29,7 +29,7 @@ export interface NotesState {
 }
 
 const initialState: NotesState = {
-  selectedAuthorId: -10,
+  selectedAuthorId: null,
   currentAuthorId: -10,
   noteSearchTerm: null
 };

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { FormComponent } from './form.component';
 import { ListComponent } from './list.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header.component';
 import { NotesStateService } from './state/notes-state.service';
 import { FilterComponent } from './filter.component';
-import { FilterContainerComponent } from './filter-container.component';
-import { FilterAuthorComponent } from './filter-author.component';
+import { FilterContainerComponent } from './components/filter-container.component';
+import { FilterAuthorComponent } from './components/filter-author.component';
 
 @NgModule({
   declarations: [
