@@ -4,16 +4,20 @@ import { Author } from '../state/notes.models';
 @Component({
   selector: 'app-filter-author',
   template: `
-    <span
+    <p
+      class="text-right"
       [class.text-muted]="selectedAuthorId !== author.id"
       (click)="authorIdSelected.emit(author.id)"
     >
       {{ author.firstName }} {{ author.lastName }} -
       {{ author.noteCount }} Notes
-    </span>
+    </p>
   `,
   styles: [
     `
+      p {
+        margin: 0;
+      }
       :host {
         display: block;
       }
