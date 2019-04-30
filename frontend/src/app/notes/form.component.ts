@@ -5,7 +5,8 @@ import { NotesStateService } from './state/notes-state.service';
 @Component({
   selector: 'app-form',
   template: `
-    <form [formGroup]="noteForm" (ngSubmit)="onSubmit()" novalidate>
+      <h4 class="border-dark border-bottom">Create Note</h4>
+      <form [formGroup]="noteForm" (ngSubmit)="onSubmit()" novalidate>
       <div class="row d-flex align-items-end">
         <div class="col-9">
           <label for="title" class="mb-0"><small>Title</small></label>

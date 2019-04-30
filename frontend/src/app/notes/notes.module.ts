@@ -5,10 +5,16 @@ import { ListComponent } from './list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header.component';
 import { NotesStateService } from './state/notes-state.service';
+import { FilterComponent } from './filter.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FormComponent, ListComponent],
-  exports: [HeaderComponent, ListComponent, FormComponent],
+  declarations: [
+    HeaderComponent,
+    FormComponent,
+    FilterComponent,
+    ListComponent
+  ],
+  exports: [HeaderComponent, ListComponent, FilterComponent, FormComponent],
   imports: [CommonModule, ReactiveFormsModule],
   providers: [NotesStateService]
 })

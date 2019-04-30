@@ -6,17 +6,18 @@ import { Note } from './state/notes.models';
 @Component({
   selector: 'app-list',
   template: `
+    <h4 class="border-dark border-bottom">Notes</h4>
     <div *ngFor="let note of notes$ | async" class="mb-3">
       <div class="d-flex justify-content-between border-bottom">
-        <p class="m-0 font-weight-bold">
+        <h6 class="m-0 font-weight-bold">
           {{ note.noteTitle }}
-        </p>
-        <p class="m-0 text-muted">
+        </h6>
+        <h6 class="m-0 text-muted">
           {{ note.author.firstName }} {{ note.author.lastName }}
-        </p>
+        </h6>
       </div>
       <div>
-        <p class="font-weight-light mb-0">{{ note.noteContent }}</p>
+        <small>{{ note.noteContent }}</small>
       </div>
     </div>
   `
