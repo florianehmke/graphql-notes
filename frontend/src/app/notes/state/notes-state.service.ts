@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Author, Note } from './notes.models';
 import {
   notesByAuthorIdQuery,
@@ -19,7 +19,8 @@ import {
   AddNoteMutationResponse,
   AddNoteMutationVariables
 } from './mutations/notes.mutation';
-import { LocalStateService } from '@lib/localStateService';
+import { LocalStateService } from '@lib/local-state.service';
+import { ApolloHelperService } from '@lib/apollo-helper.service';
 
 export interface NotesState {
   selectedAuthorId: number;
@@ -35,45 +36,19 @@ const initialState: NotesState = {
 export class NotesStateService extends LocalStateService<NotesState> {
   authors$: Observable<Author[]>;
   notes$: Observable<Note[]>;
-  selectedAuthorId$ = this.state$.pipe(map(state => state.selectedAuthorId));
+  selectedAuthorId$ = this.state$.pipe(map(s => s.selectedAuthorId));
 
-  private authorsQuery: QueryRef<AuthorsQueryResponse>;
-  private notesQuery: QueryRef<NotesQueryResponse, NotesQueryVariables>;
+  private authorsQueryRef: QueryRef<AuthorsQueryResponse>;
+  private notesQueryRef: QueryRef<NotesQueryResponse, NotesQueryVariables>;
 
-  constructor(private apollo: Apollo) {
+  constructor(
+    private apolloHelper: ApolloHelperService,
+    private apollo: Apollo
+  ) {
     super(initialState);
 
-    this.authorsQuery = this.getAuthorsQuery();
-    this.authors$ = this.getAuthors();
-    this.notesQuery = this.getNotesQuery();
-    this.notes$ = this.getNotes();
-  }
-
-  private getNotes() {
-    return this.notesQuery.valueChanges.pipe(
-      map(result => result.data.notesByAuthorId)
-    );
-  }
-
-  private getNotesQuery() {
-    return this.apollo.watchQuery<NotesQueryResponse, NotesQueryVariables>({
-      query: notesByAuthorIdQuery,
-      variables: {
-        authorId: this.state.selectedAuthorId
-      }
-    });
-  }
-
-  private getAuthors() {
-    return this.authorsQuery.valueChanges.pipe(
-      map(result => result.data.authors)
-    );
-  }
-
-  private getAuthorsQuery() {
-    return this.apollo.watchQuery<AuthorsQueryResponse>({
-      query: authorsQuery
-    });
+    this.setupNotesQuery();
+    this.setupAuthorsQuery();
   }
 
   addNote(title: string, content: string) {
@@ -88,10 +63,33 @@ export class NotesStateService extends LocalStateService<NotesState> {
   }
 
   setSelectedAuthorId(authorId: number): void {
-    this.notesQuery.refetch({ authorId });
     this.setState({
       ...this.state,
       selectedAuthorId: authorId
     });
+    this.notesQueryRef.refetch({ authorId });
+  }
+
+  private setupNotesQuery() {
+    const variables = {
+      authorId: this.state.selectedAuthorId
+    };
+
+    const query = this.apolloHelper.setupQuery<
+      NotesQueryResponse,
+      NotesQueryVariables
+    >({ query: notesByAuthorIdQuery, variables });
+
+    this.notesQueryRef = query.queryRef;
+    this.notes$ = query.data$.pipe(map(data => data.notesByAuthorId));
+  }
+
+  private setupAuthorsQuery() {
+    const query = this.apolloHelper.setupQuery<AuthorsQueryResponse>({
+      query: authorsQuery
+    });
+
+    this.authorsQueryRef = query.queryRef;
+    this.authors$ = query.data$.pipe(map(data => data.authors));
   }
 }
