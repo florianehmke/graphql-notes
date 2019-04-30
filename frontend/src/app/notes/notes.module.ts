@@ -7,6 +7,7 @@ import { HeaderComponent } from './header.component';
 import { NotesStateService } from './state/notes-state.service';
 import { FilterComponent } from './filter.component';
 import { FilterContainerComponent } from './filter-container.component';
+import { FilterAuthorComponent } from './filter-author.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FilterContainerComponent } from './filter-container.component';
     FormComponent,
     FilterComponent,
     ListComponent,
-    FilterContainerComponent
+    FilterContainerComponent,
+    FilterAuthorComponent
   ],
   exports: [HeaderComponent, ListComponent, FilterComponent, FormComponent],
   imports: [CommonModule, ReactiveFormsModule],

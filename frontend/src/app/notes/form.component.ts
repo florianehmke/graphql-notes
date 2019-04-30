@@ -5,12 +5,12 @@ import { NotesStateService } from './state/notes-state.service';
 @Component({
   selector: 'app-form',
   template: `
-      <h4 class="border-dark border-bottom">Create Note</h4>
+      <h3 class="border-dark border-bottom">Create Note</h3>
       <form [formGroup]="noteForm" (ngSubmit)="onSubmit()" novalidate>
-      <div class="row d-flex align-items-end">
+      <div class="row d-flex align-items-end mb-1">
         <div class="col-9">
-          <label for="title" class="mb-0"><small>Title</small></label>
-          <input id="title" formControlName="title" />
+          <small>Title</small>
+          <input formControlName="title" />
         </div>
         <div class="col-3">
           <button type="submit" [disabled]="noteForm.invalid">
@@ -20,8 +20,8 @@ import { NotesStateService } from './state/notes-state.service';
       </div>
       <div class="row mb-3">
         <div class="col">
-          <label for="content" class="mb-0"><small>Content</small></label>
-          <textarea id="content" formControlName="content"></textarea>
+          <small>Content</small>
+          <textarea formControlName="content"></textarea>
         </div>
       </div>
     </form>
@@ -29,7 +29,7 @@ import { NotesStateService } from './state/notes-state.service';
   styles: [
     `
       input,
-      label,
+      small,
       textarea,
       button {
         width: 100%;

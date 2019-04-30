@@ -9,23 +9,21 @@ import { DestructionAware } from '@lib/destruction-aware';
 @Component({
   selector: 'app-filter',
   template: `
-    <h4 class="border-dark border-bottom">Filter Notes</h4>
+    <h3 class="border-dark border-bottom">Filter Notes</h3>
     <div class="d-flex align-items-start mb-3">
-      <app-filter-container label="Search">
-        <input class="d-block" id="search" [formControl]="searchControl" />
+      <app-filter-container class="mr-3" label="Search by Title/Content">
+        <input class="w-100" [formControl]="searchControl" />
       </app-filter-container>
       <app-filter-container label="Filter by Author">
-        <ng-container *ngFor="let author of authors$ | async">
-          <small
-            class="d-block"
-            style="cursor: pointer"
-            [class.font-weight-bold]="(selectedAuthorId$ | async) === author.id"
-            (click)="selectAuthorId(author.id)"
+        <div class="border-top">
+          <app-filter-author
+            *ngFor="let author of authors$ | async"
+            [author]="author"
+            [selectedAuthorId]="selectedAuthorId$ | async"
+            (authorIdSelected)="selectAuthorId($event)"
           >
-            {{ author.firstName }} {{ author.lastName }} -
-            {{ author.noteCount }} Notes
-          </small>
-        </ng-container>
+          </app-filter-author>
+        </div>
       </app-filter-container>
     </div>
   `

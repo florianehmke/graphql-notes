@@ -14,10 +14,6 @@ import { Component, Input } from '@angular/core';
         display: block;
         width: 100%;
       }
-      
-      h6 {
-          margin: 0;
-      }
     `
   ]
 })

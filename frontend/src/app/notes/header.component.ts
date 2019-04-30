@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { NotesStateService } from './state/notes-state.service';
-import { Observable } from 'rxjs';
-import { Author } from './state/notes.models';
 
 @Component({
   selector: 'app-header',
