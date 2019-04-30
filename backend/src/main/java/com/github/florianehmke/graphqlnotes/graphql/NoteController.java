@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
+import static com.github.florianehmke.graphqlnotes.persistence.repository.NoteSpecifications.searchBy;
+
 @Component
 @GraphQLApi
 public class NoteController {
@@ -28,7 +30,7 @@ public class NoteController {
 
   @GraphQLQuery
   public Collection<Note> notes(Long authorId, String searchTerm) {
-    return noteRepository.searchBy(authorId, searchTerm);
+    return noteRepository.findAll(searchBy(authorId, searchTerm));
   }
 
   @GraphQLQuery

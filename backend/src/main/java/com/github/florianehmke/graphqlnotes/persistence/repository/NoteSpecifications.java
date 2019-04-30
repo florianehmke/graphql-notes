@@ -1,26 +1,37 @@
 package com.github.florianehmke.graphqlnotes.persistence.repository;
 
+import com.github.florianehmke.graphqlnotes.persistence.model.Author_;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note_;
 import org.springframework.data.jpa.domain.Specification;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Predicate;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.github.florianehmke.graphqlnotes.persistence.model.Note_.NOTE_CONTENT;
+import static com.github.florianehmke.graphqlnotes.persistence.model.Note_.NOTE_TITLE;
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class NoteSpecifications {
 
-  static Specification<Note> contains(String search) {
-    return !isNullOrEmpty(search) ? containsTitle(search).or(containsContent(search)) : null;
+  public static Specification<Note> searchBy(Long authorId, String search) {
+    return (note, cq, cb) -> {
+      var predicates = new ArrayList<Predicate>();
+      if (!isNullOrEmpty(search)) {
+        Predicate title = cb.like(note.get(NOTE_TITLE), '%' + search + '%');
+        Predicate content = cb.like(note.get(NOTE_CONTENT), '%' + search + '%');
+        predicates.add(cb.or(title, content));
+      }
+      if (authorId != null) {
+        predicates.add(cb.equal(note.join(Note_.AUTHOR).get(Author_.ID), authorId));
+      }
+      return andTogether(predicates, cb);
+    };
   }
 
-  static Specification<Note> containsTitle(String search) {
-    return (note, cq, cb) -> cb.like(note.get(Note_.NOTE_TITLE), '%' + search + '%');
-  }
-
-  static Specification<Note> containsContent(String search) {
-    return (note, cq, cb) -> cb.like(note.get(Note_.NOTE_CONTENT), '%' + search + '%');
-  }
-
-  static Specification<Note> hasAuthorId(Long authorId) {
-    return (note, cq, cb) -> cb.equal(note.join(Note_.AUTHOR).get("id"), authorId);
+  private static Predicate andTogether(List<Predicate> predicates, CriteriaBuilder cb) {
+    return cb.and(predicates.toArray(new Predicate[0]));
   }
 }

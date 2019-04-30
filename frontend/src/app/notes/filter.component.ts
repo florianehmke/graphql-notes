@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotesStateService } from './state/notes-state.service';
 import { Observable } from 'rxjs';
 import { Author } from './state/notes.models';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-filter',
   template: `
     <h4 class="border-dark border-bottom">Filter Notes</h4>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mb-3">
       <div>
-        Filter by Content
+        <label for="search" class="m-0"><small>Search</small></label>
+        <input class="d-block" id="search" [formControl]="searchControl" />
       </div>
-      <div class="mb-3">
+      <div>
         <ng-container *ngFor="let author of authors$ | async">
           <small
             class="text-right m-0 d-block"
@@ -27,13 +30,15 @@ import { Author } from './state/notes.models';
     </div>
   `
 })
-export class FilterComponent {
+export class FilterComponent implements OnInit {
   authors$: Observable<Author[]>;
   selectedAuthorId$: Observable<number>;
+  searchControl: FormControl;
 
   constructor(private notesState: NotesStateService) {
     this.authors$ = this.notesState.authors$;
     this.selectedAuthorId$ = this.notesState.selectedAuthorId$;
+    this.searchControl = new FormControl('');
   }
 
   selectAuthorId(authorId: number) {
@@ -41,5 +46,14 @@ export class FilterComponent {
     const selectedAuthorId = currentId !== authorId ? authorId : null;
 
     this.notesState.setSelectedAuthorId(selectedAuthorId);
+  }
+
+  ngOnInit(): void {
+    this.searchControl.valueChanges
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(400)
+      )
+      .subscribe(searchTerm => this.notesState.setNoteSearchTerm(searchTerm));
   }
 }
