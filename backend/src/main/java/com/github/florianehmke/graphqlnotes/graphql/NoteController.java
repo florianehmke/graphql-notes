@@ -26,17 +26,17 @@ public class NoteController {
     this.authorRepository = authorRepository;
   }
 
-  @GraphQLQuery(name = "notesByAuthorId")
-  public Collection<Note> notesByAuthorId(Long authorId) {
-    return noteRepository.findByAuthorId(authorId);
+  @GraphQLQuery
+  public Collection<Note> notes(Long authorId, String searchTerm) {
+    return noteRepository.searchBy(authorId, searchTerm);
   }
 
-  @GraphQLQuery(name = "noteCount")
+  @GraphQLQuery
   public Long noteCount(@GraphQLContext Author author) {
     return noteRepository.countByAuthorId(author.getId());
   }
 
-  @GraphQLQuery(name = "authors")
+  @GraphQLQuery
   public Collection<Author> authors() {
     return authorRepository.findAll();
   }

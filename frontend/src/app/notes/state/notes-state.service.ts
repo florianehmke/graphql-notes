@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Author, Note } from './notes.models';
 import {
-  notesByAuthorIdQuery,
-  notesByAuthorIdQueryKey,
+  notesQuery,
+  notesQueryKey,
   NotesQueryResponse,
   NotesQueryVariables
 } from './queries/notes.query';
@@ -25,11 +25,13 @@ import { ApolloHelperService } from '@lib/apollo-helper.service';
 export interface NotesState {
   selectedAuthorId: number;
   currentAuthorId: number;
+  noteSearchTerm: string;
 }
 
 const initialState: NotesState = {
   selectedAuthorId: -10,
-  currentAuthorId: -10
+  currentAuthorId: -10,
+  noteSearchTerm: null
 };
 
 @Injectable()
@@ -57,7 +59,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
       .mutate<AddNoteMutationResponse, AddNoteMutationVariables>({
         mutation: addNoteMutation,
         variables: { title, content, authorId },
-        refetchQueries: [notesByAuthorIdQueryKey, authorsQueryKey]
+        refetchQueries: [notesQueryKey, authorsQueryKey]
       })
       .subscribe();
   }
@@ -67,21 +69,35 @@ export class NotesStateService extends LocalStateService<NotesState> {
       ...this.state,
       selectedAuthorId: authorId
     });
-    this.notesQueryRef.refetch({ authorId });
+    this.notesQueryRef.refetch(this.loadNotesQueryVariables());
+  }
+
+  setNoteSearchTerm(searchTerm: string): void {
+    this.setState({
+      ...this.state,
+      noteSearchTerm: searchTerm
+    });
+    this.notesQueryRef.refetch(this.loadNotesQueryVariables());
   }
 
   private setupNotesQuery() {
-    const variables = {
-      authorId: this.state.selectedAuthorId
-    };
-
     const query = this.apolloHelper.setupQuery<
       NotesQueryResponse,
       NotesQueryVariables
-    >({ query: notesByAuthorIdQuery, variables });
+    >({
+      query: notesQuery,
+      variables: this.loadNotesQueryVariables()
+    });
 
     this.notesQueryRef = query.queryRef;
-    this.notes$ = query.data$.pipe(map(data => data.notesByAuthorId));
+    this.notes$ = query.data$.pipe(map(data => data.notes));
+  }
+
+  private loadNotesQueryVariables(): NotesQueryVariables {
+    return {
+      searchTerm: this.state.noteSearchTerm,
+      authorId: this.state.selectedAuthorId
+    };
   }
 
   private setupAuthorsQuery() {
