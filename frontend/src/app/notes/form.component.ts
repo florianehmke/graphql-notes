@@ -18,7 +18,7 @@ import { NotesStateService } from './state/notes-state.service';
           </button>
         </div>
       </div>
-      <div class="row mb-3">
+      <div class="row">
         <div class="col">
           <small>Content</small>
           <textarea formControlName="content"></textarea>

@@ -10,7 +10,7 @@ import { DestructionAware } from '@lib/destruction-aware';
   selector: 'app-filter',
   template: `
     <h3 class="border-dark border-bottom">Filter Notes</h3>
-    <div class="d-flex align-items-start mb-3">
+    <div class="d-flex align-items-start">
       <app-filter-container class="mr-3" label="Search by Title/Content">
         <input class="w-100" [formControl]="searchControl" />
       </app-filter-container>

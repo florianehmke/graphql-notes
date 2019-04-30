@@ -10,6 +10,16 @@ import { Component } from '@angular/core';
       <app-list></app-list>
     </div>
   `,
-  styles: []
+  styles: [
+    `
+      app-header,
+      app-form,
+      app-filter,
+      app-list {
+        display: block;
+        margin-top: 1rem;
+      }
+    `
+  ]
 })
 export class AppComponent {}
