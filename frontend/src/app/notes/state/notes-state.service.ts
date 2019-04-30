@@ -30,7 +30,7 @@ export interface NotesState {
 
 const initialState: NotesState = {
   selectedAuthorId: null,
-  currentAuthorId: -10,
+  currentAuthorId: -10, // FIXME replace with user
   noteSearchTerm: null
 };
 
