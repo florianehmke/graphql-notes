@@ -1,7 +1,7 @@
-import { NotesGraphqlFacade } from './graphql/notes.graphql.facade';
+import { NotesStateService } from './state/notes-state.service';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Note } from './graphql/notes.models';
+import { Note } from './state/notes.models';
 
 @Component({
   selector: 'app-list',
@@ -24,7 +24,7 @@ import { Note } from './graphql/notes.models';
 export class ListComponent {
   notes$: Observable<Note[]>;
 
-  constructor(private notesGraphql: NotesGraphqlFacade) {
-    this.notes$ = notesGraphql.notesByAuthor$;
+  constructor(private notesState: NotesStateService) {
+    this.notes$ = notesState.notes$;
   }
 }

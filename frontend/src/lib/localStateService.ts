@@ -1,6 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export class StateService<T> {
+export class LocalStateService<T> {
   private readonly _state$;
   state$: Observable<T>;
 

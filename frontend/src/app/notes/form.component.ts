@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NotesGraphqlFacade } from './graphql/notes.graphql.facade';
+import { NotesStateService } from './state/notes-state.service';
 
 @Component({
   selector: 'app-form',
@@ -42,7 +42,7 @@ export class FormComponent {
 
   constructor(
     private fb: FormBuilder,
-    private notesGraphql: NotesGraphqlFacade
+    private notesState: NotesStateService
   ) {
     this.noteForm = this.fb.group({
       title: ['', Validators.required],
@@ -50,7 +50,7 @@ export class FormComponent {
     });
   }
   onSubmit() {
-    this.notesGraphql.addNote(
+    this.notesState.addNote(
       this.noteForm.value.title,
       this.noteForm.value.content
     );

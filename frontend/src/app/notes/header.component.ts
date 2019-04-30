@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NotesGraphqlFacade } from './graphql/notes.graphql.facade';
+import { NotesStateService } from './state/notes-state.service';
 import { Observable } from 'rxjs';
-import { Author } from './graphql/notes.models';
-import { NotesService } from './notes.service';
+import { Author } from './state/notes.models';
 
 @Component({
   selector: 'app-header',
@@ -31,15 +30,12 @@ export class HeaderComponent {
   authors$: Observable<Author[]>;
   selectedAuthorId$: Observable<number>;
 
-  constructor(
-    private notesGraphql: NotesGraphqlFacade,
-    private notesService: NotesService
-  ) {
-    this.authors$ = this.notesGraphql.authors$;
-    this.selectedAuthorId$ = this.notesService.seletedAuthorId$;
+  constructor(private notesState: NotesStateService) {
+    this.authors$ = this.notesState.authors$;
+    this.selectedAuthorId$ = this.notesState.selectedAuthorId$;
   }
 
   selectAuthorId(authorId: number) {
-    this.notesService.setSelectedAuthorId(authorId);
+    this.notesState.setSelectedAuthorId(authorId);
   }
 }
