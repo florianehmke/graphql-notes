@@ -16,12 +16,13 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class NoteSpecifications {
 
-  public static Specification<Note> searchBy(Long authorId, String search) {
+  public static Specification<Note> searchBy(Long authorId, String searchTerm) {
     return (note, cq, cb) -> {
       var predicates = new ArrayList<Predicate>();
-      if (!isNullOrEmpty(search)) {
-        Predicate title = cb.like(note.get(NOTE_TITLE), '%' + search + '%');
-        Predicate content = cb.like(note.get(NOTE_CONTENT), '%' + search + '%');
+      if (!isNullOrEmpty(searchTerm)) {
+        var search = '%' + searchTerm.toLowerCase() + '%';
+        var title = cb.like(cb.lower(note.get(NOTE_TITLE)), search);
+        var content = cb.like(cb.lower(note.get(NOTE_CONTENT)), search);
         predicates.add(cb.or(title, content));
       }
       if (authorId != null) {

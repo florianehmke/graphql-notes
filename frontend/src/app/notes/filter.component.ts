@@ -3,21 +3,21 @@ import { NotesStateService } from './state/notes-state.service';
 import { Observable } from 'rxjs';
 import { Author } from './state/notes.models';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { DestructionAware } from '@lib/destruction-aware';
 
 @Component({
   selector: 'app-filter',
   template: `
     <h4 class="border-dark border-bottom">Filter Notes</h4>
-    <div class="d-flex justify-content-between mb-3">
-      <div>
-        <label for="search" class="m-0"><small>Search</small></label>
+    <div class="d-flex align-items-start mb-3">
+      <app-filter-container label="Search">
         <input class="d-block" id="search" [formControl]="searchControl" />
-      </div>
-      <div>
+      </app-filter-container>
+      <app-filter-container label="Filter by Author">
         <ng-container *ngFor="let author of authors$ | async">
           <small
-            class="text-right m-0 d-block"
+            class="d-block"
             style="cursor: pointer"
             [class.font-weight-bold]="(selectedAuthorId$ | async) === author.id"
             (click)="selectAuthorId(author.id)"
@@ -26,16 +26,17 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
             {{ author.noteCount }} Notes
           </small>
         </ng-container>
-      </div>
+      </app-filter-container>
     </div>
   `
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent extends DestructionAware implements OnInit {
   authors$: Observable<Author[]>;
   selectedAuthorId$: Observable<number>;
   searchControl: FormControl;
 
   constructor(private notesState: NotesStateService) {
+    super();
     this.authors$ = this.notesState.authors$;
     this.selectedAuthorId$ = this.notesState.selectedAuthorId$;
     this.searchControl = new FormControl('');
@@ -52,7 +53,8 @@ export class FilterComponent implements OnInit {
     this.searchControl.valueChanges
       .pipe(
         distinctUntilChanged(),
-        debounceTime(400)
+        debounceTime(400),
+        takeUntil(this.destroyed())
       )
       .subscribe(searchTerm => this.notesState.setNoteSearchTerm(searchTerm));
   }
