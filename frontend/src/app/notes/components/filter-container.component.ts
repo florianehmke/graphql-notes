@@ -1,11 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 @Component({
   selector: 'app-filter-container',
   template: `
-    <div>
-      <small>{{ label }}</small>
-      <ng-content></ng-content>
-    </div>
+    <small [class.border-bottom]="showBorder">{{ label }}</small>
+    <ng-content></ng-content>
   `,
   styles: [
     `
@@ -15,8 +14,10 @@ import { Component, Input } from '@angular/core';
         width: 100%;
       }
     `
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterContainerComponent {
   @Input() label: string;
+  @Input() showBorder: boolean = false;
 }

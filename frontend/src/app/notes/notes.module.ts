@@ -9,6 +9,7 @@ import { NotesStateService } from './state/notes-state.service';
 import { FilterComponent } from './filter.component';
 import { FilterContainerComponent } from './components/filter-container.component';
 import { FilterAuthorComponent } from './components/filter-author.component';
+import { NoteComponent } from './components/note.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FilterAuthorComponent } from './components/filter-author.component';
     FormComponent,
     FilterComponent,
     ListComponent,
+    NoteComponent,
     FilterContainerComponent,
     FilterAuthorComponent
   ],

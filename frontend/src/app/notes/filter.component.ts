@@ -14,16 +14,14 @@ import { DestructionAware } from '@lib/destruction-aware';
       <app-filter-container class="mr-3" label="Search by Title/Content">
         <input class="w-100" [formControl]="searchControl" />
       </app-filter-container>
-      <app-filter-container label="Filter by Author">
-        <div class="border-top">
-          <app-filter-author
-            *ngFor="let author of authors$ | async"
-            [author]="author"
-            [selectedAuthorId]="selectedAuthorId$ | async"
-            (authorIdSelected)="selectAuthorId($event)"
-          >
-          </app-filter-author>
-        </div>
+      <app-filter-container label="Filter by Author" [showBorder]="true">
+        <app-filter-author
+          *ngFor="let author of authors$ | async"
+          [author]="author"
+          [selectedAuthorId]="selectedAuthorId$ | async"
+          (authorIdSelected)="selectAuthorId($event)"
+        >
+        </app-filter-author>
       </app-filter-container>
     </div>
   `
