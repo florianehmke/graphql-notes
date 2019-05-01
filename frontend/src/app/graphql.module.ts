@@ -9,7 +9,18 @@ const uri = 'http://localhost:8080/graphql'; // FIXME replace with environment
 export function createApollo(httpLink: HttpLink) {
   return {
     link: httpLink.create({ uri }),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
+    defaultOptions: {
+      watchQuery: {
+        errorPolicy: 'all'
+      },
+      mutate: {
+        errorPolicy: 'all'
+      },
+      query: {
+        errorPolicy: 'all'
+      }
+    }
   };
 }
 

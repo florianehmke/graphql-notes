@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlnotes.graphql;
+package com.github.florianehmke.graphqlnotes.controller;
 
 import com.github.florianehmke.graphqlnotes.persistence.model.Author;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
@@ -44,21 +44,20 @@ public class NoteController {
   }
 
   @GraphQLMutation
-  public boolean deleteNote(Long noteId) {
-    return this.noteRepository
-        .findById(noteId)
-        .map(
-            note -> {
-              noteRepository.delete(note);
-              return true;
-            })
-        .orElse(false);
+  public void deleteNote(Long noteId) {
+    this.noteRepository.delete(
+        this.noteRepository
+            .findById(noteId)
+            .orElseThrow(() -> new ClientException("not_found", "Note does not exist!")));
   }
 
   @GraphQLMutation
   public Note addNote(Long authorId, String title, String content) {
     var author =
-        authorRepository.findById(authorId).orElseThrow(() -> new IllegalArgumentException("Möp"));
+        authorRepository
+            .findById(authorId)
+            .orElseThrow(() -> new ClientException("not_found", "Author does not exist!"));
+
     var note = new Note();
     note.setAuthor(author);
     note.setNoteTitle(title);

@@ -1,12 +1,12 @@
+import { Injectable } from '@angular/core';
+
 import { Apollo, QueryRef } from 'apollo-angular';
 import { WatchQueryOptions } from 'apollo-client';
+import { R } from 'apollo-angular/types';
 import { GraphQLError } from 'graphql';
 
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-
-import { Injectable } from '@angular/core';
-import { R } from 'apollo-angular/types';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ApolloHelperService {

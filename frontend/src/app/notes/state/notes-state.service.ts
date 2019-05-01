@@ -3,9 +3,22 @@ import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Author, Note } from './notes.models';
-import { notesQuery, notesQueryKey, NotesQueryResponse, NotesQueryVariables } from './queries/notes.query';
-import { authorsQuery, authorsQueryKey, AuthorsQueryResponse } from './queries/authors.query';
-import { addNoteMutation, AddNoteMutationResponse, AddNoteMutationVariables } from './mutations/add-note.mutation';
+import {
+  notesQuery,
+  notesQueryKey,
+  NotesQueryResponse,
+  NotesQueryVariables
+} from './queries/notes.query';
+import {
+  authorsQuery,
+  authorsQueryKey,
+  AuthorsQueryResponse
+} from './queries/authors.query';
+import {
+  addNoteMutation,
+  AddNoteMutationResponse,
+  AddNoteMutationVariables
+} from './mutations/add-note.mutation';
 import { LocalStateService } from '@lib/local-state.service';
 import { ApolloHelperService } from '@lib/apollo-helper.service';
 import {
@@ -13,6 +26,8 @@ import {
   DeleteNoteMutationResponse,
   DeleteNoteMutationVariables
 } from './mutations/delete-note.mutation';
+import { tap } from 'rxjs/internal/operators/tap';
+import { extractClientErrors } from '@lib/extract-error-extensions';
 
 export interface NotesState {
   selectedAuthorId: number;
@@ -53,6 +68,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
         variables: { title, content, authorId },
         refetchQueries: [notesQueryKey, authorsQueryKey]
       })
+      .pipe(tap(response => this.handleClientErrors(response)))
       .subscribe();
   }
 
@@ -63,6 +79,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
         variables: { noteId },
         refetchQueries: [notesQueryKey, authorsQueryKey]
       })
+      .pipe(tap(response => this.handleClientErrors(response)))
       .subscribe();
   }
 
@@ -109,5 +126,12 @@ export class NotesStateService extends LocalStateService<NotesState> {
 
     this.authorsQueryRef = query.queryRef;
     this.authors$ = query.data$.pipe(map(data => data.authors));
+  }
+
+  private handleClientErrors(response) {
+    const errors = extractClientErrors(response);
+    if (errors) {
+      errors.forEach(err => console.log(err));
+    }
   }
 }
