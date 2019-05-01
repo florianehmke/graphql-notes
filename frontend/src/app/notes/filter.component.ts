@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NotesStateService } from './state/notes-state.service';
 import { Observable } from 'rxjs';
 import { Author } from './state/notes.models';
@@ -24,7 +24,8 @@ import { DestructionAware } from '@lib/destruction-aware';
         </app-filter-author>
       </app-filter-container>
     </div>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterComponent extends DestructionAware implements OnInit {
   authors$: Observable<Author[]>;

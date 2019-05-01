@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotesStateService } from './state/notes-state.service';
 
@@ -36,7 +36,8 @@ import { NotesStateService } from './state/notes-state.service';
         display: block;
       }
     `
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent {
   noteForm: FormGroup;

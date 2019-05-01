@@ -14,6 +14,7 @@ import { Note } from './state/notes.models';
     >
     </app-note-component>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
   notes$: Observable<Note[]>;
