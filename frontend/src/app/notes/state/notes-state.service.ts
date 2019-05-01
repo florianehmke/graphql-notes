@@ -3,24 +3,16 @@ import { Apollo, QueryRef } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Author, Note } from './notes.models';
-import {
-  notesQuery,
-  notesQueryKey,
-  NotesQueryResponse,
-  NotesQueryVariables
-} from './queries/notes.query';
-import {
-  authorsQuery,
-  authorsQueryKey,
-  AuthorsQueryResponse
-} from './queries/authors.query';
-import {
-  addNoteMutation,
-  AddNoteMutationResponse,
-  AddNoteMutationVariables
-} from './mutations/notes.mutation';
+import { notesQuery, notesQueryKey, NotesQueryResponse, NotesQueryVariables } from './queries/notes.query';
+import { authorsQuery, authorsQueryKey, AuthorsQueryResponse } from './queries/authors.query';
+import { addNoteMutation, AddNoteMutationResponse, AddNoteMutationVariables } from './mutations/add-note.mutation';
 import { LocalStateService } from '@lib/local-state.service';
 import { ApolloHelperService } from '@lib/apollo-helper.service';
+import {
+  deleteNoteMutation,
+  DeleteNoteMutationResponse,
+  DeleteNoteMutationVariables
+} from './mutations/delete-note.mutation';
 
 export interface NotesState {
   selectedAuthorId: number;
@@ -59,6 +51,16 @@ export class NotesStateService extends LocalStateService<NotesState> {
       .mutate<AddNoteMutationResponse, AddNoteMutationVariables>({
         mutation: addNoteMutation,
         variables: { title, content, authorId },
+        refetchQueries: [notesQueryKey, authorsQueryKey]
+      })
+      .subscribe();
+  }
+
+  deleteNote(noteId: number) {
+    this.apollo
+      .mutate<DeleteNoteMutationResponse, DeleteNoteMutationVariables>({
+        mutation: deleteNoteMutation,
+        variables: { noteId },
         refetchQueries: [notesQueryKey, authorsQueryKey]
       })
       .subscribe();

@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { Note } from '../state/notes.models';
 
 @Component({
@@ -10,6 +16,9 @@ import { Note } from '../state/notes.models';
       </span>
       <span class="m-0 text-muted">
         {{ note.author.firstName }} {{ note.author.lastName }}
+      </span>
+      <span class="m-0" style="cursor:pointer;" (click)="delete.emit(note)">
+        Delete
       </span>
     </div>
     <div>
@@ -27,4 +36,5 @@ import { Note } from '../state/notes.models';
 })
 export class NoteComponent {
   @Input() note: Note;
+  @Output() delete = new EventEmitter<Note>();
 }

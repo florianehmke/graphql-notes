@@ -44,17 +44,23 @@ public class NoteController {
   }
 
   @GraphQLMutation
-  public Author addAuthor(String firstName, String lastName) {
-    var author = new Author();
-    author.setFirstName(firstName);
-    author.setLastName(lastName);
-    return authorRepository.save(author);
+  public boolean deleteNote(Long noteId) {
+    return this.noteRepository
+        .findById(noteId)
+        .map(
+            note -> {
+              noteRepository.delete(note);
+              return true;
+            })
+        .orElse(false);
   }
 
   @GraphQLMutation
   public Note addNote(Long authorId, String title, String content) {
+    var author =
+        authorRepository.findById(authorId).orElseThrow(() -> new IllegalArgumentException("Möp"));
     var note = new Note();
-    note.setAuthor(authorRepository.findById(authorId).orElseThrow(() -> new IllegalArgumentException("Möp")));
+    note.setAuthor(author);
     note.setNoteTitle(title);
     note.setNoteContent(content);
     return noteRepository.save(note);

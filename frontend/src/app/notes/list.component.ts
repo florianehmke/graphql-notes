@@ -11,6 +11,7 @@ import { Note } from './state/notes.models';
       class="mb-2"
       *ngFor="let note of notes$ | async"
       [note]="note"
+      (delete)="onDelete($event)"
     >
     </app-note-component>
   `,
@@ -21,5 +22,9 @@ export class ListComponent {
 
   constructor(private notesState: NotesStateService) {
     this.notes$ = notesState.notes$;
+  }
+
+  onDelete(note: Note) {
+    this.notesState.deleteNote(note.id);
   }
 }
