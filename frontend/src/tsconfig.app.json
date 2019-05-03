@@ -5,7 +5,9 @@
     "types": [],
     "baseUrl": ".",
     "paths": {
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "@graphql": ["generated/graphql.ts"]
+
     }
   },
   "exclude": ["test.ts", "**/*.spec.ts"]

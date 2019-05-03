@@ -5,7 +5,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-import { Note } from '../state/notes.models';
+import { Note } from '@graphql';
 
 @Component({
   selector: 'app-note-component',
@@ -32,7 +32,7 @@ import { Note } from '../state/notes.models';
       }
     `
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class NoteComponent {
   @Input() note: Note;

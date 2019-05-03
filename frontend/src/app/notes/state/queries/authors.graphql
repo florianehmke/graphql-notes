@@ -1,0 +1,8 @@
+query authors {
+  authors {
+    id
+    firstName
+    lastName
+    noteCount
+  }
+}

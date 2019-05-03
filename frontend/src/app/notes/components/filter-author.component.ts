@@ -5,7 +5,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-import { Author } from '../state/notes.models';
+import { Author } from '@graphql';
 
 @Component({
   selector: 'app-filter-author',
@@ -30,7 +30,7 @@ import { Author } from '../state/notes.models';
       }
     `
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class FilterAuthorComponent {
   @Input() author: Author;

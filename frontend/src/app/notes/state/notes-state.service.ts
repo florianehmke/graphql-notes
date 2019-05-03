@@ -1,33 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Apollo, QueryRef } from 'apollo-angular';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Author, Note } from './notes.models';
-import {
-  notesQuery,
-  notesQueryKey,
-  NotesQueryResponse,
-  NotesQueryVariables
-} from './queries/notes.query';
-import {
-  authorsQuery,
-  authorsQueryKey,
-  AuthorsQueryResponse
-} from './queries/authors.query';
-import {
-  addNoteMutation,
-  AddNoteMutationResponse,
-  AddNoteMutationVariables
-} from './mutations/add-note.mutation';
+import { QueryRef } from 'apollo-angular';
+import { map, tap } from 'rxjs/operators';
 import { LocalStateService } from '@lib/local-state.service';
-import { ApolloHelperService } from '@lib/apollo-helper.service';
-import {
-  deleteNoteMutation,
-  DeleteNoteMutationResponse,
-  DeleteNoteMutationVariables
-} from './mutations/delete-note.mutation';
-import { tap } from 'rxjs/internal/operators/tap';
+
 import { extractClientErrors } from '@lib/extract-error-extensions';
+import {
+  AddNoteGQL,
+  AuthorsGQL,
+  AuthorsQuery,
+  AuthorsQueryVariables,
+  DeleteNoteGQL,
+  NotesGQL,
+  NotesQuery,
+  NotesQueryVariables
+} from '@graphql';
 
 export interface NotesState {
   selectedAuthorId: number;
@@ -43,44 +29,51 @@ const initialState: NotesState = {
 
 @Injectable()
 export class NotesStateService extends LocalStateService<NotesState> {
-  authors$: Observable<Author[]>;
-  notes$: Observable<Note[]>;
+  authors$; // FIXME typing?
+  notes$;
   selectedAuthorId$ = this.state$.pipe(map(s => s.selectedAuthorId));
 
-  private authorsQueryRef: QueryRef<AuthorsQueryResponse>;
-  private notesQueryRef: QueryRef<NotesQueryResponse, NotesQueryVariables>;
+  private authorsQueryRef: QueryRef<AuthorsQuery, AuthorsQueryVariables>;
+  private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
 
   constructor(
-    private apolloHelper: ApolloHelperService,
-    private apollo: Apollo
+    private addNoteGQL: AddNoteGQL,
+    private deleteNoteGQL: DeleteNoteGQL,
+    private notesGQL: NotesGQL,
+    private authorsGQL: AuthorsGQL
   ) {
     super(initialState);
 
-    this.setupNotesQuery();
-    this.setupAuthorsQuery();
+    this.notesQueryRef = notesGQL.watch(this.loadNotesQueryVariables());
+    this.notes$ = this.notesQueryRef.valueChanges.pipe(
+      map(vc => vc.data.notes)
+    );
+
+    this.authorsQueryRef = authorsGQL.watch();
+    this.authors$ = this.authorsQueryRef.valueChanges.pipe(
+      map(vc => vc.data.authors)
+    );
   }
 
   addNote(title: string, content: string) {
     const authorId = this.state.currentAuthorId;
-    this.apollo
-      .mutate<AddNoteMutationResponse, AddNoteMutationVariables>({
-        mutation: addNoteMutation,
-        variables: { title, content, authorId },
-        refetchQueries: [notesQueryKey, authorsQueryKey]
-      })
+    this.addNoteGQL
+      .mutate({ title, content, authorId })
       .pipe(tap(response => this.handleClientErrors(response)))
-      .subscribe();
+      .subscribe(() => {
+        this.notesQueryRef.refetch();
+        this.authorsQueryRef.refetch();
+      });
   }
 
   deleteNote(noteId: number) {
-    this.apollo
-      .mutate<DeleteNoteMutationResponse, DeleteNoteMutationVariables>({
-        mutation: deleteNoteMutation,
-        variables: { noteId },
-        refetchQueries: [notesQueryKey, authorsQueryKey]
-      })
+    this.deleteNoteGQL
+      .mutate({ noteId })
       .pipe(tap(response => this.handleClientErrors(response)))
-      .subscribe();
+      .subscribe(() => {
+        this.notesQueryRef.refetch();
+        this.authorsQueryRef.refetch();
+      });
   }
 
   setSelectedAuthorId(authorId: number): void {
@@ -99,33 +92,11 @@ export class NotesStateService extends LocalStateService<NotesState> {
     this.notesQueryRef.refetch(this.loadNotesQueryVariables());
   }
 
-  private setupNotesQuery() {
-    const query = this.apolloHelper.setupQuery<
-      NotesQueryResponse,
-      NotesQueryVariables
-    >({
-      query: notesQuery,
-      variables: this.loadNotesQueryVariables()
-    });
-
-    this.notesQueryRef = query.queryRef;
-    this.notes$ = query.data$.pipe(map(data => data.notes));
-  }
-
   private loadNotesQueryVariables(): NotesQueryVariables {
     return {
-      searchTerm: this.state.noteSearchTerm,
-      authorId: this.state.selectedAuthorId
+      authorId: this.state.selectedAuthorId,
+      searchTerm: this.state.noteSearchTerm
     };
-  }
-
-  private setupAuthorsQuery() {
-    const query = this.apolloHelper.setupQuery<AuthorsQueryResponse>({
-      query: authorsQuery
-    });
-
-    this.authorsQueryRef = query.queryRef;
-    this.authors$ = query.data$.pipe(map(data => data.authors));
   }
 
   private handleClientErrors(response) {

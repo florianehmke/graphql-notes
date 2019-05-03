@@ -1,0 +1,4 @@
+mutation deleteNote($noteId: Long!) {
+    deleteNote(noteId: $noteId)
+}
+

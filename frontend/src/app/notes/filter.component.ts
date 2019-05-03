@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NotesStateService } from './state/notes-state.service';
 import { Observable } from 'rxjs';
-import { Author } from './state/notes.models';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { DestructionAware } from '@lib/destruction-aware';
+import { Author } from '@graphql';
 
 @Component({
   selector: 'app-filter',
@@ -25,7 +25,7 @@ import { DestructionAware } from '@lib/destruction-aware';
       </app-filter-container>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class FilterComponent extends DestructionAware implements OnInit {
   authors$: Observable<Author[]>;

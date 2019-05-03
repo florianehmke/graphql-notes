@@ -1,0 +1,12 @@
+query notes ($authorId: Long, $searchTerm: String) {
+  notes(authorId: $authorId, searchTerm: $searchTerm) {
+    id
+    noteTitle
+    noteContent
+    author {
+      firstName
+      lastName
+    }
+  }
+}
+

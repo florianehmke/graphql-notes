@@ -1,7 +1,7 @@
 import { NotesStateService } from './state/notes-state.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Note } from './state/notes.models';
+import { Note } from '@graphql';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +15,7 @@ import { Note } from './state/notes.models';
     >
     </app-note-component>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ListComponent {
   notes$: Observable<Note[]>;

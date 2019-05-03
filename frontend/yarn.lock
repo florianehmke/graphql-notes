@@ -197,6 +197,195 @@
   dependencies:
     tslib "^1.9.0"
 
+"@babel/code-frame@^7.0.0":
+  version "7.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/code-frame/-/code-frame-7.0.0.tgz#06e2ab19bdb535385559aabb5ba59729482800f8"
+  integrity sha1-BuKrGb21NThVWaq7W6WXKUgoAPg=
+  dependencies:
+    "@babel/highlight" "^7.0.0"
+
+"@babel/generator@^7.4.4":
+  version "7.4.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/generator/-/generator-7.4.4.tgz#174a215eb843fc392c7edcaabeaa873de6e8f041"
+  integrity sha1-F0ohXrhD/DksftyqvqqHPebo8EE=
+  dependencies:
+    "@babel/types" "^7.4.4"
+    jsesc "^2.5.1"
+    lodash "^4.17.11"
+    source-map "^0.5.0"
+    trim-right "^1.0.1"
+
+"@babel/helper-function-name@^7.1.0":
+  version "7.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/helper-function-name/-/helper-function-name-7.1.0.tgz#a0ceb01685f73355d4360c1247f582bfafc8ff53"
+  integrity sha1-oM6wFoX3M1XUNgwSR/WCv6/I/1M=
+  dependencies:
+    "@babel/helper-get-function-arity" "^7.0.0"
+    "@babel/template" "^7.1.0"
+    "@babel/types" "^7.0.0"
+
+"@babel/helper-get-function-arity@^7.0.0":
+  version "7.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/helper-get-function-arity/-/helper-get-function-arity-7.0.0.tgz#83572d4320e2a4657263734113c42868b64e49c3"
+  integrity sha1-g1ctQyDipGVyY3NBE8QoaLZOScM=
+  dependencies:
+    "@babel/types" "^7.0.0"
+
+"@babel/helper-split-export-declaration@^7.4.4":
+  version "7.4.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/helper-split-export-declaration/-/helper-split-export-declaration-7.4.4.tgz#ff94894a340be78f53f06af038b205c49d993677"
+  integrity sha1-/5SJSjQL549T8GrwOLIFxJ2ZNnc=
+  dependencies:
+    "@babel/types" "^7.4.4"
+
+"@babel/highlight@^7.0.0":
+  version "7.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/highlight/-/highlight-7.0.0.tgz#f710c38c8d458e6dd9a201afb637fcb781ce99e4"
+  integrity sha1-9xDDjI1Fjm3ZogGvtjf8t4HOmeQ=
+  dependencies:
+    chalk "^2.0.0"
+    esutils "^2.0.2"
+    js-tokens "^4.0.0"
+
+"@babel/parser@^7.2.0", "@babel/parser@^7.4.4":
+  version "7.4.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/parser/-/parser-7.4.4.tgz#5977129431b8fe33471730d255ce8654ae1250b6"
+  integrity sha1-WXcSlDG4/jNHFzDSVc6GVK4SULY=
+
+"@babel/template@^7.1.0":
+  version "7.4.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/template/-/template-7.4.4.tgz#f4b88d1225689a08f5bc3a17483545be9e4ed237"
+  integrity sha1-9LiNEiVomgj1vDoXSDVFvp5O0jc=
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/parser" "^7.4.4"
+    "@babel/types" "^7.4.4"
+
+"@babel/traverse@^7.1.6", "@babel/traverse@^7.4.4":
+  version "7.4.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/traverse/-/traverse-7.4.4.tgz#0776f038f6d78361860b6823887d4f3937133fe8"
+  integrity sha1-B3bwOPbXg2GGC2gjiH1POTcTP+g=
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/generator" "^7.4.4"
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-split-export-declaration" "^7.4.4"
+    "@babel/parser" "^7.4.4"
+    "@babel/types" "^7.4.4"
+    debug "^4.1.0"
+    globals "^11.1.0"
+    lodash "^4.17.11"
+
+"@babel/types@^7.0.0", "@babel/types@^7.2.0", "@babel/types@^7.4.4":
+  version "7.4.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@babel/types/-/types-7.4.4.tgz#8db9e9a629bb7c29370009b4b779ed93fe57d5f0"
+  integrity sha1-jbnppim7fCk3AAm0t3ntk/5X1fA=
+  dependencies:
+    esutils "^2.0.2"
+    lodash "^4.17.11"
+    to-fast-properties "^2.0.0"
+
+"@graphql-codegen/cli@^1.1.3":
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@graphql-codegen/cli/-/cli-1.1.3.tgz#0994f3c1716197951f6e471e4f8ce1588851ce6f"
+  integrity sha1-CZTzwXFhl5UfbkceT4zhWIhRzm8=
+  dependencies:
+    "@graphql-codegen/core" "1.1.3"
+    "@graphql-codegen/plugin-helpers" "1.1.3"
+    "@types/babylon" "6.16.5"
+    "@types/is-glob" "4.0.1"
+    "@types/mkdirp" "0.5.2"
+    "@types/prettier" "1.16.3"
+    "@types/valid-url" "1.0.2"
+    babel-types "7.0.0-beta.3"
+    babylon "7.0.0-beta.47"
+    chalk "2.4.2"
+    change-case "3.1.0"
+    chokidar "3.0.0"
+    commander "2.20.0"
+    common-tags "1.8.0"
+    detect-indent "6.0.0"
+    glob "7.1.3"
+    graphql-config "2.2.1"
+    graphql-import "0.7.1"
+    graphql-tag-pluck "0.8.1"
+    graphql-toolkit "0.2.9"
+    graphql-tools "4.0.4"
+    indent-string "4.0.0"
+    inquirer "6.3.1"
+    is-glob "4.0.1"
+    is-valid-path "0.1.1"
+    js-yaml "3.13.1"
+    json-to-pretty-yaml "1.2.2"
+    listr "0.14.3"
+    listr-update-renderer "0.5.0"
+    log-symbols "3.0.0"
+    log-update "3.2.0"
+    mkdirp "0.5.1"
+    prettier "1.17.0"
+    request "2.88.0"
+    ts-log "2.1.4"
+    tslib "1.9.3"
+    valid-url "1.0.9"
+
+"@graphql-codegen/core@1.1.3":
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@graphql-codegen/core/-/core-1.1.3.tgz#8f64f30925c087311d9dbaac174496706544881f"
+  integrity sha1-j2TzCSXAhzEdnbqsF0SWcGVEiB8=
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.1.3"
+    graphql-toolkit "0.2.9"
+    tslib "1.9.3"
+
+"@graphql-codegen/plugin-helpers@1.1.3":
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@graphql-codegen/plugin-helpers/-/plugin-helpers-1.1.3.tgz#0d8550e57df4fac7f8da354e3a6a19d6c93f3b85"
+  integrity sha1-DYVQ5X30+sf42jVOOmoZ1sk/O4U=
+  dependencies:
+    change-case "3.1.0"
+    common-tags "1.8.0"
+    import-from "3.0.0"
+    tslib "1.9.3"
+
+"@graphql-codegen/typescript-apollo-angular@1.1.3":
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@graphql-codegen/typescript-apollo-angular/-/typescript-apollo-angular-1.1.3.tgz#10d7c0eb21de5c4846265d7ceacd7a9403aa3227"
+  integrity sha1-ENfA6yHeXEhGJl186s16lAOqMic=
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.1.3"
+    "@graphql-codegen/visitor-plugin-common" "1.1.3"
+    tslib "1.9.3"
+
+"@graphql-codegen/typescript-operations@1.1.3":
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@graphql-codegen/typescript-operations/-/typescript-operations-1.1.3.tgz#205a9533f3e29b6331153feedb974ed03ecfa714"
+  integrity sha1-IFqVM/Pim2MxFT/u25dO0D7PpxQ=
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.1.3"
+    "@graphql-codegen/typescript" "1.1.3"
+    "@graphql-codegen/visitor-plugin-common" "1.1.3"
+    tslib "1.9.3"
+
+"@graphql-codegen/typescript@1.1.3":
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@graphql-codegen/typescript/-/typescript-1.1.3.tgz#facf4ccc8e50a4d5b8a6fc94276aaa46b520a73a"
+  integrity sha1-+s9MzI5QpNW4pvyUJ2qqRrUgpzo=
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.1.3"
+    "@graphql-codegen/visitor-plugin-common" "1.1.3"
+    tslib "1.9.3"
+
+"@graphql-codegen/visitor-plugin-common@1.1.3":
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.1.3.tgz#17629e2858216ea4f3aa6ac1ec0455ab130e52b8"
+  integrity sha1-F2KeKFghbqTzqmrB7ARVqxMOUrg=
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "1.1.3"
+    auto-bind "2.0.0"
+    dependency-graph "0.8.0"
+    graphql-tag "2.10.1"
+    tslib "1.9.3"
+
 "@ngtools/webpack@7.3.8":
   version "7.3.8"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@ngtools/webpack/-/webpack-7.3.8.tgz#c8761d0f6959682e03032f8d3de718d1f811410e"
@@ -207,6 +396,13 @@
     rxjs "6.3.3"
     tree-kill "1.2.1"
     webpack-sources "1.3.0"
+
+"@samverschueren/stream-to-observable@^0.3.0":
+  version "0.3.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
+  integrity sha1-7N9I1TLFjqR3rPyrgDSEJPjQZi8=
+  dependencies:
+    any-observable "^0.3.0"
 
 "@schematics/angular@7.3.8":
   version "7.3.8"
@@ -231,6 +427,30 @@
     semver "5.6.0"
     semver-intersect "1.4.0"
 
+"@types/babel-types@*":
+  version "7.0.7"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/babel-types/-/babel-types-7.0.7.tgz#667eb1640e8039436028055737d2b9986ee336e3"
+  integrity sha1-Zn6xZA6AOUNgKAVXN9K5mG7jNuM=
+
+"@types/babylon@6.16.5":
+  version "6.16.5"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/babylon/-/babylon-6.16.5.tgz#1c5641db69eb8cdf378edd25b4be7754beeb48b4"
+  integrity sha1-HFZB22nrjN83jt0ltL53VL7rSLQ=
+  dependencies:
+    "@types/babel-types" "*"
+
+"@types/is-glob@4.0.1":
+  version "4.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/is-glob/-/is-glob-4.0.1.tgz#a93eec1714172c8eb3225a1cc5eb88c2477b7d00"
+  integrity sha1-qT7sFxQXLI6zIlocxeuIwkd7fQA=
+
+"@types/mkdirp@0.5.2":
+  version "0.5.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/mkdirp/-/mkdirp-0.5.2.tgz#503aacfe5cc2703d5484326b1b27efa67a339c1f"
+  integrity sha1-UDqs/lzCcD1UhDJrGyfvpnoznB8=
+  dependencies:
+    "@types/node" "*"
+
 "@types/node@*":
   version "11.13.8"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/node/-/node-11.13.8.tgz#e5d71173c95533be9842b2c798978f095f912aab"
@@ -241,10 +461,20 @@
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/node/-/node-8.9.5.tgz#162b864bc70be077e6db212b322754917929e976"
   integrity sha1-FiuGS8cL4Hfm2yErMidUkXkp6XY=
 
+"@types/prettier@1.16.3":
+  version "1.16.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/prettier/-/prettier-1.16.3.tgz#141bdf4dcbaac06fd2b3f05e233ff23b66866f9f"
+  integrity sha1-FBvfTcuqwG/Ss/BeIz/yO2aGb58=
+
 "@types/source-list-map@*":
   version "0.1.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
   integrity sha1-AHiDYGP/rxdBI0m7o2QIfgrALsk=
+
+"@types/valid-url@1.0.2":
+  version "1.0.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/@types/valid-url/-/valid-url-1.0.2.tgz#60fa435ce24bfd5ba107b8d2a80796aeaf3a8f45"
+  integrity sha1-YPpDXOJL/VuhB7jSqAeWrq86j0U=
 
 "@types/webpack-sources@^0.1.5":
   version "0.1.5"
@@ -463,6 +693,14 @@ agentkeepalive@^3.4.1:
   dependencies:
     humanize-ms "^1.2.1"
 
+aggregate-error@2.2.0:
+  version "2.2.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/aggregate-error/-/aggregate-error-2.2.0.tgz#f54b464db18cc77c907ae084451f39134707134a"
+  integrity sha1-9UtGTbGMx3yQeuCERR85E0cHE0o=
+  dependencies:
+    clean-stack "^2.0.0"
+    indent-string "^3.0.0"
+
 ajv-errors@^1.0.0:
   version "1.0.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/ajv-errors/-/ajv-errors-1.0.1.tgz#f35986aceb91afadec4102fbd85014950cefa64d"
@@ -513,7 +751,7 @@ ansi-colors@^3.0.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
   integrity sha1-46PaS/uubIapwoViXeEkojQCb78=
 
-ansi-escapes@^3.0.0:
+ansi-escapes@^3.0.0, ansi-escapes@^3.2.0:
   version "3.2.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/ansi-escapes/-/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
   integrity sha1-h4C5j/nb9WOBUtHx/lwde0RCl2s=
@@ -543,12 +781,17 @@ ansi-styles@^2.2.1:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
   integrity sha1-tDLdM1i2NM914eRmQ2gkBTPB3b4=
 
-ansi-styles@^3.2.1:
+ansi-styles@^3.2.0, ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
   integrity sha1-QfuyAkPlCxK+DwS43tvwdSDOhB0=
   dependencies:
     color-convert "^1.9.0"
+
+any-observable@^0.3.0:
+  version "0.3.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/any-observable/-/any-observable-0.3.0.tgz#af933475e5806a67d0d7df090dd5e8bef65d119b"
+  integrity sha1-r5M0deWAamfQ198JDdXovvZdEZs=
 
 anymatch@^2.0.0:
   version "2.0.0"
@@ -557,6 +800,14 @@ anymatch@^2.0.0:
   dependencies:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
+
+anymatch@^3.0.1:
+  version "3.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/anymatch/-/anymatch-3.0.1.tgz#a47b8a9e3c3f7f17420276e05ef39746ac1777df"
+  integrity sha1-pHuKnjw/fxdCAnbgXvOXRqwXd98=
+  dependencies:
+    normalize-path "^3.0.0"
+    picomatch "^2.0.4"
 
 apollo-angular-link-http-common@~1.6.0:
   version "1.6.0"
@@ -624,7 +875,7 @@ apollo-link-dedup@^1.0.0:
     apollo-link "^1.2.11"
     tslib "^1.9.3"
 
-apollo-link@^1.0.0, apollo-link@^1.2.0, apollo-link@^1.2.11:
+apollo-link@^1.0.0, apollo-link@^1.2.0, apollo-link@^1.2.11, apollo-link@^1.2.3:
   version "1.2.11"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/apollo-link/-/apollo-link-1.2.11.tgz#493293b747ad3237114ccd22e9f559e5e24a194d"
   integrity sha1-STKTt0etMjcRTM0i6fVZ5eJKGU0=
@@ -634,7 +885,7 @@ apollo-link@^1.0.0, apollo-link@^1.2.0, apollo-link@^1.2.11:
     tslib "^1.9.3"
     zen-observable-ts "^0.8.18"
 
-apollo-utilities@1.2.1, apollo-utilities@^1.2.1:
+apollo-utilities@1.2.1, apollo-utilities@^1.0.1, apollo-utilities@^1.2.1:
   version "1.2.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/apollo-utilities/-/apollo-utilities-1.2.1.tgz#1c3a1ebf5607d7c8efe7636daaf58e7463b41b3c"
   integrity sha1-HDoev1YH18jv52NtqvWOdGO0Gzw=
@@ -753,7 +1004,7 @@ assign-symbols@^1.0.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
   integrity sha1-WWZ/QfrdTyDMvCu5a41Pf3jsA2c=
 
-async-each@^1.0.0, async-each@^1.0.1:
+async-each@^1.0.0, async-each@^1.0.1, async-each@^1.0.3:
   version "1.0.3"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/async-each/-/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
   integrity sha1-tyfb+H12UWAvBvTUrDh/R9kbDL8=
@@ -780,10 +1031,20 @@ asynckit@^0.4.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
+asyncro@^3.0.0:
+  version "3.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/asyncro/-/asyncro-3.0.0.tgz#3c7a732e263bc4a42499042f48d7d858e9c0134e"
+  integrity sha1-PHpzLiY7xKQkmQQvSNfYWOnAE04=
+
 atob@^2.1.1:
   version "2.1.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha1-bZUX654DDSQ2ZmZR6GvZ9vE1M8k=
+
+auto-bind@2.0.0:
+  version "2.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/auto-bind/-/auto-bind-2.0.0.tgz#9a55a461b521f58daf955169203bed1a07a970a9"
+  integrity sha1-mlWkYbUh9Y2vlVFpIDvtGgepcKk=
 
 autoprefixer@9.4.6:
   version "9.4.6"
@@ -871,6 +1132,15 @@ babel-traverse@^6.18.0, babel-traverse@^6.26.0:
     invariant "^2.2.2"
     lodash "^4.17.4"
 
+babel-types@7.0.0-beta.3:
+  version "7.0.0-beta.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/babel-types/-/babel-types-7.0.0-beta.3.tgz#cd927ca70e0ae8ab05f4aab83778cfb3e6eb20b4"
+  integrity sha1-zZJ8pw4K6KsF9Kq4N3jPs+brILQ=
+  dependencies:
+    esutils "^2.0.2"
+    lodash "^4.2.0"
+    to-fast-properties "^2.0.0"
+
 babel-types@^6.18.0, babel-types@^6.26.0:
   version "6.26.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/babel-types/-/babel-types-6.26.0.tgz#a3b073f94ab49eb6fa55cd65227a334380632497"
@@ -880,6 +1150,11 @@ babel-types@^6.18.0, babel-types@^6.26.0:
     esutils "^2.0.2"
     lodash "^4.17.4"
     to-fast-properties "^1.0.3"
+
+babylon@7.0.0-beta.47:
+  version "7.0.0-beta.47"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/babylon/-/babylon-7.0.0-beta.47.tgz#6d1fa44f0abec41ab7c780481e62fd9aafbdea80"
+  integrity sha1-bR+kTwq+xBq3x4BIHmL9mq+96oA=
 
 babylon@^6.18.0:
   version "6.18.0"
@@ -930,6 +1205,11 @@ binary-extensions@^1.0.0:
   version "1.13.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/binary-extensions/-/binary-extensions-1.13.1.tgz#598afe54755b2868a5330d2aff9d4ebb53209b65"
   integrity sha1-WYr+VHVbKGilMw0q/51Ou1Mgm2U=
+
+binary-extensions@^2.0.0:
+  version "2.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/binary-extensions/-/binary-extensions-2.0.0.tgz#23c0df14f6a88077f5f986c0d167ec03c3d5537c"
+  integrity sha1-I8DfFPaogHf1+YbA0WfsA8PVU3w=
 
 block-stream@*:
   version "0.0.9"
@@ -1004,6 +1284,13 @@ braces@^2.3.0, braces@^2.3.1, braces@^2.3.2:
     snapdragon-node "^2.0.1"
     split-string "^3.0.2"
     to-regex "^3.0.1"
+
+braces@^3.0.2:
+  version "3.0.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/braces/-/braces-3.0.2.tgz#3454e1a462ee8d599e236df336cd9ea4f8afe107"
+  integrity sha1-NFThpGLujVmeI23zNs2epPiv4Qc=
+  dependencies:
+    fill-range "^7.0.1"
 
 brorand@^1.0.1:
   version "1.1.0"
@@ -1176,6 +1463,14 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+camel-case@^3.0.0:
+  version "3.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/camel-case/-/camel-case-3.0.0.tgz#ca3c3688a4e9cf3a4cda777dc4dcbc713249cf73"
+  integrity sha1-yjw2iKTpzzpM2nd9xNy8cTJJz3M=
+  dependencies:
+    no-case "^2.2.0"
+    upper-case "^1.1.1"
+
 camelcase-keys@^2.0.0:
   version "2.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/camelcase-keys/-/camelcase-keys-2.1.0.tgz#308beeaffdf28119051efa1d932213c91b8f92e7"
@@ -1214,7 +1509,16 @@ caseless@~0.12.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-chalk@^1.1.1, chalk@^1.1.3:
+chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.1, chalk@^2.4.2:
+  version "2.4.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
+  integrity sha1-zUJUFnelQzPPVBpJEIwUMrRMlCQ=
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
+
+chalk@^1.0.0, chalk@^1.1.1, chalk@^1.1.3:
   version "1.1.3"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/chalk/-/chalk-1.1.3.tgz#a8115c55e4a702fe4d150abd3872822a7e09fc98"
   integrity sha1-qBFcVeSnAv5NFQq9OHKCKn4J/Jg=
@@ -1225,14 +1529,29 @@ chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-chalk@^2.0.0, chalk@^2.0.1, chalk@^2.3.0, chalk@^2.4.2:
-  version "2.4.2"
-  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
-  integrity sha1-zUJUFnelQzPPVBpJEIwUMrRMlCQ=
+change-case@3.1.0:
+  version "3.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/change-case/-/change-case-3.1.0.tgz#0e611b7edc9952df2e8513b27b42de72647dd17e"
+  integrity sha1-DmEbftyZUt8uhROye0LecmR90X4=
   dependencies:
-    ansi-styles "^3.2.1"
-    escape-string-regexp "^1.0.5"
-    supports-color "^5.3.0"
+    camel-case "^3.0.0"
+    constant-case "^2.0.0"
+    dot-case "^2.1.0"
+    header-case "^1.0.0"
+    is-lower-case "^1.1.0"
+    is-upper-case "^1.1.0"
+    lower-case "^1.1.1"
+    lower-case-first "^1.0.0"
+    no-case "^2.3.2"
+    param-case "^2.1.0"
+    pascal-case "^2.0.0"
+    path-case "^2.1.0"
+    sentence-case "^2.1.0"
+    snake-case "^2.1.0"
+    swap-case "^1.1.0"
+    title-case "^2.1.0"
+    upper-case "^1.1.1"
+    upper-case-first "^1.1.0"
 
 chardet@^0.7.0:
   version "0.7.0"
@@ -1258,6 +1577,22 @@ chokidar@2.0.4:
     upath "^1.0.5"
   optionalDependencies:
     fsevents "^1.2.2"
+
+chokidar@3.0.0:
+  version "3.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/chokidar/-/chokidar-3.0.0.tgz#6b538f0fd6d5d31d5dd2b59e05426bec0f49aa40"
+  integrity sha1-a1OPD9bV0x1d0rWeBUJr7A9JqkA=
+  dependencies:
+    anymatch "^3.0.1"
+    async-each "^1.0.3"
+    braces "^3.0.2"
+    glob-parent "^5.0.0"
+    is-binary-path "^2.1.0"
+    is-glob "^4.0.1"
+    normalize-path "^3.0.0"
+    readdirp "^3.0.1"
+  optionalDependencies:
+    fsevents "^2.0.6"
 
 chokidar@^2.0.0, chokidar@^2.0.2, chokidar@^2.1.1:
   version "2.1.5"
@@ -1320,12 +1655,25 @@ clean-css@4.2.1:
   dependencies:
     source-map "~0.6.0"
 
-cli-cursor@^2.1.0:
+clean-stack@^2.0.0:
+  version "2.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/clean-stack/-/clean-stack-2.1.0.tgz#9e7fec7f3f8340a2ab4f127c80273085e8fbbdd0"
+  integrity sha1-nn/sfz+DQKKrTxJ8gCcwhej7vdA=
+
+cli-cursor@^2.0.0, cli-cursor@^2.1.0:
   version "2.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/cli-cursor/-/cli-cursor-2.1.0.tgz#b35dac376479facc3e94747d41d0d0f5238ffcb5"
   integrity sha1-s12sN2R5+sw+lHR9QdDQ9SOP/LU=
   dependencies:
     restore-cursor "^2.0.0"
+
+cli-truncate@^0.2.1:
+  version "0.2.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/cli-truncate/-/cli-truncate-0.2.1.tgz#9f15cfbb0705005369216c626ac7d05ab90dd574"
+  integrity sha1-nxXPuwcFAFNpIWxiasfQWrkN1XQ=
+  dependencies:
+    slice-ansi "0.0.4"
+    string-width "^1.0.1"
 
 cli-width@^2.0.0:
   version "2.2.0"
@@ -1402,10 +1750,15 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.12.1, commander@^2.19.0:
+commander@2.20.0, commander@^2.12.1, commander@^2.19.0:
   version "2.20.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/commander/-/commander-2.20.0.tgz#d58bb2b5c1ee8f87b0d340027e9e94e222c5a422"
   integrity sha1-1YuytcHuj4ew00ACfp6U4iLFpCI=
+
+common-tags@1.8.0:
+  version "1.8.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/common-tags/-/common-tags-1.8.0.tgz#8e3153e542d4a39e9b10554434afaaf98956a937"
+  integrity sha1-jjFT5ULUo56bEFVENK+q+YlWqTc=
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -1468,6 +1821,14 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
+
+constant-case@^2.0.0:
+  version "2.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/constant-case/-/constant-case-2.0.0.tgz#4175764d389d3fa9c8ecd29186ed6005243b6a46"
+  integrity sha1-QXV2TTidP6nI7NKRhu1gBSQ7akY=
+  dependencies:
+    snake-case "^2.1.0"
+    upper-case "^1.1.1"
 
 constants-browserify@^1.0.0:
   version "1.0.0"
@@ -1583,6 +1944,14 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+cross-fetch@2.2.2:
+  version "2.2.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/cross-fetch/-/cross-fetch-2.2.2.tgz#a47ff4f7fc712daba8f6a695a11c948440d45723"
+  integrity sha1-pH/09/xxLauo9qaVoRyUhEDUVyM=
+  dependencies:
+    node-fetch "2.1.2"
+    whatwg-fetch "2.0.4"
+
 cross-spawn@^3.0.0:
   version "3.0.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/cross-spawn/-/cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982"
@@ -1652,6 +2021,11 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
+date-fns@^1.27.2:
+  version "1.30.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
+  integrity sha1-LnG/CxGRU9u0zE6I2epaz7UNwFw=
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -1712,6 +2086,11 @@ deep-extend@^0.6.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha1-xPp8lUBKF6nD6Mp+FTcxK3NjMKw=
 
+deepmerge@3.2.0:
+  version "3.2.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/deepmerge/-/deepmerge-3.2.0.tgz#58ef463a57c08d376547f8869fdc5bcee957f44e"
+  integrity sha1-WO9GOlfAjTdlR/iGn9xbzulX9E4=
+
 default-gateway@^2.6.0:
   version "2.7.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/default-gateway/-/default-gateway-2.7.2.tgz#b7ef339e5e024b045467af403d50348db4642d0f"
@@ -1769,10 +2148,20 @@ depd@~1.1.2:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
   integrity sha1-m81S4UwJd2PnSbJ0xDRu0uVgtak=
 
+dependency-graph@0.8.0:
+  version "0.8.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/dependency-graph/-/dependency-graph-0.8.0.tgz#2da2d35ed852ecc24a5d6c17788ba57c3708755b"
+  integrity sha1-LaLTXthS7MJKXWwXeIulfDcIdVs=
+
 dependency-graph@^0.7.2:
   version "0.7.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/dependency-graph/-/dependency-graph-0.7.2.tgz#91db9de6eb72699209d88aea4c1fd5221cac1c49"
   integrity sha1-kdud5utyaZIJ2IrqTB/VIhysHEk=
+
+deprecated-decorator@^0.1.6:
+  version "0.1.6"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/deprecated-decorator/-/deprecated-decorator-0.1.6.tgz#00966317b7a12fe92f3cc831f7583af329b86c37"
+  integrity sha1-AJZjF7ehL+kvPMgx91g68ym4bDc=
 
 des.js@^1.0.0:
   version "1.0.0"
@@ -1786,6 +2175,11 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
+
+detect-indent@6.0.0:
+  version "6.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/detect-indent/-/detect-indent-6.0.0.tgz#0abd0f549f69fc6659a254fe96786186b6f528fd"
+  integrity sha1-Cr0PVJ9p/GZZolT+lnhhhrb1KP0=
 
 detect-indent@^4.0.0:
   version "4.0.0"
@@ -1850,6 +2244,13 @@ domain-browser@^1.1.1:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/domain-browser/-/domain-browser-1.2.0.tgz#3d31f50191a6749dd1375a7f522e823d42e54eda"
   integrity sha1-PTH1AZGmdJ3RN1p/Ui6CPULlTto=
 
+dot-case@^2.1.0:
+  version "2.1.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/dot-case/-/dot-case-2.1.1.tgz#34dcf37f50a8e93c2b3bca8bb7fb9155c7da3bee"
+  integrity sha1-NNzzf1Co6TwrO8qLt/uRVcfaO+4=
+  dependencies:
+    no-case "^2.2.0"
+
 duplexify@^3.4.2, duplexify@^3.6.0:
   version "3.7.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/duplexify/-/duplexify-3.7.1.tgz#2a4df5317f6ccfd91f86d6fd25d8d8a103b88309"
@@ -1878,6 +2279,11 @@ electron-to-chromium@^1.3.124:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/electron-to-chromium/-/electron-to-chromium-1.3.127.tgz#9b34d3d63ee0f3747967205b953b25fe7feb0e10"
   integrity sha1-mzTT1j7g83R5ZyBblTsl/n/rDhA=
 
+elegant-spinner@^1.0.1:
+  version "1.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
+  integrity sha1-2wQ1IcldfjA/2PNFvtwzSc+wcp4=
+
 elliptic@^6.0.0:
   version "6.4.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/elliptic/-/elliptic-6.4.1.tgz#c2d0b7776911b86722c632c3c06c60f2f819939a"
@@ -1890,6 +2296,11 @@ elliptic@^6.0.0:
     inherits "^2.0.1"
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
+
+emoji-regex@^7.0.1:
+  version "7.0.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
+  integrity sha1-kzoEBShgyF6DwSJHnEdIqOTHIVY=
 
 emojis-list@^2.0.0:
   version "2.1.0"
@@ -2133,7 +2544,7 @@ extend@~3.0.2:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha1-+LETa0Bx+9jrFAr/hYsQGewpFfo=
 
-external-editor@^3.0.0:
+external-editor@^3.0.0, external-editor@^3.0.3:
   version "3.0.3"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/external-editor/-/external-editor-3.0.3.tgz#5866db29a97826dbe4bf3afd24070ead9ea43a27"
   integrity sha1-WGbbKal4Jtvkvzr9JAcOrZ6kOic=
@@ -2205,6 +2616,14 @@ figgy-pudding@^3.4.1, figgy-pudding@^3.5.1:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
   integrity sha1-hiRwESkBxyeg5JWoB0S9W6odZ5A=
 
+figures@^1.7.0:
+  version "1.7.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
+  integrity sha1-y+Hjr/zxzUS4DK3+0o3Hk6lwHS4=
+  dependencies:
+    escape-string-regexp "^1.0.5"
+    object-assign "^4.1.0"
+
 figures@^2.0.0:
   version "2.0.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
@@ -2229,6 +2648,13 @@ fill-range@^4.0.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
+
+fill-range@^7.0.1:
+  version "7.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
+  integrity sha1-GRmmp8df44ssfHflGYU12prN2kA=
+  dependencies:
+    to-regex-range "^5.0.1"
 
 finalhandler@1.1.1:
   version "1.1.1"
@@ -2384,6 +2810,11 @@ fsevents@^1.2.2, fsevents@^1.2.7:
     nan "^2.12.1"
     node-pre-gyp "^0.12.0"
 
+fsevents@^2.0.6:
+  version "2.0.6"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/fsevents/-/fsevents-2.0.6.tgz#87b19df0bfb4a1a51d7ddb51b01b5f3bedb40c33"
+  integrity sha1-h7Gd8L+0oaUdfdtRsBtfO+20DDM=
+
 fstream@^1.0.0, fstream@^1.0.2:
   version "1.0.11"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/fstream/-/fstream-1.0.11.tgz#5c1fb1f117477114f0632a0eb4b71b3cb0fd3171"
@@ -2462,6 +2893,13 @@ glob-parent@^3.1.0:
     is-glob "^3.1.0"
     path-dirname "^1.0.0"
 
+glob-parent@^5.0.0:
+  version "5.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/glob-parent/-/glob-parent-5.0.0.tgz#1dc99f0f39b006d3e92c2c284068382f0c20e954"
+  integrity sha1-HcmfDzmwBtPpLCwoQGg4Lwwg6VQ=
+  dependencies:
+    is-glob "^4.0.1"
+
 glob@7.0.x:
   version "7.0.6"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/glob/-/glob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a"
@@ -2485,6 +2923,11 @@ glob@7.1.3, glob@^7.0.0, glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glo
     minimatch "^3.0.4"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
+
+globals@^11.1.0:
+  version "11.12.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/globals/-/globals-11.12.0.tgz#ab8795338868a0babd8525758018c2a7eb95c42e"
+  integrity sha1-q4eVM4hooLq9hSV1gBjCp+uVxC4=
 
 globals@^9.18.0:
   version "9.18.0"
@@ -2528,17 +2971,95 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha1-/7cD4QZuig7qpMi4C6klPu77+wA=
 
-graphql-tag@^2.10.0:
+graphql-config@2.2.1:
+  version "2.2.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-config/-/graphql-config-2.2.1.tgz#5fd0ec77ac7428ca5fb2026cf131be10151a0cb2"
+  integrity sha1-X9Dsd6x0KMpfsgJs8TG+EBUaDLI=
+  dependencies:
+    graphql-import "^0.7.1"
+    graphql-request "^1.5.0"
+    js-yaml "^3.10.0"
+    lodash "^4.17.4"
+    minimatch "^3.0.4"
+
+graphql-import@0.7.1, graphql-import@^0.7.1:
+  version "0.7.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-import/-/graphql-import-0.7.1.tgz#4add8d91a5f752d764b0a4a7a461fcd93136f223"
+  integrity sha1-St2NkaX3UtdksKSnpGH82TE28iM=
+  dependencies:
+    lodash "^4.17.4"
+    resolve-from "^4.0.0"
+
+graphql-request@^1.5.0:
+  version "1.8.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-request/-/graphql-request-1.8.2.tgz#398d10ae15c585676741bde3fc01d5ca948f8fbe"
+  integrity sha1-OY0QrhXFhWdnQb3j/AHVypSPj74=
+  dependencies:
+    cross-fetch "2.2.2"
+
+graphql-tag-pluck@0.8.0:
+  version "0.8.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-tag-pluck/-/graphql-tag-pluck-0.8.0.tgz#604405f46dfd87f002d47c1f452f277bfc0ba92c"
+  integrity sha1-YEQF9G39h/AC1HwfRS8ne/wLqSw=
+  dependencies:
+    "@babel/parser" "^7.2.0"
+    "@babel/traverse" "^7.1.6"
+    "@babel/types" "^7.2.0"
+    source-map-support "^0.5.9"
+    typescript "^3.2.2"
+
+graphql-tag-pluck@0.8.1:
+  version "0.8.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-tag-pluck/-/graphql-tag-pluck-0.8.1.tgz#1740e491acf148ccb3fe31a56e58bff000dfe7ed"
+  integrity sha1-F0DkkazxSMyz/jGlbli/8ADf5+0=
+  dependencies:
+    "@babel/parser" "^7.4.4"
+    "@babel/traverse" "^7.4.4"
+    "@babel/types" "^7.4.4"
+    source-map-support "^0.5.12"
+    typescript "^3.4.5"
+
+graphql-tag@2.10.1, graphql-tag@^2.10.0:
   version "2.10.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
   integrity sha1-EKpB8c2PrlNz6vEfH2cmCjytXgI=
 
-graphql@^0.13.2:
-  version "0.13.2"
-  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql/-/graphql-0.13.2.tgz#4c740ae3c222823e7004096f832e7b93b2108270"
-  integrity sha1-THQK48Iigj5wBAlvgy57k7IQgnA=
+graphql-toolkit@0.2.9:
+  version "0.2.9"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-toolkit/-/graphql-toolkit-0.2.9.tgz#d8b2c3a37feee4fc6424139d1ca97366ff23bdad"
+  integrity sha1-2LLDo3/u5PxkJBOdHKlzZv8jva0=
   dependencies:
-    iterall "^1.2.1"
+    aggregate-error "2.2.0"
+    asyncro "^3.0.0"
+    deepmerge "3.2.0"
+    glob "7.1.3"
+    graphql-import "0.7.1"
+    graphql-tag-pluck "0.8.0"
+    graphql-tools "4.0.4"
+    is-glob "4.0.0"
+    is-valid-path "0.1.1"
+    lodash "4.17.11"
+    request "2.88.0"
+    tslib "^1.9.3"
+    valid-url "1.0.9"
+
+graphql-tools@4.0.4:
+  version "4.0.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql-tools/-/graphql-tools-4.0.4.tgz#ca08a63454221fdde825fe45fbd315eb2a6d566b"
+  integrity sha1-ygimNFQiH93oJf5F+9MV6yptVms=
+  dependencies:
+    apollo-link "^1.2.3"
+    apollo-utilities "^1.0.1"
+    deprecated-decorator "^0.1.6"
+    iterall "^1.1.3"
+    uuid "^3.1.0"
+
+graphql@^14.2.1:
+  version "14.2.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/graphql/-/graphql-14.2.1.tgz#779529bf9a01e7207b977a54c20670b48ca6e95c"
+  integrity sha1-d5Upv5oB5yB7l3pUwgZwtIym6Vw=
+  dependencies:
+    iterall "^1.2.2"
 
 handle-thing@^2.0.0:
   version "2.0.0"
@@ -2621,6 +3142,14 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
+
+header-case@^1.0.0:
+  version "1.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/header-case/-/header-case-1.0.1.tgz#9535973197c144b09613cd65d317ef19963bd02d"
+  integrity sha1-lTWXMZfBRLCWE81l0xfvGZY70C0=
+  dependencies:
+    no-case "^2.2.0"
+    upper-case "^1.1.3"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -2785,6 +3314,13 @@ import-cwd@^2.0.0:
   dependencies:
     import-from "^2.1.0"
 
+import-from@3.0.0:
+  version "3.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/import-from/-/import-from-3.0.0.tgz#055cfec38cd5a27d8057ca51376d7d3bf0891966"
+  integrity sha1-BVz+w4zVon2AV8pRN219O/CJGWY=
+  dependencies:
+    resolve-from "^5.0.0"
+
 import-from@^2.1.0:
   version "2.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/import-from/-/import-from-2.1.0.tgz#335db7f2a7affd53aaa471d4b8021dee36b7f3b1"
@@ -2810,12 +3346,22 @@ in-publish@^2.0.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/in-publish/-/in-publish-2.0.0.tgz#e20ff5e3a2afc2690320b6dc552682a9c7fadf51"
   integrity sha1-4g/146KvwmkDILbcVSaCqcf631E=
 
+indent-string@4.0.0:
+  version "4.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/indent-string/-/indent-string-4.0.0.tgz#624f8f4497d619b2d9768531d58f4122854d7251"
+  integrity sha1-Yk+PRJfWGbLZdoUx1Y9BIoVNclE=
+
 indent-string@^2.1.0:
   version "2.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/indent-string/-/indent-string-2.1.0.tgz#8e2d48348742121b4a8218b7a137e9a52049dc80"
   integrity sha1-ji1INIdCEhtKghi3oTfppSBJ3IA=
   dependencies:
     repeating "^2.0.0"
+
+indent-string@^3.0.0:
+  version "3.2.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
+  integrity sha1-Sl/W0nzDMvN+VBmlBNu4NxBckok=
 
 indexof@0.0.1:
   version "0.0.1"
@@ -2862,6 +3408,25 @@ inquirer@6.2.1:
     rxjs "^6.1.0"
     string-width "^2.1.0"
     strip-ansi "^5.0.0"
+    through "^2.3.6"
+
+inquirer@6.3.1:
+  version "6.3.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/inquirer/-/inquirer-6.3.1.tgz#7a413b5e7950811013a3db491c61d1f3b776e8e7"
+  integrity sha1-ekE7XnlQgRATo9tJHGHR87d26Oc=
+  dependencies:
+    ansi-escapes "^3.2.0"
+    chalk "^2.4.2"
+    cli-cursor "^2.1.0"
+    cli-width "^2.0.0"
+    external-editor "^3.0.3"
+    figures "^2.0.0"
+    lodash "^4.17.11"
+    mute-stream "0.0.7"
+    run-async "^2.2.0"
+    rxjs "^6.4.0"
+    string-width "^2.1.0"
+    strip-ansi "^5.1.0"
     through "^2.3.6"
 
 internal-ip@^3.0.1:
@@ -2935,6 +3500,13 @@ is-binary-path@^1.0.0:
   dependencies:
     binary-extensions "^1.0.0"
 
+is-binary-path@^2.1.0:
+  version "2.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-binary-path/-/is-binary-path-2.1.0.tgz#ea1f7f3b80f064236e83470f86c09c254fb45b09"
+  integrity sha1-6h9/O4DwZCNug0cPhsCcJU+0Wwk=
+  dependencies:
+    binary-extensions "^2.0.0"
+
 is-buffer@^1.1.5:
   version "1.1.6"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
@@ -2989,6 +3561,11 @@ is-extendable@^1.0.1:
   dependencies:
     is-plain-object "^2.0.4"
 
+is-extglob@^1.0.0:
+  version "1.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-extglob/-/is-extglob-1.0.0.tgz#ac468177c4943405a092fc8f29760c6ffc6206c0"
+  integrity sha1-rEaBd8SUNAWgkvyPKXYMb/xiBsA=
+
 is-extglob@^2.1.0, is-extglob@^2.1.1:
   version "2.1.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-extglob/-/is-extglob-2.1.1.tgz#a88c02535791f02ed37c76a1b9ea9773c833f8c2"
@@ -3013,6 +3590,27 @@ is-fullwidth-code-point@^2.0.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-fullwidth-code-point/-/is-fullwidth-code-point-2.0.0.tgz#a3b30a5c4f199183167aaab93beefae3ddfb654f"
   integrity sha1-o7MKXE8ZkYMWeqq5O+764937ZU8=
 
+is-glob@4.0.0:
+  version "4.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-glob/-/is-glob-4.0.0.tgz#9521c76845cc2610a85203ddf080a958c2ffabc0"
+  integrity sha1-lSHHaEXMJhCoUgPd8ICpWML/q8A=
+  dependencies:
+    is-extglob "^2.1.1"
+
+is-glob@4.0.1, is-glob@^4.0.0, is-glob@^4.0.1:
+  version "4.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-glob/-/is-glob-4.0.1.tgz#7567dbe9f2f5e2467bc77ab83c4a29482407a5dc"
+  integrity sha1-dWfb6fL14kZ7x3q4PEopSCQHpdw=
+  dependencies:
+    is-extglob "^2.1.1"
+
+is-glob@^2.0.0:
+  version "2.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-glob/-/is-glob-2.0.1.tgz#d096f926a3ded5600f3fdfd91198cb0888c2d863"
+  integrity sha1-0Jb5JqPe1WAPP9/ZEZjLCIjC2GM=
+  dependencies:
+    is-extglob "^1.0.0"
+
 is-glob@^3.1.0:
   version "3.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-glob/-/is-glob-3.1.0.tgz#7ba5ae24217804ac70707b96922567486cc3e84a"
@@ -3020,12 +3618,19 @@ is-glob@^3.1.0:
   dependencies:
     is-extglob "^2.1.0"
 
-is-glob@^4.0.0:
-  version "4.0.1"
-  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-glob/-/is-glob-4.0.1.tgz#7567dbe9f2f5e2467bc77ab83c4a29482407a5dc"
-  integrity sha1-dWfb6fL14kZ7x3q4PEopSCQHpdw=
+is-invalid-path@^0.1.0:
+  version "0.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-invalid-path/-/is-invalid-path-0.1.0.tgz#307a855b3cf1a938b44ea70d2c61106053714f34"
+  integrity sha1-MHqFWzzxqTi0TqcNLGEQYFNxTzQ=
   dependencies:
-    is-extglob "^2.1.1"
+    is-glob "^2.0.0"
+
+is-lower-case@^1.1.0:
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-lower-case/-/is-lower-case-1.1.3.tgz#7e147be4768dc466db3bfb21cc60b31e6ad69393"
+  integrity sha1-fhR75HaNxGbbO/shzGCzHmrWk5M=
+  dependencies:
+    lower-case "^1.1.0"
 
 is-number@^3.0.0:
   version "3.0.0"
@@ -3033,6 +3638,18 @@ is-number@^3.0.0:
   integrity sha1-JP1iAaR4LPUFYcgQJ2r8fRLXEZU=
   dependencies:
     kind-of "^3.0.2"
+
+is-number@^7.0.0:
+  version "7.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
+  integrity sha1-dTU0W4lnNNX4DE0GxQlVUnoU8Ss=
+
+is-observable@^1.1.0:
+  version "1.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-observable/-/is-observable-1.1.0.tgz#b3e986c8f44de950867cab5403f5a3465005975e"
+  integrity sha1-s+mGyPRN6VCGfKtUA/WjRlAFl14=
+  dependencies:
+    symbol-observable "^1.1.0"
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -3075,10 +3692,24 @@ is-typedarray@~1.0.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
 
+is-upper-case@^1.1.0:
+  version "1.1.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-upper-case/-/is-upper-case-1.1.2.tgz#8d0b1fa7e7933a1e58483600ec7d9661cbaf756f"
+  integrity sha1-jQsfp+eTOh5YSDYA7H2WYcuvdW8=
+  dependencies:
+    upper-case "^1.1.0"
+
 is-utf8@^0.2.0:
   version "0.2.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
   integrity sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI=
+
+is-valid-path@0.1.1:
+  version "0.1.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/is-valid-path/-/is-valid-path-0.1.1.tgz#110f9ff74c37f663e1ec7915eb451f2db93ac9df"
+  integrity sha1-EQ+f90w39mPh7HkV60UfLbk6yd8=
+  dependencies:
+    is-invalid-path "^0.1.0"
 
 is-windows@^1.0.2:
   version "1.0.2"
@@ -3145,7 +3776,7 @@ istanbul-lib-instrument@^1.7.3:
     istanbul-lib-coverage "^1.2.1"
     semver "^5.3.0"
 
-iterall@^1.2.1:
+iterall@^1.1.3, iterall@^1.2.2:
   version "1.2.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/iterall/-/iterall-1.2.2.tgz#92d70deb8028e0c39ff3164fdbf4d8b088130cd7"
   integrity sha1-ktcN64Ao4MOf8xZP2/TYsIgTDNc=
@@ -3155,7 +3786,7 @@ js-base64@^2.1.8:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/js-base64/-/js-base64-2.5.1.tgz#1efa39ef2c5f7980bb1784ade4a8af2de3291121"
   integrity sha1-Hvo57yxfeYC7F4St5KivLeMpESE=
 
-"js-tokens@^3.0.0 || ^4.0.0":
+"js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha1-GSA/tZmR35jjoocFDUZHzerzJJk=
@@ -3165,7 +3796,7 @@ js-tokens@^3.0.2:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@^3.7.0, js-yaml@^3.9.0:
+js-yaml@3.13.1, js-yaml@^3.10.0, js-yaml@^3.7.0, js-yaml@^3.9.0:
   version "3.13.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   integrity sha1-r/FRswv9+o5J4F2iLnQV6d+jeEc=
@@ -3182,6 +3813,11 @@ jsesc@^1.3.0:
   version "1.3.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/jsesc/-/jsesc-1.3.0.tgz#46c3fec8c1892b12b0833db9bc7622176dbab34b"
   integrity sha1-RsP+yMGJKxKwgz25vHYiF226s0s=
+
+jsesc@^2.5.1:
+  version "2.5.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
+  integrity sha1-gFZNLkg9rPbo7yCWUKZ98/DCg6Q=
 
 json-parse-better-errors@^1.0.0, json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
@@ -3207,6 +3843,14 @@ json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
+
+json-to-pretty-yaml@1.2.2:
+  version "1.2.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/json-to-pretty-yaml/-/json-to-pretty-yaml-1.2.2.tgz#f4cd0bd0a5e8fe1df25aaf5ba118b099fd992d5b"
+  integrity sha1-9M0L0KXo/h3yWq9boRiwmf2ZLVs=
+  dependencies:
+    remedial "^1.0.7"
+    remove-trailing-spaces "^1.0.6"
 
 json3@^3.3.2:
   version "3.3.2"
@@ -3318,6 +3962,50 @@ license-webpack-plugin@2.1.0:
     "@types/webpack-sources" "^0.1.5"
     webpack-sources "^1.2.0"
 
+listr-silent-renderer@^1.1.1:
+  version "1.1.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/listr-silent-renderer/-/listr-silent-renderer-1.1.1.tgz#924b5a3757153770bf1a8e3fbf74b8bbf3f9242e"
+  integrity sha1-kktaN1cVN3C/Go4/v3S4u/P5JC4=
+
+listr-update-renderer@0.5.0, listr-update-renderer@^0.5.0:
+  version "0.5.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/listr-update-renderer/-/listr-update-renderer-0.5.0.tgz#4ea8368548a7b8aecb7e06d8c95cb45ae2ede6a2"
+  integrity sha1-Tqg2hUinuK7LfgbYyVy0WuLt5qI=
+  dependencies:
+    chalk "^1.1.3"
+    cli-truncate "^0.2.1"
+    elegant-spinner "^1.0.1"
+    figures "^1.7.0"
+    indent-string "^3.0.0"
+    log-symbols "^1.0.2"
+    log-update "^2.3.0"
+    strip-ansi "^3.0.1"
+
+listr-verbose-renderer@^0.5.0:
+  version "0.5.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/listr-verbose-renderer/-/listr-verbose-renderer-0.5.0.tgz#f1132167535ea4c1261102b9f28dac7cba1e03db"
+  integrity sha1-8RMhZ1NepMEmEQK58o2sfLoeA9s=
+  dependencies:
+    chalk "^2.4.1"
+    cli-cursor "^2.1.0"
+    date-fns "^1.27.2"
+    figures "^2.0.0"
+
+listr@0.14.3:
+  version "0.14.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/listr/-/listr-0.14.3.tgz#2fea909604e434be464c50bddba0d496928fa586"
+  integrity sha1-L+qQlgTkNL5GTFC926DUlpKPpYY=
+  dependencies:
+    "@samverschueren/stream-to-observable" "^0.3.0"
+    is-observable "^1.1.0"
+    is-promise "^2.1.0"
+    is-stream "^1.1.0"
+    listr-silent-renderer "^1.1.1"
+    listr-update-renderer "^0.5.0"
+    listr-verbose-renderer "^0.5.0"
+    p-map "^2.0.0"
+    rxjs "^6.3.3"
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -3394,10 +4082,42 @@ lodash.tail@^4.1.1:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/lodash.tail/-/lodash.tail-4.1.1.tgz#d2333a36d9e7717c8ad2f7cacafec7c32b444664"
   integrity sha1-0jM6NtnncXyK0vfKyv7HwytERmQ=
 
-lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@~4.17.10:
+lodash@4.17.11, lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@~4.17.10:
   version "4.17.11"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha1-s56mIp72B+zYniyN8SU2iRysm40=
+
+log-symbols@3.0.0:
+  version "3.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/log-symbols/-/log-symbols-3.0.0.tgz#f3a08516a5dea893336a7dee14d18a1cfdab77c4"
+  integrity sha1-86CFFqXeqJMzan3uFNGKHP2rd8Q=
+  dependencies:
+    chalk "^2.4.2"
+
+log-symbols@^1.0.2:
+  version "1.0.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
+  integrity sha1-N2/3tY6jCGoPCfrMdGF+ylAeGhg=
+  dependencies:
+    chalk "^1.0.0"
+
+log-update@3.2.0:
+  version "3.2.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/log-update/-/log-update-3.2.0.tgz#719f24293250d65d0165f4e2ec2ed805ff062eec"
+  integrity sha1-cZ8kKTJQ1l0BZfTi7C7YBf8GLuw=
+  dependencies:
+    ansi-escapes "^3.2.0"
+    cli-cursor "^2.1.0"
+    wrap-ansi "^5.0.0"
+
+log-update@^2.3.0:
+  version "2.3.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/log-update/-/log-update-2.3.0.tgz#88328fd7d1ce7938b29283746f0b1bc126b24708"
+  integrity sha1-iDKP19HOeTiykoN0bwsbwSayRwg=
+  dependencies:
+    ansi-escapes "^3.0.0"
+    cli-cursor "^2.0.0"
+    wrap-ansi "^3.0.1"
 
 loglevel@^1.4.1:
   version "1.6.1"
@@ -3418,6 +4138,18 @@ loud-rejection@^1.0.0:
   dependencies:
     currently-unhandled "^0.4.1"
     signal-exit "^3.0.0"
+
+lower-case-first@^1.0.0:
+  version "1.0.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/lower-case-first/-/lower-case-first-1.0.2.tgz#e5da7c26f29a7073be02d52bac9980e5922adfa1"
+  integrity sha1-5dp8JvKacHO+AtUrrJmA5ZIq36E=
+  dependencies:
+    lower-case "^1.1.2"
+
+lower-case@^1.1.0, lower-case@^1.1.1, lower-case@^1.1.2:
+  version "1.1.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
+  integrity sha1-miyr0bno4K6ZOkv31YdcOcQujqw=
 
 lru-cache@^4.0.1, lru-cache@^4.1.1, lru-cache@^4.1.2, lru-cache@^4.1.3:
   version "4.1.5"
@@ -3729,7 +4461,7 @@ mixin-object@^2.0.1:
     for-in "^0.1.3"
     is-extendable "^0.1.1"
 
-mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
+mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   version "0.5.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
@@ -3822,6 +4554,13 @@ nice-try@^1.0.4:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha1-ozeKdpbOfSI+iPybdkvX7xCJ42Y=
 
+no-case@^2.2.0, no-case@^2.3.2:
+  version "2.3.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
+  integrity sha1-YLgTOWvjmz8SiKTB7V0efSi0ZKw=
+  dependencies:
+    lower-case "^1.1.1"
+
 node-fetch-npm@^2.0.2:
   version "2.0.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/node-fetch-npm/-/node-fetch-npm-2.0.2.tgz#7258c9046182dca345b4208eda918daf33697ff7"
@@ -3830,6 +4569,11 @@ node-fetch-npm@^2.0.2:
     encoding "^0.1.11"
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
+
+node-fetch@2.1.2:
+  version "2.1.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
+  integrity sha1-q4hOjn5X44qUR1POxwb3iNF2i7U=
 
 node-forge@0.7.5:
   version "0.7.5"
@@ -4232,6 +4976,11 @@ p-map@^1.1.1:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/p-map/-/p-map-1.2.0.tgz#e4e94f311eabbc8633a1e79908165fca26241b6b"
   integrity sha1-5OlPMR6rvIYzoeeZCBZfyiYkG2s=
 
+p-map@^2.0.0:
+  version "2.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/p-map/-/p-map-2.1.0.tgz#310928feef9c9ecc65b68b17693018a665cea175"
+  integrity sha1-MQko/u+cnsxltosXaTAYpmXOoXU=
+
 p-try@^1.0.0:
   version "1.0.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
@@ -4289,6 +5038,13 @@ parallel-transform@^1.1.0:
     inherits "^2.0.3"
     readable-stream "^2.1.5"
 
+param-case@^2.1.0:
+  version "2.1.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/param-case/-/param-case-2.1.1.tgz#df94fd8cf6531ecf75e6bef9a0858fbc72be2247"
+  integrity sha1-35T9jPZTHs915r75oIWPvHK+Ikc=
+  dependencies:
+    no-case "^2.2.0"
+
 parse-asn1@^5.0.0:
   version "5.1.4"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/parse-asn1/-/parse-asn1-5.1.4.tgz#37f6628f823fbdeb2273b4d540434a22f3ef1fcc"
@@ -4326,6 +5082,14 @@ parseurl@~1.3.2:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha1-naGee+6NEt/wUT7Vt2lXeTvC6NQ=
 
+pascal-case@^2.0.0:
+  version "2.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/pascal-case/-/pascal-case-2.0.1.tgz#2d578d3455f660da65eca18ef95b4e0de912761e"
+  integrity sha1-LVeNNFX2YNpl7KGO+VtODekSdh4=
+  dependencies:
+    camel-case "^3.0.0"
+    upper-case-first "^1.1.0"
+
 pascalcase@^0.1.1:
   version "0.1.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/pascalcase/-/pascalcase-0.1.1.tgz#b363e55e8006ca6fe21784d2db22bd15d7917f14"
@@ -4335,6 +5099,13 @@ path-browserify@0.0.0:
   version "0.0.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/path-browserify/-/path-browserify-0.0.0.tgz#a0b870729aae214005b7d5032ec2cbbb0fb4451a"
   integrity sha1-oLhwcpquIUAFt9UDLsLLuw+0RRo=
+
+path-case@^2.1.0:
+  version "2.1.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/path-case/-/path-case-2.1.1.tgz#94b8037c372d3fe2906e465bb45e25d226e8eea5"
+  integrity sha1-lLgDfDctP+KQbkZbtF4l0ibo7qU=
+  dependencies:
+    no-case "^2.2.0"
 
 path-dirname@^1.0.0:
   version "1.0.2"
@@ -4416,6 +5187,11 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
+
+picomatch@^2.0.4:
+  version "2.0.5"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/picomatch/-/picomatch-2.0.5.tgz#067456ff321d6447ca3dc32273d7bbf19ab2face"
+  integrity sha1-BnRW/zIdZEfKPcMic9e78Zqy+s4=
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
@@ -4771,6 +5547,13 @@ readdirp@^2.0.0, readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
+readdirp@^3.0.1:
+  version "3.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/readdirp/-/readdirp-3.0.1.tgz#14a8875883c5575c235579624a1e177cb0b1ec58"
+  integrity sha1-FKiHWIPFV1wjVXliSh4XfLCx7Fg=
+  dependencies:
+    picomatch "^2.0.4"
+
 rechoir@^0.6.2:
   version "0.6.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
@@ -4804,10 +5587,20 @@ regex-not@^1.0.0, regex-not@^1.0.2:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
 
+remedial@^1.0.7:
+  version "1.0.8"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/remedial/-/remedial-1.0.8.tgz#a5e4fd52a0e4956adbaf62da63a5a46a78c578a0"
+  integrity sha1-peT9UqDklWrbr2LaY6WkanjFeKA=
+
 remove-trailing-separator@^1.0.1:
   version "1.1.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/remove-trailing-separator/-/remove-trailing-separator-1.1.0.tgz#c24bce2a283adad5bc3f58e0d48249b92379d8ef"
   integrity sha1-wkvOKig62tW8P1jg1IJJuSN52O8=
+
+remove-trailing-spaces@^1.0.6:
+  version "1.0.7"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/remove-trailing-spaces/-/remove-trailing-spaces-1.0.7.tgz#491f04e11d98880714d12429b0d0938cbe030ae6"
+  integrity sha1-SR8E4R2YiAcU0SQpsNCTjL4DCuY=
 
 repeat-element@^1.1.2:
   version "1.1.3"
@@ -4826,7 +5619,7 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-request@^2.83.0, request@^2.87.0, request@^2.88.0:
+request@2.88.0, request@^2.83.0, request@^2.87.0, request@^2.88.0:
   version "2.88.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha1-nC/KT301tZLv5Xx/ClXoEFIST+8=
@@ -4883,6 +5676,16 @@ resolve-from@^3.0.0:
   version "3.0.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
   integrity sha1-six699nWiBvItuZTM17rywoYh0g=
+
+resolve-from@^4.0.0:
+  version "4.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/resolve-from/-/resolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"
+  integrity sha1-SrzYUq0y3Xuqv+m0DgCjbbXzkuY=
+
+resolve-from@^5.0.0:
+  version "5.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/resolve-from/-/resolve-from-5.0.0.tgz#c35225843df8f776df21c57557bc087e9dfdfc69"
+  integrity sha1-w1IlhD3493bfIcV1V7wIfp39/Gk=
 
 resolve-url@^0.2.1:
   version "0.2.1"
@@ -4950,7 +5753,7 @@ rxjs@6.3.3, rxjs@~6.3.3:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^6.1.0:
+rxjs@^6.1.0, rxjs@^6.3.3, rxjs@^6.4.0:
   version "6.5.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/rxjs/-/rxjs-6.5.1.tgz#f7a005a9386361921b8524f38f54cbf80e5d08f4"
   integrity sha1-96AFqThjYZIbhSTzj1TL+A5dCPQ=
@@ -5091,6 +5894,14 @@ send@0.16.2:
     range-parser "~1.2.0"
     statuses "~1.4.0"
 
+sentence-case@^2.1.0:
+  version "2.1.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/sentence-case/-/sentence-case-2.1.1.tgz#1f6e2dda39c168bf92d13f86d4a918933f667ed4"
+  integrity sha1-H24t2jnBaL+S0T+G1KkYkz9mftQ=
+  dependencies:
+    no-case "^2.2.0"
+    upper-case-first "^1.1.2"
+
 serialize-javascript@^1.4.0:
   version "1.7.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/serialize-javascript/-/serialize-javascript-1.7.0.tgz#d6e0dfb2a3832a8c94468e6eb1db97e55a192a65"
@@ -5202,10 +6013,22 @@ slash@^1.0.0:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
   integrity sha1-xB8vbDn8FtHNF61LXYlhFK5HDVU=
 
+slice-ansi@0.0.4:
+  version "0.0.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
+  integrity sha1-7b+JA/ZvfOL46v1s7tZeJkyDGzU=
+
 smart-buffer@4.0.2:
   version "4.0.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/smart-buffer/-/smart-buffer-4.0.2.tgz#5207858c3815cc69110703c6b94e46c15634395d"
   integrity sha1-UgeFjDgVzGkRBwPGuU5GwVY0OV0=
+
+snake-case@^2.1.0:
+  version "2.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/snake-case/-/snake-case-2.1.0.tgz#41bdb1b73f30ec66a04d4e2cad1b76387d4d6d9f"
+  integrity sha1-Qb2xtz8w7GagTU4srRt2OH1NbZ8=
+  dependencies:
+    no-case "^2.2.0"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
@@ -5310,7 +6133,7 @@ source-map-support@0.5.10:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
-source-map-support@^0.5.5, source-map-support@^0.5.6, source-map-support@~0.5.10:
+source-map-support@^0.5.12, source-map-support@^0.5.5, source-map-support@^0.5.6, source-map-support@^0.5.9, source-map-support@~0.5.10:
   version "0.5.12"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/source-map-support/-/source-map-support-0.5.12.tgz#b4f3b10d51857a5af0138d3ce8003b201613d599"
   integrity sha1-tPOxDVGFelrwE4086AA7IBYT1Zk=
@@ -5347,7 +6170,7 @@ source-map@^0.4.2, source-map@~0.4.1:
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.5.6, source-map@^0.5.7:
+source-map@^0.5.0, source-map@^0.5.6, source-map@^0.5.7:
   version "0.5.7"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
   integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
@@ -5540,6 +6363,15 @@ string-width@^1.0.1, string-width@^1.0.2:
     is-fullwidth-code-point "^2.0.0"
     strip-ansi "^4.0.0"
 
+string-width@^3.0.0:
+  version "3.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/string-width/-/string-width-3.1.0.tgz#22767be21b62af1081574306f69ac51b62203961"
+  integrity sha1-InZ74htirxCBV0MG9prFG2IgOWE=
+  dependencies:
+    emoji-regex "^7.0.1"
+    is-fullwidth-code-point "^2.0.0"
+    strip-ansi "^5.1.0"
+
 string_decoder@^1.0.0, string_decoder@^1.1.1:
   version "1.2.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/string_decoder/-/string_decoder-1.2.0.tgz#fe86e738b19544afe70469243b2a1ee9240eae8d"
@@ -5568,7 +6400,7 @@ strip-ansi@^4.0.0:
   dependencies:
     ansi-regex "^3.0.0"
 
-strip-ansi@^5.0.0:
+strip-ansi@^5.0.0, strip-ansi@^5.1.0:
   version "5.2.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/strip-ansi/-/strip-ansi-5.2.0.tgz#8c9a536feb6afc962bdfa5b104a5091c1ad9c0ae"
   integrity sha1-jJpTb+tq/JYr36WxBKUJHBrZwK4=
@@ -5652,7 +6484,15 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-symbol-observable@1.2.0, symbol-observable@^1.0.2:
+swap-case@^1.1.0:
+  version "1.1.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/swap-case/-/swap-case-1.1.2.tgz#c39203a4587385fad3c850a0bd1bcafa081974e3"
+  integrity sha1-w5IDpFhzhfrTyFCgvRvK+ggZdOM=
+  dependencies:
+    lower-case "^1.1.1"
+    upper-case "^1.1.1"
+
+symbol-observable@1.2.0, symbol-observable@^1.0.2, symbol-observable@^1.1.0:
   version "1.2.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha1-wiaIrtTqs83C3+rLtWFmBWCgCAQ=
@@ -5746,6 +6586,14 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
+title-case@^2.1.0:
+  version "2.1.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/title-case/-/title-case-2.1.1.tgz#3e127216da58d2bc5becf137ab91dae3a7cd8faa"
+  integrity sha1-PhJyFtpY0rxb7PE3q5Ha46fNj6o=
+  dependencies:
+    no-case "^2.2.0"
+    upper-case "^1.0.3"
+
 tmp@^0.0.33:
   version "0.0.33"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/tmp/-/tmp-0.0.33.tgz#6d34335889768d21b2bcda0aa277ced3b1bfadf9"
@@ -5763,6 +6611,11 @@ to-fast-properties@^1.0.3:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
   integrity sha1-uDVx+k2MJbguIxsG46MFXeTKGkc=
 
+to-fast-properties@^2.0.0:
+  version "2.0.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
+  integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
+
 to-object-path@^0.3.0:
   version "0.3.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/to-object-path/-/to-object-path-0.3.0.tgz#297588b7b0e7e0ac08e04e672f85c1f4999e17af"
@@ -5777,6 +6630,13 @@ to-regex-range@^2.1.0:
   dependencies:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
+
+to-regex-range@^5.0.1:
+  version "5.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/to-regex-range/-/to-regex-range-5.0.1.tgz#1648c44aae7c8d988a326018ed72f5b4dd0392e4"
+  integrity sha1-FkjESq58jZiKMmAY7XL1tN0DkuQ=
+  dependencies:
+    is-number "^7.0.0"
 
 to-regex@^3.0.1, to-regex@^3.0.2:
   version "3.0.2"
@@ -5832,6 +6692,11 @@ ts-invariant@^0.3.2:
   dependencies:
     tslib "^1.9.3"
 
+ts-log@2.1.4:
+  version "2.1.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/ts-log/-/ts-log-2.1.4.tgz#063c5ad1cbab5d49d258d18015963489fb6fb59a"
+  integrity sha1-Bjxa0curXUnSWNGAFZY0iftvtZo=
+
 ts-node@~7.0.0:
   version "7.0.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/ts-node/-/ts-node-7.0.1.tgz#9562dc2d1e6d248d24bc55f773e3f614337d9baf"
@@ -5846,7 +6711,7 @@ ts-node@~7.0.0:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
+tslib@1.9.3, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha1-1+TdeSRdhUKMTX5IIqeZF5VMooY=
@@ -5911,6 +6776,11 @@ typescript@3.2.4, typescript@~3.2.2:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
   integrity sha1-xYXLlSkSJj2RW0YnJs4kS6UQ7z0=
 
+typescript@^3.2.2, typescript@^3.4.5:
+  version "3.4.5"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
+  integrity sha1-LSYY0Qu1ZlcrjXqtUYDYQlfXCpk=
+
 union-value@^1.0.0:
   version "1.0.0"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/union-value/-/union-value-1.0.0.tgz#5c71c34cb5bad5dcebe3ea0cd08207ba5aa1aea4"
@@ -5952,6 +6822,18 @@ upath@^1.0.5, upath@^1.1.1:
   version "1.1.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/upath/-/upath-1.1.2.tgz#3db658600edaeeccbe6db5e684d67ee8c2acd068"
   integrity sha1-PbZYYA7a7sy+bbXmhNZ+6MKs0Gg=
+
+upper-case-first@^1.1.0, upper-case-first@^1.1.2:
+  version "1.1.2"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/upper-case-first/-/upper-case-first-1.1.2.tgz#5d79bedcff14419518fd2edb0a0507c9b6859115"
+  integrity sha1-XXm+3P8UQZUY/S7bCgUHybaFkRU=
+  dependencies:
+    upper-case "^1.1.1"
+
+upper-case@^1.0.3, upper-case@^1.1.0, upper-case@^1.1.1, upper-case@^1.1.3:
+  version "1.1.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/upper-case/-/upper-case-1.1.3.tgz#f6b4501c2ec4cdd26ba78be7222961de77621598"
+  integrity sha1-9rRQHC7EzdJrp4vnIilh3ndiFZg=
 
 uri-js@^4.2.2:
   version "4.2.2"
@@ -6010,10 +6892,15 @@ utils-merge@1.0.1:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^3.0.1, uuid@^3.3.2:
+uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha1-G0r0lV6zB3xQHCOHL8ZROBFYcTE=
+
+valid-url@1.0.9:
+  version "1.0.9"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/valid-url/-/valid-url-1.0.9.tgz#1c14479b40f1397a75782f115e4086447433a200"
+  integrity sha1-HBRHm0DxOXp1eC8RXkCGRHQzogA=
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
@@ -6204,6 +7091,11 @@ websocket-extensions@>=0.1.1:
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
   integrity sha1-XS/yKXcAPsaHpLhwc9+7rBRszyk=
 
+whatwg-fetch@2.0.4:
+  version "2.0.4"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/whatwg-fetch/-/whatwg-fetch-2.0.4.tgz#dde6a5df315f9d39991aa17621853d720b85566f"
+  integrity sha1-3eal3zFfnTmZGqF2IYU9cguFVm8=
+
 when@~3.6.x:
   version "3.6.4"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/when/-/when-3.6.4.tgz#473b517ec159e2b85005497a13983f095412e34e"
@@ -6247,6 +7139,23 @@ wrap-ansi@^2.0.0:
   dependencies:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
+
+wrap-ansi@^3.0.1:
+  version "3.0.1"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/wrap-ansi/-/wrap-ansi-3.0.1.tgz#288a04d87eda5c286e060dfe8f135ce8d007f8ba"
+  integrity sha1-KIoE2H7aXChuBg3+jxNc6NAH+Lo=
+  dependencies:
+    string-width "^2.1.1"
+    strip-ansi "^4.0.0"
+
+wrap-ansi@^5.0.0:
+  version "5.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/wrap-ansi/-/wrap-ansi-5.1.0.tgz#1fd1f67235d5b6d0fee781056001bfb694c03b09"
+  integrity sha1-H9H2cjXVttD+54EFYAG/tpTAOwk=
+  dependencies:
+    ansi-styles "^3.2.0"
+    string-width "^3.0.0"
+    strip-ansi "^5.0.0"
 
 wrappy@1:
   version "1.0.2"

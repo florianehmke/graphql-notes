@@ -37,7 +37,7 @@ import { NotesStateService } from './state/notes-state.service';
       }
     `
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class FormComponent {
   noteForm: FormGroup;
