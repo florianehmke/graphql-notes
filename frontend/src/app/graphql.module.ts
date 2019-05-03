@@ -3,8 +3,6 @@ import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import { ApolloHelperService } from '@lib/apollo-helper.service';
-
 const uri = 'http://localhost:8080/graphql'; // FIXME replace with environment
 export function createApollo(httpLink: HttpLink) {
   return {
@@ -27,7 +25,6 @@ export function createApollo(httpLink: HttpLink) {
 @NgModule({
   exports: [ApolloModule, HttpLinkModule],
   providers: [
-    ApolloHelperService,
     {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,

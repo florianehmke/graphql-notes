@@ -21,6 +21,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       }
     `
   ],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {}

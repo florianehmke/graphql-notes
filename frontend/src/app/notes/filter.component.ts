@@ -25,7 +25,7 @@ import { Author } from '@graphql';
       </app-filter-container>
     </div>
   `,
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterComponent extends DestructionAware implements OnInit {
   authors$: Observable<Author[]>;

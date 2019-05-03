@@ -32,7 +32,7 @@ import { Note } from '@graphql';
       }
     `
   ],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NoteComponent {
   @Input() note: Note;

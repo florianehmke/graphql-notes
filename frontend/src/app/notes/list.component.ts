@@ -15,7 +15,7 @@ import { Note } from '@graphql';
     >
     </app-note-component>
   `,
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent {
   notes$: Observable<Note[]>;

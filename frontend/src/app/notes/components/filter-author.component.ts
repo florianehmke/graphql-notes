@@ -30,7 +30,7 @@ import { Author } from '@graphql';
       }
     `
   ],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterAuthorComponent {
   @Input() author: Author;
