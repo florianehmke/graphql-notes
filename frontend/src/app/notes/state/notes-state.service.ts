@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
 import { QueryRef } from 'apollo-angular';
-import { map, tap } from 'rxjs/operators';
+import { map, takeUntil, tap } from 'rxjs/operators';
 import { LocalStateService } from '@lib/local-state.service';
 
 import { extractClientErrors } from '@lib/extract-error-extensions';
 import {
   AddNoteGQL,
+  Author,
   AuthorsGQL,
   AuthorsQuery,
   AuthorsQueryVariables,
   DeleteNoteGQL,
+  Note,
   NotesGQL,
   NotesQuery,
   NotesQueryVariables
 } from '@graphql';
+import { Observable, combineLatest } from 'rxjs';
 
 export interface NotesState {
   selectedAuthorId: number;
@@ -29,9 +32,11 @@ const initialState: NotesState = {
 
 @Injectable()
 export class NotesStateService extends LocalStateService<NotesState> {
-  authors$; // FIXME typing?
-  notes$;
+  authors$: Observable<Author[]>;
+  notes$: Observable<Note[]>;
+
   selectedAuthorId$ = this.state$.pipe(map(s => s.selectedAuthorId));
+  noteSearchTerm$ = this.state$.pipe(map(s => s.noteSearchTerm));
 
   private authorsQueryRef: QueryRef<AuthorsQuery, AuthorsQueryVariables>;
   private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
@@ -44,7 +49,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
   ) {
     super(initialState);
 
-    this.notesQueryRef = notesGQL.watch(this.loadNotesQueryVariables());
+    this.notesQueryRef = notesGQL.watch();
     this.notes$ = this.notesQueryRef.valueChanges.pipe(
       map(vc => vc.data.notes)
     );
@@ -53,6 +58,12 @@ export class NotesStateService extends LocalStateService<NotesState> {
     this.authors$ = this.authorsQueryRef.valueChanges.pipe(
       map(vc => vc.data.authors)
     );
+
+    combineLatest(this.selectedAuthorId$, this.noteSearchTerm$)
+      .pipe(takeUntil(this.destroyed()))
+      .subscribe(([authorId, searchTerm]) =>
+        this.notesQueryRef.refetch({ authorId, searchTerm })
+      );
   }
 
   addNote(title: string, content: string) {
@@ -81,7 +92,6 @@ export class NotesStateService extends LocalStateService<NotesState> {
       ...this.state,
       selectedAuthorId: authorId
     });
-    this.notesQueryRef.refetch(this.loadNotesQueryVariables());
   }
 
   setNoteSearchTerm(searchTerm: string): void {
@@ -89,14 +99,6 @@ export class NotesStateService extends LocalStateService<NotesState> {
       ...this.state,
       noteSearchTerm: searchTerm
     });
-    this.notesQueryRef.refetch(this.loadNotesQueryVariables());
-  }
-
-  private loadNotesQueryVariables(): NotesQueryVariables {
-    return {
-      authorId: this.state.selectedAuthorId,
-      searchTerm: this.state.noteSearchTerm
-    };
   }
 
   private handleClientErrors(response) {

@@ -17,7 +17,6 @@ export type Author = {
   id?: Maybe<Scalars['Long']>;
   lastName?: Maybe<Scalars['String']>;
   noteCount?: Maybe<Scalars['Long']>;
-  transient: Scalars['Boolean'];
 };
 
 /** Mutation root */
@@ -43,7 +42,6 @@ export type Note = {
   id?: Maybe<Scalars['Long']>;
   noteContent?: Maybe<Scalars['String']>;
   noteTitle?: Maybe<Scalars['String']>;
-  transient: Scalars['Boolean'];
 };
 
 /** Query root */

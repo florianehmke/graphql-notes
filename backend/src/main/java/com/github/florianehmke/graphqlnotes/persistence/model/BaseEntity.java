@@ -1,6 +1,6 @@
 package com.github.florianehmke.graphqlnotes.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.leangen.graphql.annotations.GraphQLIgnore;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,7 @@ public abstract class BaseEntity implements Serializable {
 
   @GraphQLQuery @Id @GeneratedValue private Long id;
 
-  @JsonIgnore
+  @GraphQLIgnore
   public boolean isTransient() {
     return this.id == null;
   }
