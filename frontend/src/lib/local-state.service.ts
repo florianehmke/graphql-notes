@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { DestructionAware } from '@lib/destruction-aware';
+import { DestructionAware } from './destruction-aware';
 
 export class LocalStateService<T> extends DestructionAware {
   private readonly _state$;

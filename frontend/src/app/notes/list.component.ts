@@ -1,7 +1,7 @@
 import { NotesStateService } from './state/notes-state.service';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Note } from '@graphql';
+import { Note } from '../../generated/graphql';
 
 @Component({
   selector: 'app-list',

@@ -5,7 +5,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-import { Author } from '@graphql';
+import { Author } from '../../../generated/graphql';
 
 @Component({
   selector: 'app-filter-author',

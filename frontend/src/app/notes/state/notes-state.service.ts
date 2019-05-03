@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { QueryRef } from 'apollo-angular';
-import { map, takeUntil, tap } from 'rxjs/operators';
-import { LocalStateService } from '@lib/local-state.service';
+import { Observable, combineLatest } from 'rxjs';
+import { map, skip, takeUntil, tap } from 'rxjs/operators';
 
-import { extractClientErrors } from '@lib/extract-error-extensions';
+import { LocalStateService } from '../../../lib/local-state.service';
+import { extractClientErrors } from '../../../lib/extract-error-extensions';
 import {
   AddNoteGQL,
   Author,
@@ -15,8 +16,7 @@ import {
   NotesGQL,
   NotesQuery,
   NotesQueryVariables
-} from '@graphql';
-import { Observable, combineLatest } from 'rxjs';
+} from '../../../generated/graphql';
 
 export interface NotesState {
   selectedAuthorId: number;
@@ -60,7 +60,10 @@ export class NotesStateService extends LocalStateService<NotesState> {
     );
 
     combineLatest(this.selectedAuthorId$, this.noteSearchTerm$)
-      .pipe(takeUntil(this.destroyed()))
+      .pipe(
+        takeUntil(this.destroyed()),
+        skip(1)
+      )
       .subscribe(([authorId, searchTerm]) =>
         this.notesQueryRef.refetch({ authorId, searchTerm })
       );

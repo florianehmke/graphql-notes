@@ -5,7 +5,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-import { Note } from '@graphql';
+import { Note } from '../../../generated/graphql';
 
 @Component({
   selector: 'app-note-component',

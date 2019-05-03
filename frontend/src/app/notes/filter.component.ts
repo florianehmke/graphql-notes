@@ -3,8 +3,8 @@ import { NotesStateService } from './state/notes-state.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { DestructionAware } from '@lib/destruction-aware';
-import { Author } from '@graphql';
+import { DestructionAware } from '../../lib/destruction-aware';
+import { Author } from '../../generated/graphql';
 
 @Component({
   selector: 'app-filter',

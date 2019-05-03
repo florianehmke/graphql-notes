@@ -1,4 +1,4 @@
-import { isDefined } from '@lib/objects';
+import { isDefined } from './objects';
 
 export interface ClientError {
   code: string;
