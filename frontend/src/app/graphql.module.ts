@@ -3,7 +3,7 @@ import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-const uri = 'http://localhost:8080/graphql'; // FIXME replace with environment
+const uri = 'http://localhost:10000/graphql'; // FIXME replace with environment
 export function createApollo(httpLink: HttpLink) {
   return {
     link: httpLink.create({ uri }),
