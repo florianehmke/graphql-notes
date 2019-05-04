@@ -5025,6 +5025,19 @@ karma-source-map-support@1.3.0:
   dependencies:
     source-map-support "^0.5.5"
 
+keycloak-angular@^6.1.0:
+  version "6.1.0"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/keycloak-angular/-/keycloak-angular-6.1.0.tgz#41d7c29d57bffddfea75e3e44c27e7e666e57398"
+  integrity sha1-QdfCnVe//d/qdePkTCfn5mblc5g=
+  dependencies:
+    keycloak-js "^4.8.3"
+    tslib "^1.9.0"
+
+keycloak-js@^4.8.3:
+  version "4.8.3"
+  resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/keycloak-js/-/keycloak-js-4.8.3.tgz#e065f41d144d260afa8466b5b587a65d5f308d30"
+  integrity sha1-4GX0HRRNJgr6hGa1tYemXV8wjTA=
+
 killable@^1.0.0:
   version "1.0.1"
   resolved "https://lht.app.lufthansa.com/artifactory/api/npm/npm-repos/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
