@@ -1,3 +1,6 @@
+import { keycloakConfig } from './keycloak';
+
 export const environment = {
-  production: true
+  production: true,
+  keycloak: keycloakConfig
 };
