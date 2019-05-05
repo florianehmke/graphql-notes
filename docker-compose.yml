@@ -1,5 +1,15 @@
 version: "3.7"
 services:
+  mariadb:
+    image: mariadb:10.3
+    container_name: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d
   keycloak:
     image: jboss/keycloak:4.8.3.Final
     container_name: keycloak
@@ -15,13 +25,13 @@ services:
       - mariadb
     ports:
       - 8080:8080
-  mariadb:
-    image: mariadb:10.3
-    container_name: mariadb
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
+  backend:
+    build: backend/
+    depends_on:
+      - mariadb
     ports:
-      - 3306:3306
-    volumes:
-      - ./db:/var/lib/mysql
-      - ./db-init:/docker-entrypoint-initdb.d
+      - 10000:10000
+  frontend:
+    build: frontend/
+    ports:
+      - 10001:80
