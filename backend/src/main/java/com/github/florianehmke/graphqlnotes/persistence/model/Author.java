@@ -1,6 +1,5 @@
 package com.github.florianehmke.graphqlnotes.persistence.model;
 
-import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +10,9 @@ import javax.persistence.Entity;
 @Setter
 public class Author extends BaseEntity {
 
-  @GraphQLQuery private String firstName;
+  private String userId;
 
-  @GraphQLQuery private String lastName;
+  private String firstName;
+
+  private String lastName;
 }

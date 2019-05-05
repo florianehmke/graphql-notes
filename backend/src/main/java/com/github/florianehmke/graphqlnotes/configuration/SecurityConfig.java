@@ -51,13 +51,13 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
   @Bean
   @Scope(scopeName = "request", proxyMode = TARGET_CLASS)
-  public Authentication loggedInUserAuthentication() {
+  public Authentication authentication() {
     return SecurityContextHolder.getContext().getAuthentication();
   }
 
   @Bean
   @Scope(scopeName = "request", proxyMode = TARGET_CLASS)
-  public KeycloakPrincipal<KeycloakSecurityContext> loggedInUsername() {
+  public KeycloakPrincipal<KeycloakSecurityContext> keycloakPrincipal() {
     var principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
     if (principal instanceof KeycloakPrincipal) {
