@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   keycloak:
     image: jboss/keycloak:4.8.3.Final
@@ -6,5 +6,22 @@ services:
     environment:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=mariadb
+      - DB_PORT=3306
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=keycloak
+    depends_on:
+      - mariadb
     ports:
       - 8080:8080
+  mariadb:
+    image: mariadb:10.3
+    container_name: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d

@@ -2,11 +2,11 @@ server:
   port: 10000
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    password: sa
-    username:
-    url: jdbc:h2:mem:testdb
-    platform: org.hibernate.dialect.H2Dialect
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: graphql_notes
+    password: graphql_notes
+    url: jdbc:mariadb://localhost:3306/graphql_notes
+    platform: org.hibernate.dialect.MariaDB103Dialect
   jpa:
     generate-ddl: true
     show-sql: true
@@ -29,7 +29,6 @@ keycloak:
 logging:
   level:
     org.keycloak: TRACE
-
 
 graphiql:
   mapping: /graphiql
