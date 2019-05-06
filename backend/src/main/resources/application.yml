@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: graphql_notes
     password: graphql_notes
-    url: jdbc:mariadb://localhost:3306/graphql_notes
+    url: jdbc:mariadb:failover://localhost:3306/graphql_notes?autoReconnect=true
     platform: org.hibernate.dialect.MariaDB103Dialect
   jpa:
     generate-ddl: true
