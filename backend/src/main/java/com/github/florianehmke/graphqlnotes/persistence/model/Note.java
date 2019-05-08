@@ -16,5 +16,5 @@ public class Note extends BaseEntity {
   private String noteContent;
 
   @ManyToOne
-  private Author author;
+  private User user;
 }

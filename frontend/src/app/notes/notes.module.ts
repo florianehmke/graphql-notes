@@ -8,7 +8,7 @@ import { HeaderComponent } from './header.component';
 import { NotesStateService } from './state/notes-state.service';
 import { FilterComponent } from './filter.component';
 import { FilterContainerComponent } from './components/filter-container.component';
-import { FilterAuthorComponent } from './components/filter-author.component';
+import { FilterUserComponent } from './components/filter-user.component';
 import { NoteComponent } from './components/note.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { NoteComponent } from './components/note.component';
     ListComponent,
     NoteComponent,
     FilterContainerComponent,
-    FilterAuthorComponent
+    FilterUserComponent
   ],
   exports: [HeaderComponent, ListComponent, FilterComponent, FormComponent],
   imports: [CommonModule, ReactiveFormsModule],

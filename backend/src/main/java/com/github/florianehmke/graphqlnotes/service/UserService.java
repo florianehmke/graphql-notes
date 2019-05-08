@@ -1,7 +1,7 @@
 package com.github.florianehmke.graphqlnotes.service;
 
-import com.github.florianehmke.graphqlnotes.persistence.model.Author;
-import com.github.florianehmke.graphqlnotes.persistence.repository.AuthorRepository;
+import com.github.florianehmke.graphqlnotes.persistence.model.User;
+import com.github.florianehmke.graphqlnotes.persistence.repository.UserRepository;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,27 +10,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-  private AuthorRepository authorRepository;
+  private UserRepository userRepository;
   private KeycloakPrincipal<KeycloakSecurityContext> currentPrincipal;
 
   @Autowired
   public UserService(
-      AuthorRepository authorRepository,
-      KeycloakPrincipal<KeycloakSecurityContext> currentPrincipal) {
-    this.authorRepository = authorRepository;
+      UserRepository userRepository, KeycloakPrincipal<KeycloakSecurityContext> currentPrincipal) {
+    this.userRepository = userRepository;
     this.currentPrincipal = currentPrincipal;
   }
 
-  public Author loadCurrent() {
-    return this.authorRepository
+  public User loadCurrent() {
+    return this.userRepository
         .findByUserId(getCurrentUserId())
         .orElseGet(
             () -> {
-              var author = new Author();
-              author.setUserId(getCurrentUserId());
-              author.setLastName(getCurrentUserLastName());
-              author.setFirstName(getCurrentUserFirstName());
-              return authorRepository.save(author);
+              var user = new User();
+              user.setUserId(getCurrentUserId());
+              user.setLastName(getCurrentUserLastName());
+              user.setFirstName(getCurrentUserFirstName());
+              return userRepository.save(user);
             });
   }
 

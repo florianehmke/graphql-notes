@@ -1,5 +1,5 @@
-query authors {
-  authors {
+query users {
+  users {
     id
     firstName
     lastName

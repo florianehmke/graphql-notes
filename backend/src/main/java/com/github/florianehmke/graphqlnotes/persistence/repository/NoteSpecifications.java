@@ -1,6 +1,6 @@
 package com.github.florianehmke.graphqlnotes.persistence.repository;
 
-import com.github.florianehmke.graphqlnotes.persistence.model.Author_;
+import com.github.florianehmke.graphqlnotes.persistence.model.User_;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note_;
 import org.springframework.data.jpa.domain.Specification;
@@ -16,7 +16,7 @@ import static com.google.common.base.Strings.isNullOrEmpty;
 
 public class NoteSpecifications {
 
-  public static Specification<Note> searchBy(Long authorId, String searchTerm) {
+  public static Specification<Note> searchBy(Long userId, String searchTerm) {
     return (note, cq, cb) -> {
       var predicates = new ArrayList<Predicate>();
       if (!isNullOrEmpty(searchTerm)) {
@@ -25,8 +25,8 @@ public class NoteSpecifications {
         var content = cb.like(cb.lower(note.get(NOTE_CONTENT)), search);
         predicates.add(cb.or(title, content));
       }
-      if (authorId != null) {
-        predicates.add(cb.equal(note.join(Note_.AUTHOR).get(Author_.ID), authorId));
+      if (userId != null) {
+        predicates.add(cb.equal(note.join(Note_.USER).get(User_.ID), userId));
       }
       return andTogether(predicates, cb);
     };

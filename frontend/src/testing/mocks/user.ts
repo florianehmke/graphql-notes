@@ -1,8 +1,8 @@
 import * as Factory from 'factory.ts';
 import * as faker from 'faker';
-import { Author } from '../../generated/graphql';
+import { User } from '../../generated/graphql';
 
-export const authorFactory = Factory.Sync.makeFactory<Author>({
+export const userFactory = Factory.Sync.makeFactory<User>({
   id: Factory.each(i => i),
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),

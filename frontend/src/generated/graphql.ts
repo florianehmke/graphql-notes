@@ -12,13 +12,6 @@ export type Scalars = {
   UNREPRESENTABLE: any;
 };
 
-export type Author = {
-  firstName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['Long']>;
-  lastName?: Maybe<Scalars['String']>;
-  noteCount?: Maybe<Scalars['Long']>;
-};
-
 /** Mutation root */
 export type Mutation = {
   addNote?: Maybe<Note>;
@@ -28,7 +21,6 @@ export type Mutation = {
 /** Mutation root */
 export type MutationAddNoteArgs = {
   title?: Maybe<Scalars['String']>;
-  authorId?: Maybe<Scalars['Long']>;
   content?: Maybe<Scalars['String']>;
 };
 
@@ -38,28 +30,34 @@ export type MutationDeleteNoteArgs = {
 };
 
 export type Note = {
-  author?: Maybe<Author>;
   id?: Maybe<Scalars['Long']>;
   noteContent?: Maybe<Scalars['String']>;
   noteTitle?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
 };
 
 /** Query root */
 export type Query = {
   notes?: Maybe<Array<Maybe<Note>>>;
-  authors?: Maybe<Array<Maybe<Author>>>;
+  users?: Maybe<Array<Maybe<User>>>;
 };
 
 /** Query root */
 export type QueryNotesArgs = {
   searchTerm?: Maybe<Scalars['String']>;
-  authorId?: Maybe<Scalars['Long']>;
+  userId?: Maybe<Scalars['Long']>;
 };
 
+export type User = {
+  firstName?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Long']>;
+  lastName?: Maybe<Scalars['String']>;
+  noteCount?: Maybe<Scalars['Long']>;
+  userId?: Maybe<Scalars['String']>;
+};
 export type AddNoteMutationVariables = {
   title: Scalars['String'];
   content: Scalars['String'];
-  authorId?: Maybe<Scalars['Long']>;
 };
 
 export type AddNoteMutation = { __typename?: 'Mutation' } & {
@@ -75,14 +73,14 @@ export type DeleteNoteMutation = { __typename?: 'Mutation' } & Pick<
   'deleteNote'
 >;
 
-export type AuthorsQueryVariables = {};
+export type UsersQueryVariables = {};
 
-export type AuthorsQuery = { __typename?: 'Query' } & {
-  authors: Maybe<
+export type UsersQuery = { __typename?: 'Query' } & {
+  users: Maybe<
     Array<
       Maybe<
-        { __typename?: 'Author' } & Pick<
-          Author,
+        { __typename?: 'User' } & Pick<
+          User,
           'id' | 'firstName' | 'lastName' | 'noteCount'
         >
       >
@@ -91,7 +89,7 @@ export type AuthorsQuery = { __typename?: 'Query' } & {
 };
 
 export type NotesQueryVariables = {
-  authorId?: Maybe<Scalars['Long']>;
+  userId?: Maybe<Scalars['Long']>;
   searchTerm?: Maybe<Scalars['String']>;
 };
 
@@ -103,8 +101,8 @@ export type NotesQuery = { __typename?: 'Query' } & {
           Note,
           'id' | 'noteTitle' | 'noteContent'
         > & {
-            author: Maybe<
-              { __typename?: 'Author' } & Pick<Author, 'firstName' | 'lastName'>
+            user: Maybe<
+              { __typename?: 'User' } & Pick<User, 'firstName' | 'lastName'>
             >;
           }
       >
@@ -117,8 +115,8 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 
 export const AddNoteDocument = gql`
-  mutation addNote($title: String!, $content: String!, $authorId: Long) {
-    addNote(title: $title, content: $content, authorId: $authorId) {
+  mutation addNote($title: String!, $content: String!) {
+    addNote(title: $title, content: $content) {
       id
     }
   }
@@ -148,9 +146,9 @@ export class DeleteNoteGQL extends Apollo.Mutation<
 > {
   document = DeleteNoteDocument;
 }
-export const AuthorsDocument = gql`
-  query authors {
-    authors {
+export const UsersDocument = gql`
+  query users {
+    users {
       id
       firstName
       lastName
@@ -162,19 +160,16 @@ export const AuthorsDocument = gql`
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorsGQL extends Apollo.Query<
-  AuthorsQuery,
-  AuthorsQueryVariables
-> {
-  document = AuthorsDocument;
+export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
+  document = UsersDocument;
 }
 export const NotesDocument = gql`
-  query notes($authorId: Long, $searchTerm: String) {
-    notes(authorId: $authorId, searchTerm: $searchTerm) {
+  query notes($userId: Long, $searchTerm: String) {
+    notes(userId: $userId, searchTerm: $searchTerm) {
       id
       noteTitle
       noteContent
-      author {
+      user {
         firstName
         lastName
       }

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
-public class Author extends BaseEntity {
+public class User extends BaseEntity {
 
   private String userId;
 

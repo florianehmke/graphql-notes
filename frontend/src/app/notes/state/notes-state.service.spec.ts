@@ -4,8 +4,8 @@ import {
 } from 'apollo-angular/testing';
 import { TestBed } from '@angular/core/testing';
 import { NotesStateService } from './notes-state.service';
-import { AuthorsDocument, NotesDocument } from '../../../generated/graphql';
-import { authorFactory } from '../../../testing/mocks/author';
+import { UsersDocument, NotesDocument } from '../../../generated/graphql';
+import { userFactory } from '../../../testing/mocks/user';
 import { noteFactory } from '../../../testing/mocks/note';
 
 describe('NotesStateService', () => {
@@ -23,19 +23,19 @@ describe('NotesStateService', () => {
   });
 
   describe('GQL Queries', () => {
-    it('authors$ should contain data', done => {
-      const testAuthor = authorFactory.build();
-      service.authors$.subscribe(authors => {
-        expect(authors.length).toEqual(1);
-        expect(authors[0].firstName).toEqual(testAuthor.firstName);
-        expect(authors[0].lastName).toEqual(testAuthor.lastName);
-        expect(authors[0].noteCount).toEqual(testAuthor.noteCount);
-        expect(authors[0].id).toEqual(testAuthor.id);
+    it('users$ should contain data', done => {
+      const testUser = userFactory.build();
+      service.users$.subscribe(users => {
+        expect(users.length).toEqual(1);
+        expect(users[0].firstName).toEqual(testUser.firstName);
+        expect(users[0].lastName).toEqual(testUser.lastName);
+        expect(users[0].noteCount).toEqual(testUser.noteCount);
+        expect(users[0].id).toEqual(testUser.id);
         done();
       });
 
-      controller.expectOne(AuthorsDocument).flush({
-        data: { authors: [testAuthor] }
+      controller.expectOne(UsersDocument).flush({
+        data: { users: [testUser] }
       });
       jest.runAllTimers();
     });
@@ -47,9 +47,9 @@ describe('NotesStateService', () => {
         expect(notes[0].id).toEqual(testNote.id);
         expect(notes[0].noteTitle).toEqual(testNote.noteTitle);
         expect(notes[0].noteContent).toEqual(testNote.noteContent);
-        expect(notes[0].author).toEqual({
-          firstName: testNote.author.firstName,
-          lastName: testNote.author.lastName
+        expect(notes[0].user).toEqual({
+          firstName: testNote.user.firstName,
+          lastName: testNote.user.lastName
         });
         done();
       });

@@ -1,9 +1,9 @@
-query notes ($authorId: Long, $searchTerm: String) {
-  notes(authorId: $authorId, searchTerm: $searchTerm) {
+query notes ($userId: Long, $searchTerm: String) {
+  notes(userId: $userId, searchTerm: $searchTerm) {
     id
     noteTitle
     noteContent
-    author {
+    user {
       firstName
       lastName
     }

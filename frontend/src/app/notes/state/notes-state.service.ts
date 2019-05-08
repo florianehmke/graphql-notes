@@ -7,45 +7,43 @@ import { LocalStateService } from '../../../lib/local-state.service';
 import { extractClientErrors } from '../../../lib/extract-error-extensions';
 import {
   AddNoteGQL,
-  Author,
-  AuthorsGQL,
-  AuthorsQuery,
-  AuthorsQueryVariables,
   DeleteNoteGQL,
   Note,
   NotesGQL,
   NotesQuery,
-  NotesQueryVariables
+  NotesQueryVariables,
+  User,
+  UsersGQL,
+  UsersQuery,
+  UsersQueryVariables
 } from '../../../generated/graphql';
 
 export interface NotesState {
-  selectedAuthorId: number;
-  currentAuthorId: number;
+  selectedUserId: number;
   noteSearchTerm: string;
 }
 
 const initialState: NotesState = {
-  selectedAuthorId: null,
-  currentAuthorId: -10, // FIXME replace with user
+  selectedUserId: null,
   noteSearchTerm: null
 };
 
 @Injectable()
 export class NotesStateService extends LocalStateService<NotesState> {
-  authors$: Observable<Author[]>;
+  users$: Observable<User[]>;
   notes$: Observable<Note[]>;
 
-  selectedAuthorId$ = this.state$.pipe(map(s => s.selectedAuthorId));
+  selectedUserId$ = this.state$.pipe(map(s => s.selectedUserId));
   noteSearchTerm$ = this.state$.pipe(map(s => s.noteSearchTerm));
 
-  private authorsQueryRef: QueryRef<AuthorsQuery, AuthorsQueryVariables>;
+  private usersQueryRef: QueryRef<UsersQuery, UsersQueryVariables>;
   private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
 
   constructor(
     private addNoteGQL: AddNoteGQL,
     private deleteNoteGQL: DeleteNoteGQL,
     private notesGQL: NotesGQL,
-    private authorsGQL: AuthorsGQL
+    private usersGQL: UsersGQL
   ) {
     super(initialState);
 
@@ -54,29 +52,28 @@ export class NotesStateService extends LocalStateService<NotesState> {
       map(vc => vc.data.notes)
     );
 
-    this.authorsQueryRef = authorsGQL.watch();
-    this.authors$ = this.authorsQueryRef.valueChanges.pipe(
-      map(vc => vc.data.authors)
+    this.usersQueryRef = usersGQL.watch();
+    this.users$ = this.usersQueryRef.valueChanges.pipe(
+      map(vc => vc.data.users)
     );
 
-    combineLatest(this.selectedAuthorId$, this.noteSearchTerm$)
+    combineLatest(this.selectedUserId$, this.noteSearchTerm$)
       .pipe(
         takeUntil(this.destroyed()),
         skip(1)
       )
-      .subscribe(([authorId, searchTerm]) =>
-        this.notesQueryRef.refetch({ authorId, searchTerm })
+      .subscribe(([userId, searchTerm]) =>
+        this.notesQueryRef.refetch({ userId, searchTerm })
       );
   }
 
   addNote(title: string, content: string) {
-    const authorId = this.state.currentAuthorId;
     this.addNoteGQL
-      .mutate({ title, content, authorId })
+      .mutate({ title, content })
       .pipe(tap(response => this.handleClientErrors(response)))
       .subscribe(() => {
         this.notesQueryRef.refetch();
-        this.authorsQueryRef.refetch();
+        this.usersQueryRef.refetch();
       });
   }
 
@@ -86,14 +83,14 @@ export class NotesStateService extends LocalStateService<NotesState> {
       .pipe(tap(response => this.handleClientErrors(response)))
       .subscribe(() => {
         this.notesQueryRef.refetch();
-        this.authorsQueryRef.refetch();
+        this.usersQueryRef.refetch();
       });
   }
 
-  setSelectedAuthorId(authorId: number): void {
+  setSelectedUserId(userId: number): void {
     this.setState({
       ...this.state,
-      selectedAuthorId: authorId
+      selectedUserId: userId
     });
   }
 

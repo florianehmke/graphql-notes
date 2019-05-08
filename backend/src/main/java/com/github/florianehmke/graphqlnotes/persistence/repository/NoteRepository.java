@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface NoteRepository extends JpaRepository<Note, Long>, JpaSpecificationExecutor<Note> {
 
-  Long countByAuthorId(Long authorId);
+  Long countByUserId(Long userId);
 }

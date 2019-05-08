@@ -1,13 +1,13 @@
 package com.github.florianehmke.graphqlnotes.persistence.repository;
 
-import com.github.florianehmke.graphqlnotes.persistence.model.Author;
+import com.github.florianehmke.graphqlnotes.persistence.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface AuthorRepository extends JpaRepository<Author, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
-  Optional<Author> findByUserId(String userId);
+  Optional<User> findByUserId(String userId);
 }

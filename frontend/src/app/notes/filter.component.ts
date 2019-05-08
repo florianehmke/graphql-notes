@@ -4,46 +4,46 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { DestructionAware } from '../../lib/destruction-aware';
-import { Author } from '../../generated/graphql';
+import { User } from '../../generated/graphql';
 
 @Component({
   selector: 'app-filter',
   template: `
-    <h3 class="border-dark border-bottom">Filter Notes</h3>
-    <div class="d-flex align-items-start">
-      <app-filter-container class="mr-3" label="Search by Title/Content">
-        <input class="w-100" [formControl]="searchControl" />
-      </app-filter-container>
-      <app-filter-container label="Filter by Author" [showBorder]="true">
-        <app-filter-author
-          *ngFor="let author of authors$ | async"
-          [author]="author"
-          [selectedAuthorId]="selectedAuthorId$ | async"
-          (authorIdSelected)="selectAuthorId($event)"
-        >
-        </app-filter-author>
-      </app-filter-container>
-    </div>
+      <h3 class="border-dark border-bottom">Filter Notes</h3>
+      <div class="d-flex align-items-start">
+          <app-filter-container class="mr-3" label="Search by Title/Content">
+              <input class="w-100" [formControl]="searchControl"/>
+          </app-filter-container>
+          <app-filter-container label="Filter by Author" [showBorder]="true">
+              <app-filter-user
+                      *ngFor="let user of users$ | async"
+                      [user]="user"
+                      [selectedUserId]="selectedUserId$ | async"
+                      (userIdSelected)="selectUserId($event)"
+              >
+              </app-filter-user>
+          </app-filter-container>
+      </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterComponent extends DestructionAware implements OnInit {
-  authors$: Observable<Author[]>;
-  selectedAuthorId$: Observable<number>;
+  users$: Observable<User[]>;
+  selectedUserId$: Observable<number>;
   searchControl: FormControl;
 
   constructor(private notesState: NotesStateService) {
     super();
-    this.authors$ = this.notesState.authors$;
-    this.selectedAuthorId$ = this.notesState.selectedAuthorId$;
+    this.users$ = this.notesState.users$;
+    this.selectedUserId$ = this.notesState.selectedUserId$;
     this.searchControl = new FormControl('');
   }
 
-  selectAuthorId(authorId: number) {
-    const currentId = this.notesState.state.selectedAuthorId;
-    const selectedAuthorId = currentId !== authorId ? authorId : null;
+  selectUserId(userId: number) {
+    const currentId = this.notesState.state.selectedUserId;
+    const selectedUserId = currentId !== userId ? userId : null;
 
-    this.notesState.setSelectedAuthorId(selectedAuthorId);
+    this.notesState.setSelectedUserId(selectedUserId);
   }
 
   ngOnInit(): void {

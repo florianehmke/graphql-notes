@@ -1,9 +1,9 @@
 package com.github.florianehmke.graphqlnotes.controller;
 
-import com.github.florianehmke.graphqlnotes.persistence.model.Author;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
-import com.github.florianehmke.graphqlnotes.persistence.repository.AuthorRepository;
+import com.github.florianehmke.graphqlnotes.persistence.model.User;
 import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;
+import com.github.florianehmke.graphqlnotes.persistence.repository.UserRepository;
 import com.github.florianehmke.graphqlnotes.service.UserService;
 import io.leangen.graphql.annotations.GraphQLContext;
 import io.leangen.graphql.annotations.GraphQLMutation;
@@ -22,30 +22,30 @@ import static com.github.florianehmke.graphqlnotes.persistence.repository.NoteSp
 public class NoteController {
 
   private NoteRepository noteRepository;
-  private AuthorRepository authorRepository;
+  private UserRepository userRepository;
   private UserService userService;
 
   @Autowired
-  public NoteController(NoteRepository noteRepository, AuthorRepository authorRepository, UserService userService) {
+  public NoteController(NoteRepository noteRepository, UserRepository userRepository, UserService userService) {
     this.noteRepository = noteRepository;
-    this.authorRepository = authorRepository;
+    this.userRepository = userRepository;
     this.userService = userService;
   }
 
   @GraphQLQuery
-  public Collection<Note> notes(Long authorId, String searchTerm) {
-    return noteRepository.findAll(searchBy(authorId, searchTerm));
+  public Collection<Note> notes(Long userId, String searchTerm) {
+    return noteRepository.findAll(searchBy(userId, searchTerm));
   }
 
   @GraphQLQuery
   @PreAuthorize("hasRole('admin')")
-  public Long noteCount(@GraphQLContext Author author) {
-    return noteRepository.countByAuthorId(author.getId());
+  public Long noteCount(@GraphQLContext User user) {
+    return noteRepository.countByUserId(user.getId());
   }
 
   @GraphQLQuery
-  public Collection<Author> authors() {
-    return authorRepository.findAll();
+  public Collection<User> users() {
+    return userRepository.findAll();
   }
 
   @GraphQLMutation
@@ -57,10 +57,10 @@ public class NoteController {
   }
 
   @GraphQLMutation
-  public Note addNote(Long authorId, String title, String content) {
-    var author = this.userService.loadCurrent();
+  public Note addNote(String title, String content) {
+    var user = this.userService.loadCurrent();
     var note = new Note();
-    note.setAuthor(author);
+    note.setUser(user);
     note.setNoteTitle(title);
     note.setNoteContent(content);
     return noteRepository.save(note);
