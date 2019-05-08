@@ -21,7 +21,12 @@
     - keycloak:keycloak
     - graphql_notes:graphql_notes
 
+# Keycloak
+Login with keycloak account (see above) and configure graphql-notes client on realm `master`.
+- Realm: master
+- Client: graphql-notes
+
 # URLs
-1. http://localhost:8080 - keycloak
-2. http://localhost:10000 - backend
-3. http://localhost:10001 - frontend
+1. http://keycloak:8080 - keycloak
+2. http://backend:10000 - backend
+3. http://frontend:10001 - frontend
