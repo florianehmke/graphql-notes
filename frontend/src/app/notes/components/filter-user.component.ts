@@ -10,14 +10,16 @@ import { User } from '../../../generated/graphql';
 @Component({
   selector: 'app-filter-user',
   template: `
-      <p
-              class="text-right"
-              [class.text-muted]="selectedUserId !== user.id"
-              (click)="userIdSelected.emit(user.id)"
+    <p
+      class="text-right"
+      [class.text-muted]="selectedUserId !== user.id"
+      (click)="userIdSelected.emit(user.id)"
+    >
+      {{ user.firstName }} {{ user.lastName }}
+      <ng-container *ngIf="user.noteCount">
+        - {{ user.noteCount }} Notes</ng-container
       >
-          {{ user.firstName }} {{ user.lastName }} -
-          {{ user.noteCount }} Notes
-      </p>
+    </p>
   `,
   styles: [
     `

@@ -16,7 +16,7 @@ import { Note } from '../../../generated/graphql';
           {{ note.noteTitle }}
         </span>
         <span class="m-0 text-muted">
-          {{ note.user.firstName }} {{ note.user.lastName }}
+          - {{ note.user.firstName }} {{ note.user.lastName }}
         </span>
       </div>
       <span class="m-0" style="cursor:pointer;" (click)="delete.emit(note)">
