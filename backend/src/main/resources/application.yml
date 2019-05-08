@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
     username: graphql_notes
     password: graphql_notes
-    url: jdbc:mariadb:failover://localhost:3306/graphql_notes?autoReconnect=true
+    url: jdbc:mariadb:failover://mariadb:3306/graphql_notes?autoReconnect=true
     platform: org.hibernate.dialect.MariaDB103Dialect
   jpa:
     generate-ddl: true
@@ -20,7 +20,7 @@ spring:
 
 keycloak:
   realm: master
-  auth-server-url: http://localhost:8080/auth
+  auth-server-url: http://keycloak:8080/auth
   resource: graphql-notes
   public-client: true
   principal-attribute: preferred_username

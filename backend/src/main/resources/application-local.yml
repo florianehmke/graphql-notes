@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mariadb:failover://localhost:3306/graphql_notes?autoReconnect=true
+
+keycloak:
+  auth-server-url: http://localhost:8080/auth
