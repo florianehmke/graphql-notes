@@ -26,7 +26,7 @@ import static org.springframework.context.annotation.ScopedProxyMode.TARGET_CLAS
 @Configuration
 @EnableWebSecurity
 @ComponentScan(basePackageClasses = KeycloakSecurityComponents.class)
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
   @Autowired

@@ -1,5 +1,6 @@
 package com.github.florianehmke.graphqlnotes.controller;
 
+import com.github.florianehmke.graphqlnotes.configuration.Role;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
 import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;
 import com.github.florianehmke.graphqlnotes.service.UserService;
@@ -9,12 +10,14 @@ import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.Collection;
 
 import static com.github.florianehmke.graphqlnotes.persistence.repository.NoteSpecifications.searchBy;
 
 @Controller
 @GraphQLApi
+@RolesAllowed(Role.USER)
 public class NoteController {
 
   private NoteRepository noteRepository;
