@@ -1,0 +1,6 @@
+subscription notifications {
+  notifications {
+    title
+    content
+  }
+}

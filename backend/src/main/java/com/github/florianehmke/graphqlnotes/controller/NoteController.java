@@ -3,6 +3,7 @@ package com.github.florianehmke.graphqlnotes.controller;
 import com.github.florianehmke.graphqlnotes.configuration.Role;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
 import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;
+import com.github.florianehmke.graphqlnotes.service.NotificationService;
 import com.github.florianehmke.graphqlnotes.service.UserService;
 import io.leangen.graphql.annotations.GraphQLMutation;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -22,11 +23,16 @@ public class NoteController {
 
   private NoteRepository noteRepository;
   private UserService userService;
+  private NotificationService notificationService;
 
   @Autowired
-  public NoteController(NoteRepository noteRepository, UserService userService) {
+  public NoteController(
+      NoteRepository noteRepository,
+      UserService userService,
+      NotificationService notificationService) {
     this.noteRepository = noteRepository;
     this.userService = userService;
+    this.notificationService = notificationService;
   }
 
   @GraphQLQuery
@@ -40,6 +46,8 @@ public class NoteController {
         this.noteRepository
             .findById(noteId)
             .orElseThrow(() -> new ClientException("not_found", "Note does not exist!")));
+    this.notificationService.notify(
+        "Note deleted!", String.format("Note with id %d was deleted.", noteId));
   }
 
   @GraphQLMutation
@@ -49,6 +57,9 @@ public class NoteController {
     note.setUser(user);
     note.setNoteTitle(title);
     note.setNoteContent(content);
-    return noteRepository.save(note);
+    var savedNote = noteRepository.save(note);
+    this.notificationService.notify(
+        "Note created!", String.format("Note with id %d was created.", savedNote.getId()));
+    return savedNote;
   }
 }

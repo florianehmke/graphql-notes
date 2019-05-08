@@ -36,6 +36,11 @@ export type Note = {
   user?: Maybe<User>;
 };
 
+export type Notification = {
+  content?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
 /** Query root */
 export type Query = {
   currentUser?: Maybe<User>;
@@ -47,6 +52,11 @@ export type Query = {
 export type QueryNotesArgs = {
   searchTerm?: Maybe<Scalars['String']>;
   userId?: Maybe<Scalars['Long']>;
+};
+
+/** Subscription root */
+export type Subscription = {
+  notifications?: Maybe<Notification>;
 };
 
 export type User = {
@@ -116,6 +126,14 @@ export type UsersQuery = { __typename?: 'Query' } & {
         >
       >
     >
+  >;
+};
+
+export type NotificationsSubscriptionVariables = {};
+
+export type NotificationsSubscription = { __typename?: 'Subscription' } & {
+  notifications: Maybe<
+    { __typename?: 'Notification' } & Pick<Notification, 'title' | 'content'>
   >;
 };
 
@@ -209,4 +227,22 @@ export const UsersDocument = gql`
 })
 export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
   document = UsersDocument;
+}
+export const NotificationsDocument = gql`
+  subscription notifications {
+    notifications {
+      title
+      content
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class NotificationsGQL extends Apollo.Subscription<
+  NotificationsSubscription,
+  NotificationsSubscriptionVariables
+> {
+  document = NotificationsDocument;
 }

@@ -11,7 +11,7 @@ import {
   Note,
   NotesGQL,
   NotesQuery,
-  NotesQueryVariables,
+  NotesQueryVariables, NotificationsGQL,
   User,
   UsersGQL,
   UsersQuery,
@@ -46,7 +46,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
     private deleteNoteGQL: DeleteNoteGQL,
     private notesGQL: NotesGQL,
     private usersGQL: UsersGQL,
-    private currentUserGQL: CurrentUserGQL
+    private currentUserGQL: CurrentUserGQL,
   ) {
     super(initialState);
 
