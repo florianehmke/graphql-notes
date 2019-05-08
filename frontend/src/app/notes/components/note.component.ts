@@ -11,12 +11,14 @@ import { Note } from '../../../generated/graphql';
   selector: 'app-note-component',
   template: `
     <div class="d-flex justify-content-between border-bottom">
-      <span class="m-0 font-weight-bold">
-        {{ note.noteTitle }}
-      </span>
-      <span class="m-0 text-muted">
-        {{ note.user.firstName }} {{ note.user.lastName }}
-      </span>
+      <div>
+        <span class="m-0 font-weight-bold">
+          {{ note.noteTitle }}
+        </span>
+        <span class="m-0 text-muted">
+          {{ note.user.firstName }} {{ note.user.lastName }}
+        </span>
+      </div>
       <span class="m-0" style="cursor:pointer;" (click)="delete.emit(note)">
         Delete
       </span>

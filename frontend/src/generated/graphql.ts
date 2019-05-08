@@ -38,6 +38,7 @@ export type Note = {
 
 /** Query root */
 export type Query = {
+  currentUser?: Maybe<User>;
   notes?: Maybe<Array<Maybe<Note>>>;
   users?: Maybe<Array<Maybe<User>>>;
 };
@@ -73,18 +74,11 @@ export type DeleteNoteMutation = { __typename?: 'Mutation' } & Pick<
   'deleteNote'
 >;
 
-export type UsersQueryVariables = {};
+export type CurrentUserQueryVariables = {};
 
-export type UsersQuery = { __typename?: 'Query' } & {
-  users: Maybe<
-    Array<
-      Maybe<
-        { __typename?: 'User' } & Pick<
-          User,
-          'id' | 'firstName' | 'lastName' | 'noteCount'
-        >
-      >
-    >
+export type CurrentUserQuery = { __typename?: 'Query' } & {
+  currentUser: Maybe<
+    { __typename?: 'User' } & Pick<User, 'firstName' | 'lastName'>
   >;
 };
 
@@ -105,6 +99,21 @@ export type NotesQuery = { __typename?: 'Query' } & {
               { __typename?: 'User' } & Pick<User, 'firstName' | 'lastName'>
             >;
           }
+      >
+    >
+  >;
+};
+
+export type UsersQueryVariables = {};
+
+export type UsersQuery = { __typename?: 'Query' } & {
+  users: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'User' } & Pick<
+          User,
+          'id' | 'firstName' | 'lastName' | 'noteCount'
+        >
       >
     >
   >;
@@ -146,13 +155,11 @@ export class DeleteNoteGQL extends Apollo.Mutation<
 > {
   document = DeleteNoteDocument;
 }
-export const UsersDocument = gql`
-  query users {
-    users {
-      id
+export const CurrentUserDocument = gql`
+  query currentUser {
+    currentUser {
       firstName
       lastName
-      noteCount
     }
   }
 `;
@@ -160,8 +167,11 @@ export const UsersDocument = gql`
 @Injectable({
   providedIn: 'root'
 })
-export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
-  document = UsersDocument;
+export class CurrentUserGQL extends Apollo.Query<
+  CurrentUserQuery,
+  CurrentUserQueryVariables
+> {
+  document = CurrentUserDocument;
 }
 export const NotesDocument = gql`
   query notes($userId: Long, $searchTerm: String) {
@@ -182,4 +192,21 @@ export const NotesDocument = gql`
 })
 export class NotesGQL extends Apollo.Query<NotesQuery, NotesQueryVariables> {
   document = NotesDocument;
+}
+export const UsersDocument = gql`
+  query users {
+    users {
+      id
+      firstName
+      lastName
+      noteCount
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsersGQL extends Apollo.Query<UsersQuery, UsersQueryVariables> {
+  document = UsersDocument;
 }

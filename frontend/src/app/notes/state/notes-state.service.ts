@@ -6,7 +6,7 @@ import { map, skip, takeUntil, tap } from 'rxjs/operators';
 import { LocalStateService } from '../../../lib/local-state.service';
 import { extractClientErrors } from '../../../lib/extract-error-extensions';
 import {
-  AddNoteGQL,
+  AddNoteGQL, CurrentUserGQL, CurrentUserQuery, CurrentUserQueryVariables,
   DeleteNoteGQL,
   Note,
   NotesGQL,
@@ -32,18 +32,21 @@ const initialState: NotesState = {
 export class NotesStateService extends LocalStateService<NotesState> {
   users$: Observable<User[]>;
   notes$: Observable<Note[]>;
+  currentUser$: Observable<User>;
 
   selectedUserId$ = this.state$.pipe(map(s => s.selectedUserId));
   noteSearchTerm$ = this.state$.pipe(map(s => s.noteSearchTerm));
 
   private usersQueryRef: QueryRef<UsersQuery, UsersQueryVariables>;
   private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
+  private currentUserQueryRef: QueryRef<CurrentUserQuery, CurrentUserQueryVariables>;
 
   constructor(
     private addNoteGQL: AddNoteGQL,
     private deleteNoteGQL: DeleteNoteGQL,
     private notesGQL: NotesGQL,
-    private usersGQL: UsersGQL
+    private usersGQL: UsersGQL,
+    private currentUserGQL: CurrentUserGQL
   ) {
     super(initialState);
 
@@ -55,6 +58,11 @@ export class NotesStateService extends LocalStateService<NotesState> {
     this.usersQueryRef = usersGQL.watch();
     this.users$ = this.usersQueryRef.valueChanges.pipe(
       map(vc => vc.data.users)
+    );
+
+    this.currentUserQueryRef = currentUserGQL.watch();
+    this.currentUser$ = this.currentUserQueryRef.valueChanges.pipe(
+      map(vc => vc.data.currentUser)
     );
 
     combineLatest(this.selectedUserId$, this.noteSearchTerm$)
