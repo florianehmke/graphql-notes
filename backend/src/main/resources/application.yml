@@ -8,8 +8,8 @@ spring:
     url: jdbc:mariadb:failover://mariadb:3306/graphql_notes?autoReconnect=true
     platform: org.hibernate.dialect.MariaDB103Dialect
   jpa:
-    generate-ddl: true
-    show-sql: true
+    generate-ddl: false
+    show-sql: false
     open-in-view: false
   flyway:
     clean-on-validation-error: true

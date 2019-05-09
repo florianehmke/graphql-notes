@@ -1,6 +1,5 @@
 package com.github.florianehmke.graphqlnotes.service;
 
-import com.github.florianehmke.graphqlnotes.configuration.Role;
 import io.leangen.graphql.annotations.GraphQLSubscription;
 import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.reactivestreams.Publisher;
@@ -8,13 +7,12 @@ import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
-import javax.annotation.security.RolesAllowed;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @GraphQLApi
-@RolesAllowed(Role.USER)
+// @RolesAllowed(Role.USER) //FIXME Does not work yet.
 public class NotificationService {
 
   private final List<FluxSink<Notification>> subscribers = new ArrayList<>();

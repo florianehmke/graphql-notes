@@ -41,13 +41,14 @@ public class NoteController {
   }
 
   @GraphQLMutation
-  public void deleteNote(Long noteId) {
+  public boolean deleteNote(Long noteId) {
     this.noteRepository.delete(
         this.noteRepository
             .findById(noteId)
             .orElseThrow(() -> new ClientException("not_found", "Note does not exist!")));
     this.notificationService.notify(
         "Note deleted!", String.format("Note with id %d was deleted.", noteId));
+    return true;
   }
 
   @GraphQLMutation
