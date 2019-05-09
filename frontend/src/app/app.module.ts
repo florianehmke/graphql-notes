@@ -3,11 +3,11 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NotesModule } from './notes/notes.module';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { environment } from '../environments/environment';
+import { GraphQLModule } from './graphql.module';
 
 export function initializer(keycloak: KeycloakService): () => Promise<any> {
   return (): Promise<any> => {

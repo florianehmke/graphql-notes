@@ -1,35 +1,43 @@
 import { NgModule } from '@angular/core';
-import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
-import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
+import { Apollo, ApolloModule } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { split } from 'apollo-link';
+
+import { WebSocketLink } from 'apollo-link-ws';
+import { getMainDefinition } from 'apollo-utilities';
 import { environment } from '../environments/environment';
 
-export function createApollo(httpLink: HttpLink) {
-  return {
-    link: httpLink.create({ uri: environment.gqlEndpoint }),
-    cache: new InMemoryCache(),
-    defaultOptions: {
-      watchQuery: {
-        errorPolicy: 'all'
-      },
-      mutate: {
-        errorPolicy: 'all'
-      },
-      query: {
-        errorPolicy: 'all'
-      }
-    }
-  };
-}
-
 @NgModule({
-  exports: [ApolloModule, HttpLinkModule],
-  providers: [
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory: createApollo,
-      deps: [HttpLink]
-    }
-  ]
+  exports: [HttpClientModule, ApolloModule, HttpLinkModule]
 })
-export class GraphQLModule {}
+export class GraphQLModule {
+  constructor(apollo: Apollo, private httpClient: HttpClient) {
+    const subscriptionLink = new WebSocketLink({
+      uri: environment.gqlWebsocketEndpoint,
+      options: {
+        reconnect: true,
+      }
+    });
+
+    const httpLink = new HttpLink(httpClient).create({
+      uri: environment.gqlEndpoint
+    });
+
+    const link = split(
+      ({ query }) => {
+        const { kind, operation } = getMainDefinition(query);
+        return kind === 'OperationDefinition' && operation === 'subscription';
+      },
+      subscriptionLink,
+      httpLink
+    );
+
+    apollo.create({
+      link,
+      cache: new InMemoryCache()
+    });
+  }
+}

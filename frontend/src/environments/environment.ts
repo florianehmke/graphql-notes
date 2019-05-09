@@ -7,5 +7,6 @@ export const environment = {
     realm: 'master',
     clientId: 'graphql-notes'
   },
-  gqlEndpoint: 'http://backend:10000/graphql'
+  gqlEndpoint: 'http://backend:10000/graphql',
+  gqlWebsocketEndpoint: 'ws://localhost:10000/graphql-ws'
 };

@@ -18,6 +18,14 @@ spring:
   main:
     allow-bean-definition-overriding: true #FIXME keycloak issue
 
+graphql:
+  spqr:
+    gui:
+      enabled: true
+    ws:
+      endpoint: "/graphql-ws"
+      enabled: true
+
 keycloak:
   realm: master
   auth-server-url: http://keycloak:8080/auth
@@ -29,22 +37,3 @@ keycloak:
 logging:
   level:
     org.keycloak: TRACE
-
-graphiql:
-  mapping: /graphiql
-  endpoint:
-    graphql: /graphql
-    subscriptions: /subscriptions
-  subscriptions:
-    timeout: 30
-    reconnect: false
-  static:
-    basePath: /
-  enabled: true
-  pageTitle: GraphiQL
-  cdn:
-    enabled: false
-    version: 0.13.0
-  props:
-    variables:
-      editorTheme: "solarized light"
