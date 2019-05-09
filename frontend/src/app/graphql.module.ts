@@ -23,7 +23,7 @@ export class GraphQLModule {
     });
 
     const httpLink = new HttpLink(httpClient).create({
-      uri: environment.gqlEndpoint
+      uri: environment.gqlEndpoint,
     });
 
     const link = split(
@@ -32,11 +32,22 @@ export class GraphQLModule {
         return kind === 'OperationDefinition' && operation === 'subscription';
       },
       subscriptionLink,
-      httpLink
+      httpLink,
     );
 
     apollo.create({
       link,
+      defaultOptions: {
+        watchQuery: {
+          errorPolicy: 'all'
+        },
+        mutate: {
+          errorPolicy: 'all'
+        },
+        query: {
+          errorPolicy: 'all'
+        }
+      },
       cache: new InMemoryCache()
     });
   }
