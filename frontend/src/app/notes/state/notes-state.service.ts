@@ -4,9 +4,10 @@ import { combineLatest, Observable } from 'rxjs';
 import { filter, map, skip, takeUntil, tap } from 'rxjs/operators';
 
 import { LocalStateService } from '../../../lib/local-state.service';
-import { extractClientErrors } from '../../../lib/extract-error-extensions';
+import { handleClientErrors } from '../../../lib/extract-error-extensions';
 import {
-  AddNoteGQL, AddNoteMutation,
+  AddNoteGQL,
+  AddNoteMutation,
   CurrentUserGQL,
   CurrentUserQuery,
   CurrentUserQueryVariables,
@@ -61,9 +62,6 @@ export class NotesStateService extends LocalStateService<NotesState> {
   ) {
     super(initialState);
 
-    const notifications = this.notificationsGQL.subscribe();
-    this.notifications$ = notifications.pipe(map(v => v.data.notifications));
-
     this.notesQueryRef = notesGQL.watch();
     this.notes$ = this.notesQueryRef.valueChanges.pipe(
       map(vc => vc.data.notes)
@@ -79,6 +77,10 @@ export class NotesStateService extends LocalStateService<NotesState> {
       map(vc => vc.data.currentUser)
     );
 
+    this.notifications$ = this.notificationsGQL
+      .subscribe()
+      .pipe(map(v => v.data.notifications));
+
     combineLatest(this.selectedUserId$, this.noteSearchTerm$)
       .pipe(
         takeUntil(this.destroyed()),
@@ -91,7 +93,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
 
   deleteNote(noteId: number): Observable<DeleteNoteMutation> {
     return this.deleteNoteGQL.mutate({ noteId }).pipe(
-      filter(response => this.handleClientErrors(response)),
+      filter(response => handleClientErrors(response)),
       tap(() => {
         this.notesQueryRef.refetch();
         this.usersQueryRef.refetch();
@@ -101,7 +103,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
 
   addNote(title: string, content: string): Observable<AddNoteMutation> {
     return this.addNoteGQL.mutate({ title, content }).pipe(
-      filter(response => this.handleClientErrors(response)),
+      filter(response => handleClientErrors(response)),
       tap(() => {
         this.notesQueryRef.refetch();
         this.usersQueryRef.refetch();
@@ -121,14 +123,5 @@ export class NotesStateService extends LocalStateService<NotesState> {
       ...this.state,
       noteSearchTerm: searchTerm
     });
-  }
-
-  private handleClientErrors(response): boolean {
-    const errors = extractClientErrors(response);
-    if (errors) {
-      errors.forEach(err => console.log(err));
-      return false;
-    }
-    return true;
   }
 }

@@ -9,7 +9,9 @@ import {
   NotesDocument,
   NotificationsDocument,
   AddNoteDocument,
-  AddNoteMutationVariables
+  AddNoteMutationVariables,
+  DeleteNoteMutationVariables,
+  DeleteNoteDocument
 } from '../../../generated/graphql';
 import { userFactory } from '../../../testing/mocks/user';
 import { noteFactory } from '../../../testing/mocks/note';
@@ -103,6 +105,23 @@ describe('NotesStateService', () => {
       expect(variables.content).toEqual(testNote.noteContent);
 
       op.flush({ data: { addNote: { id: testNote.id } } });
+      jest.runAllTimers();
+    });
+
+    it('deleteNote should delete the note and refresh notes and users', done => {
+      const testNote = noteFactory.build();
+      service.deleteNote(testNote.id).subscribe(() => {
+        // Expect a refetch of notes and users.
+        controller.expectOne(NotesDocument);
+        controller.expectOne(UsersDocument);
+        done();
+      });
+      const op = controller.expectOne(DeleteNoteDocument);
+      const variables = <DeleteNoteMutationVariables>op.operation.variables;
+
+      expect(variables.noteId).toEqual(testNote.id);
+
+      op.flush({ data: { deleteNote: {} } });
       jest.runAllTimers();
     });
   });

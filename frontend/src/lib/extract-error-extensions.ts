@@ -13,3 +13,12 @@ export function extractClientErrors(response): ClientError[] {
       .filter(ext => isDefined(ext.code) && isDefined(ext.message));
   }
 }
+
+export function handleClientErrors(response): boolean {
+  const errors = extractClientErrors(response);
+  if (errors) {
+    errors.forEach(err => console.log(err));
+    return false;
+  }
+  return true;
+}
