@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { QueryRef } from 'apollo-angular';
 import { combineLatest, Observable } from 'rxjs';
-import { map, skip, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, skip, takeUntil, tap } from 'rxjs/operators';
 
 import { LocalStateService } from '../../../lib/local-state.service';
 import { extractClientErrors } from '../../../lib/extract-error-extensions';
 import {
-  AddNoteGQL,
+  AddNoteGQL, AddNoteMutation,
   CurrentUserGQL,
   CurrentUserQuery,
   CurrentUserQueryVariables,
   DeleteNoteGQL,
+  DeleteNoteMutation,
   Note,
   NotesGQL,
   NotesQuery,
@@ -88,24 +89,24 @@ export class NotesStateService extends LocalStateService<NotesState> {
       );
   }
 
-  addNote(title: string, content: string) {
-    this.addNoteGQL
-      .mutate({ title, content })
-      .pipe(tap(response => this.handleClientErrors(response)))
-      .subscribe(() => {
+  deleteNote(noteId: number): Observable<DeleteNoteMutation> {
+    return this.deleteNoteGQL.mutate({ noteId }).pipe(
+      filter(response => this.handleClientErrors(response)),
+      tap(() => {
         this.notesQueryRef.refetch();
         this.usersQueryRef.refetch();
-      });
+      })
+    );
   }
 
-  deleteNote(noteId: number) {
-    this.deleteNoteGQL
-      .mutate({ noteId })
-      .pipe(tap(response => this.handleClientErrors(response)))
-      .subscribe(() => {
+  addNote(title: string, content: string): Observable<AddNoteMutation> {
+    return this.addNoteGQL.mutate({ title, content }).pipe(
+      filter(response => this.handleClientErrors(response)),
+      tap(() => {
         this.notesQueryRef.refetch();
         this.usersQueryRef.refetch();
-      });
+      })
+    );
   }
 
   setSelectedUserId(userId: number): void {
@@ -122,10 +123,12 @@ export class NotesStateService extends LocalStateService<NotesState> {
     });
   }
 
-  private handleClientErrors(response) {
+  private handleClientErrors(response): boolean {
     const errors = extractClientErrors(response);
     if (errors) {
       errors.forEach(err => console.log(err));
+      return false;
     }
+    return true;
   }
 }

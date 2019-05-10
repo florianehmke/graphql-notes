@@ -4,9 +4,16 @@ import {
 } from 'apollo-angular/testing';
 import { TestBed } from '@angular/core/testing';
 import { NotesStateService } from './notes-state.service';
-import { UsersDocument, NotesDocument } from '../../../generated/graphql';
+import {
+  UsersDocument,
+  NotesDocument,
+  NotificationsDocument,
+  AddNoteDocument,
+  AddNoteMutationVariables
+} from '../../../generated/graphql';
 import { userFactory } from '../../../testing/mocks/user';
 import { noteFactory } from '../../../testing/mocks/note';
+import { notificationFactory } from '../../../testing/mocks/notification';
 
 describe('NotesStateService', () => {
   let service: NotesStateService;
@@ -57,6 +64,45 @@ describe('NotesStateService', () => {
       controller.expectOne(NotesDocument).flush({
         data: { notes: [testNote] }
       });
+      jest.runAllTimers();
+    });
+  });
+
+  describe('GQL Subscriptions', () => {
+    it('notifications$ should contain data', done => {
+      const testNotification = notificationFactory.build();
+      service.notifications$.subscribe(notification => {
+        expect(notification).toBeTruthy();
+        expect(notification.title).toEqual(testNotification.title);
+        expect(notification.content).toEqual(testNotification.content);
+        done();
+      });
+
+      controller.expectOne(NotificationsDocument).flush({
+        data: { notifications: testNotification }
+      });
+      jest.runAllTimers();
+    });
+  });
+
+  describe('GQL Mutations', () => {
+    it('addNote should add a note and refresh notes and users', done => {
+      const testNote = noteFactory.build();
+      service
+        .addNote(testNote.noteTitle, testNote.noteContent)
+        .subscribe(() => {
+          // Expect a refetch of notes and users.
+          controller.expectOne(NotesDocument);
+          controller.expectOne(UsersDocument);
+          done();
+        });
+      const op = controller.expectOne(AddNoteDocument);
+      const variables = <AddNoteMutationVariables>op.operation.variables;
+
+      expect(variables.title).toEqual(testNote.noteTitle);
+      expect(variables.content).toEqual(testNote.noteContent);
+
+      op.flush({ data: { addNote: { id: testNote.id } } });
       jest.runAllTimers();
     });
   });

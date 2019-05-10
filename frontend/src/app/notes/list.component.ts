@@ -25,6 +25,6 @@ export class ListComponent {
   }
 
   onDelete(note: Note) {
-    this.notesState.deleteNote(note.id);
+    this.notesState.deleteNote(note.id).subscribe();
   }
 }
