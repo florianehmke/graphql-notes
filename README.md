@@ -5,8 +5,8 @@ A small example application that uses `GraphQL` with a `Spring Boot` backend and
 Technologies used:
 1. [Apllo GraphQL Angular Client](https://www.apollographql.com/docs/angular/)
 2. [GraphQL Code Generator](https://graphql-code-generator.com/)
-3. [GraphQL SPGR](https://github.com/leangen/graphql-spqr)
-4. [GraphQL SPRQ Spring Boot Starter](https://github.com/leangen/graphql-spqr-spring-boot-starter)
+3. [GraphQL SPQR](https://github.com/leangen/graphql-spqr)
+4. [GraphQL SPQR Spring Boot Starter](https://github.com/leangen/graphql-spqr-spring-boot-starter)
 
 # Start the Application (...with docker-compose)
 ## 1. Build
