@@ -1,6 +1,8 @@
 package com.github.florianehmke.graphqlnotes.controller;
 
 import com.github.florianehmke.graphqlnotes.configuration.Role;
+import com.github.florianehmke.graphqlnotes.permission.UserId;
+import com.github.florianehmke.graphqlnotes.permission.VerifyUser;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
 import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;
 import com.github.florianehmke.graphqlnotes.service.NotificationService;
@@ -36,7 +38,8 @@ public class NoteController {
   }
 
   @GraphQLQuery
-  public Collection<Note> notes(Long userId, String searchTerm) {
+  @VerifyUser
+  public Collection<Note> notes(@UserId Long userId, String searchTerm) {
     return noteRepository.findAll(searchBy(userId, searchTerm));
   }
 
