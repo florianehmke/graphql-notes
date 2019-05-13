@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { QueryRef } from 'apollo-angular';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, skip, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, mapTo, skip, tap } from 'rxjs/operators';
 
 import { LocalStateService } from '../../../lib/local-state.service';
 import { handleClientErrors } from '../../../lib/extract-error-extensions';
@@ -80,15 +80,16 @@ export class NotesStateService extends LocalStateService<NotesState> {
     this.notifications$ = this.notificationsGQL
       .subscribe()
       .pipe(map(v => v.data.notifications));
+  }
 
-    combineLatest(this.selectedUserId$, this.noteSearchTerm$)
-      .pipe(
-        takeUntil(this.destroyed()),
-        skip(1)
-      )
-      .subscribe(([userId, searchTerm]) =>
+  refetchNotesOnFilterChanges(): Observable<void> {
+    return combineLatest(this.selectedUserId$, this.noteSearchTerm$).pipe(
+      skip(1),
+      tap(([userId, searchTerm]) =>
         this.notesQueryRef.refetch({ userId, searchTerm })
-      );
+      ),
+      mapTo(null)
+    );
   }
 
   deleteNote(noteId: number): Observable<DeleteNoteMutation> {

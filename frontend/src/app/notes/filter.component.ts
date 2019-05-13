@@ -9,21 +9,21 @@ import { User } from '../../generated/graphql';
 @Component({
   selector: 'app-filter',
   template: `
-      <h3 class="border-dark border-bottom">Filter Notes</h3>
-      <div class="d-flex align-items-start">
-          <app-filter-container class="mr-3" label="Search by Title/Content">
-              <input class="w-100" [formControl]="searchControl"/>
-          </app-filter-container>
-          <app-filter-container label="Filter by Author" [showBorder]="true">
-              <app-filter-user
-                      *ngFor="let user of users$ | async"
-                      [user]="user"
-                      [selectedUserId]="selectedUserId$ | async"
-                      (userIdSelected)="selectUserId($event)"
-              >
-              </app-filter-user>
-          </app-filter-container>
-      </div>
+    <h3 class="border-dark border-bottom">Filter Notes</h3>
+    <div class="d-flex align-items-start">
+      <app-filter-container class="mr-3" label="Search by Title/Content">
+        <input class="w-100" [formControl]="searchControl" />
+      </app-filter-container>
+      <app-filter-container label="Filter by Author" [showBorder]="true">
+        <app-filter-user
+          *ngFor="let user of users$ | async"
+          [user]="user"
+          [selectedUserId]="selectedUserId$ | async"
+          (userIdSelected)="selectUserId($event)"
+        >
+        </app-filter-user>
+      </app-filter-container>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -47,6 +47,11 @@ export class FilterComponent extends DestructionAware implements OnInit {
   }
 
   ngOnInit(): void {
+    this.notesState
+      .refetchNotesOnFilterChanges()
+      .pipe(takeUntil(this.destroyed()))
+      .subscribe();
+
     this.searchControl.valueChanges
       .pipe(
         distinctUntilChanged(),
