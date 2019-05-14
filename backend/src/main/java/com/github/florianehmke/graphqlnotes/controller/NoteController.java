@@ -49,21 +49,28 @@ public class NoteController {
         this.noteRepository
             .findById(noteId)
             .orElseThrow(() -> new ClientException("not_found", "Note does not exist!")));
-    this.notificationService.notify(
-        "Note deleted!", String.format("Note with id %d was deleted.", noteId));
+
+    String notification = String.format("Note with id %d was deleted.", noteId);
+    this.notificationService.notify("Note deleted!", notification);
+
     return true;
   }
 
   @GraphQLMutation
   public Note addNote(String title, String content) {
+    if (title.contains("error")) {
+      throw new ClientException("Error", "Dude! Title must not contain Error!");
+    }
     var user = this.userService.currentUser();
     var note = new Note();
     note.setUser(user);
     note.setNoteTitle(title);
     note.setNoteContent(content);
     var savedNote = noteRepository.save(note);
-    this.notificationService.notify(
-        "Note created!", String.format("Note with id %d was created.", savedNote.getId()));
+
+    var notification = String.format("Note with id %d was created.", savedNote.getId());
+    this.notificationService.notify("Note created!", notification);
+
     return savedNote;
   }
 }

@@ -4,7 +4,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { filter, map, mapTo, skip, tap } from 'rxjs/operators';
 
 import { LocalStateService } from '../../../lib/local-state.service';
-import { handleClientErrors } from '../../../lib/extract-error-extensions';
+import { handleErrors } from '../../../lib/errors';
 import {
   AddNoteGQL,
   AddNoteMutation,
@@ -64,22 +64,26 @@ export class NotesStateService extends LocalStateService<NotesState> {
 
     this.notesQueryRef = notesGQL.watch();
     this.notes$ = this.notesQueryRef.valueChanges.pipe(
+      tap(response => handleErrors(response)),
       map(vc => vc.data.notes)
     );
 
     this.usersQueryRef = usersGQL.watch();
     this.users$ = this.usersQueryRef.valueChanges.pipe(
+      tap(response => handleErrors(response)),
       map(vc => vc.data.users)
     );
 
     this.currentUserQueryRef = currentUserGQL.watch();
     this.currentUser$ = this.currentUserQueryRef.valueChanges.pipe(
+      tap(response => handleErrors(response)),
       map(vc => vc.data.currentUser)
     );
 
-    this.notifications$ = this.notificationsGQL
-      .subscribe()
-      .pipe(map(v => v.data.notifications));
+    this.notifications$ = this.notificationsGQL.subscribe().pipe(
+      tap(response => handleErrors(response)),
+      map(v => v.data.notifications)
+    );
   }
 
   refetchNotesOnFilterChanges(): Observable<void> {
@@ -94,7 +98,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
 
   deleteNote(noteId: number): Observable<DeleteNoteMutation> {
     return this.deleteNoteGQL.mutate({ noteId }).pipe(
-      filter(response => handleClientErrors(response)),
+      filter(response => handleErrors(response)),
       tap(() => {
         this.notesQueryRef.refetch();
         this.usersQueryRef.refetch();
@@ -104,7 +108,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
 
   addNote(title: string, content: string): Observable<AddNoteMutation> {
     return this.addNoteGQL.mutate({ title, content }).pipe(
-      filter(response => handleClientErrors(response)),
+      filter(response => handleErrors(response)),
       tap(() => {
         this.notesQueryRef.refetch();
         this.usersQueryRef.refetch();
