@@ -24,7 +24,7 @@ Backend, Frontend and Keycloak should be running under the following URLs:
 1. http://keycloak:8080 - keycloak (login with admin:admin)
 2. http://backend:10000 - backend
 3. http://frontend:10001 - frontend
-4. http://backend:10000/gui - GraphQL Playground
+4. http://backend:10000/gui - GraphQL Playground (add bearer token to headers)
 
 Mariadb listens on port `3036` and has the following users configured:
 - root:root

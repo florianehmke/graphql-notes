@@ -9,7 +9,7 @@ services:
       - 3306:3306
     volumes:
       - ./db:/var/lib/mysql
-      - ./db-init:/docker-entrypoint-initdb.d
+      - ./config/db-init:/docker-entrypoint-initdb.d
   keycloak:
     image: jboss/keycloak:4.8.3.Final
     container_name: keycloak
