@@ -8,6 +8,10 @@ import { handleErrors } from '../../../lib/errors';
 import {
   AddNoteGQL,
   AddNoteMutation,
+  Book,
+  BooksGQL,
+  BooksQuery,
+  BooksQueryVariables,
   CurrentUserGQL,
   CurrentUserQuery,
   CurrentUserQueryVariables,
@@ -27,11 +31,13 @@ import {
 
 export interface NotesState {
   selectedUserId: number;
+  selectedBookId: number;
   noteSearchTerm: string;
 }
 
 const initialState: NotesState = {
   selectedUserId: null,
+  selectedBookId: null,
   noteSearchTerm: null
 };
 
@@ -39,14 +45,17 @@ const initialState: NotesState = {
 export class NotesStateService extends LocalStateService<NotesState> {
   users$: Observable<User[]>;
   notes$: Observable<Note[]>;
+  books$: Observable<Book[]>;
   currentUser$: Observable<User>;
   notifications$: Observable<Notification>;
 
   selectedUserId$ = this.state$.pipe(map(s => s.selectedUserId));
+  selectedBookId$ = this.state$.pipe(map(s => s.selectedBookId));
   noteSearchTerm$ = this.state$.pipe(map(s => s.noteSearchTerm));
 
   private usersQueryRef: QueryRef<UsersQuery, UsersQueryVariables>;
   private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
+  private booksQueryRef: QueryRef<BooksQuery, BooksQueryVariables>;
   private currentUserQueryRef: QueryRef<
     CurrentUserQuery,
     CurrentUserQueryVariables
@@ -57,6 +66,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
     private deleteNoteGQL: DeleteNoteGQL,
     private notesGQL: NotesGQL,
     private usersGQL: UsersGQL,
+    private booksGQL: BooksGQL,
     private currentUserGQL: CurrentUserGQL,
     private notificationsGQL: NotificationsGQL
   ) {
@@ -74,6 +84,12 @@ export class NotesStateService extends LocalStateService<NotesState> {
       map(vc => vc.data.users)
     );
 
+    this.booksQueryRef = booksGQL.watch();
+    this.books$ = this.booksQueryRef.valueChanges.pipe(
+      tap(response => handleErrors(response)),
+      map(vc => vc.data.books)
+    );
+
     this.currentUserQueryRef = currentUserGQL.watch();
     this.currentUser$ = this.currentUserQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),
@@ -86,36 +102,35 @@ export class NotesStateService extends LocalStateService<NotesState> {
     );
   }
 
-  refetchNotesOnFilterChanges(): Observable<void> {
-    return combineLatest(this.selectedUserId$, this.noteSearchTerm$).pipe(
+  refetchNotesOnFilterChanges(): Observable<any> {
+    return combineLatest(
+      this.selectedBookId$,
+      this.selectedUserId$,
+      this.noteSearchTerm$
+    ).pipe(
       skip(1),
-      tap(([userId, searchTerm]) =>
-        this.notesQueryRef.refetch({ userId, searchTerm })
-      ),
-      mapTo(null)
+      tap(([bookId, userId, searchTerm]) =>
+        this.notesQueryRef.refetch({ bookId, userId, searchTerm })
+      )
     );
   }
 
   deleteNote(noteId: number): Observable<DeleteNoteMutation> {
     return this.deleteNoteGQL.mutate({ noteId }).pipe(
       filter(response => handleErrors(response)),
-      tap(() => {
-        this.notesQueryRef.refetch();
-        this.usersQueryRef.refetch();
-      })
+      tap(() => this.refetch())
     );
   }
 
-  addNote(title: string, content: string): Observable<AddNoteMutation> {
-    return this.addNoteGQL
-      .mutate({ bookTitle: 'Default', title, content })
-      .pipe(
-        filter(response => handleErrors(response)),
-        tap(() => {
-          this.notesQueryRef.refetch();
-          this.usersQueryRef.refetch();
-        })
-      );
+  addNote(
+    bookTitle: string,
+    title: string,
+    content: string
+  ): Observable<AddNoteMutation> {
+    return this.addNoteGQL.mutate({ bookTitle, title, content }).pipe(
+      filter(response => handleErrors(response)),
+      tap(() => this.refetch())
+    );
   }
 
   setSelectedUserId(userId: number): void {
@@ -125,10 +140,23 @@ export class NotesStateService extends LocalStateService<NotesState> {
     });
   }
 
+  setSelectedBookId(bookId: number): void {
+    this.setState({
+      ...this.state,
+      selectedBookId: bookId
+    });
+  }
+
   setNoteSearchTerm(searchTerm: string): void {
     this.setState({
       ...this.state,
       noteSearchTerm: searchTerm
     });
+  }
+
+  private refetch() {
+    this.notesQueryRef.refetch();
+    this.usersQueryRef.refetch();
+    this.booksQueryRef.refetch();
   }
 }

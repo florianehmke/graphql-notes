@@ -31,8 +31,8 @@ public class NoteService {
     this.notificationService = notificationService;
   }
 
-  public Collection<Note> findBy(Long userId, String searchTerm) {
-    return noteRepository.findAll(searchBy(userId, searchTerm));
+  public Collection<Note> findBy(Long bookId, Long userId, String searchTerm) {
+    return noteRepository.findAll(searchBy(bookId, userId, searchTerm));
   }
 
   public boolean deleteNote(Long noteId) {

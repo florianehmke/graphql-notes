@@ -53,6 +53,7 @@ export type Notification = {
 export type Query = {
   currentUser?: Maybe<User>;
   notes?: Maybe<Array<Maybe<Note>>>;
+  books?: Maybe<Array<Maybe<Book>>>;
   users?: Maybe<Array<Maybe<User>>>;
 };
 
@@ -60,6 +61,7 @@ export type Query = {
 export type QueryNotesArgs = {
   searchTerm?: Maybe<Scalars['String']>;
   userId?: Maybe<Scalars['Long']>;
+  bookId?: Maybe<Scalars['Long']>;
 };
 
 /** Subscription root */
@@ -75,7 +77,7 @@ export type User = {
   userId?: Maybe<Scalars['String']>;
 };
 export type AddNoteMutationVariables = {
-  bookTitle: Maybe<Scalars['String']>;
+  bookTitle: Scalars['String'];
   title: Scalars['String'];
   content: Scalars['String'];
 };
@@ -93,6 +95,14 @@ export type DeleteNoteMutation = { __typename?: 'Mutation' } & Pick<
   'deleteNote'
 >;
 
+export type BooksQueryVariables = {};
+
+export type BooksQuery = { __typename?: 'Query' } & {
+  books: Maybe<
+    Array<Maybe<{ __typename?: 'Book' } & Pick<Book, 'id' | 'bookTitle'>>>
+  >;
+};
+
 export type CurrentUserQueryVariables = {};
 
 export type CurrentUserQuery = { __typename?: 'Query' } & {
@@ -102,6 +112,7 @@ export type CurrentUserQuery = { __typename?: 'Query' } & {
 };
 
 export type NotesQueryVariables = {
+  bookId?: Maybe<Scalars['Long']>;
   userId?: Maybe<Scalars['Long']>;
   searchTerm?: Maybe<Scalars['String']>;
 };
@@ -117,6 +128,7 @@ export type NotesQuery = { __typename?: 'Query' } & {
             createdBy: Maybe<
               { __typename?: 'User' } & Pick<User, 'firstName' | 'lastName'>
             >;
+            book: Maybe<{ __typename?: 'Book' } & Pick<Book, 'bookTitle'>>;
           }
       >
     >
@@ -151,11 +163,7 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 
 export const AddNoteDocument = gql`
-  mutation addNote(
-    $bookTitle: String = "Default"
-    $title: String!
-    $content: String!
-  ) {
+  mutation addNote($bookTitle: String!, $title: String!, $content: String!) {
     addNote(bookTitle: $bookTitle, title: $title, content: $content) {
       id
     }
@@ -186,6 +194,21 @@ export class DeleteNoteGQL extends Apollo.Mutation<
 > {
   document = DeleteNoteDocument;
 }
+export const BooksDocument = gql`
+  query books {
+    books {
+      id
+      bookTitle
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BooksGQL extends Apollo.Query<BooksQuery, BooksQueryVariables> {
+  document = BooksDocument;
+}
 export const CurrentUserDocument = gql`
   query currentUser {
     currentUser {
@@ -205,14 +228,17 @@ export class CurrentUserGQL extends Apollo.Query<
   document = CurrentUserDocument;
 }
 export const NotesDocument = gql`
-  query notes($userId: Long, $searchTerm: String) {
-    notes(userId: $userId, searchTerm: $searchTerm) {
+  query notes($bookId: Long, $userId: Long, $searchTerm: String) {
+    notes(bookId: $bookId, userId: $userId, searchTerm: $searchTerm) {
       id
       noteTitle
       noteContent
       createdBy {
         firstName
         lastName
+      }
+      book {
+        bookTitle
       }
     }
   }

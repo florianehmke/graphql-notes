@@ -5,6 +5,8 @@ import com.github.florianehmke.graphqlnotes.persistence.repository.BookRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class BookService {
 
@@ -30,6 +32,10 @@ public class BookService {
   }
 
   public void removeBook(Book book) {
-      bookRepository.delete(book);
+    bookRepository.delete(book);
+  }
+
+  public Collection<Book> findAll() {
+    return bookRepository.findAll();
   }
 }

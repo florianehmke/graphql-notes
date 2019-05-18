@@ -1,5 +1,5 @@
-query notes ($userId: Long, $searchTerm: String) {
-  notes(userId: $userId, searchTerm: $searchTerm) {
+query notes ($bookId: Long, $userId: Long, $searchTerm: String) {
+  notes(bookId: $bookId, userId: $userId, searchTerm: $searchTerm) {
     id
     noteTitle
     noteContent
@@ -7,6 +7,8 @@ query notes ($userId: Long, $searchTerm: String) {
       firstName
       lastName
     }
+    book {
+        bookTitle
+    }
   }
 }
-

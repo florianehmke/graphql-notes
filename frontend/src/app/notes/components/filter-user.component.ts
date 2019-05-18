@@ -11,7 +11,6 @@ import { User } from '../../../generated/graphql';
   selector: 'app-filter-user',
   template: `
     <p
-      class="text-right"
       [class.text-muted]="selectedUserId !== user.id"
       (click)="userIdSelected.emit(user.id)"
     >

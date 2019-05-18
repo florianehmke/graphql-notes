@@ -8,11 +8,15 @@ import { NotesStateService } from './state/notes-state.service';
     <h3 class="border-dark border-bottom">Create Note</h3>
     <form [formGroup]="noteForm" (ngSubmit)="onSubmit()" novalidate>
       <div class="row d-flex align-items-end mb-1">
-        <div class="col-9">
+        <div class="col-5">
+          <small>Book Title</small>
+          <input formControlName="bookTitle" />
+        </div>
+        <div class="col-5">
           <small>Title</small>
           <input formControlName="title" />
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <button type="submit" [disabled]="noteForm.invalid">
             Create Note
           </button>
@@ -44,13 +48,19 @@ export class FormComponent {
 
   constructor(private fb: FormBuilder, private notesState: NotesStateService) {
     this.noteForm = this.fb.group({
+      bookTitle: ['', Validators.required],
       title: ['', Validators.required],
       content: ['', Validators.required]
     });
   }
+
   onSubmit() {
     this.notesState
-      .addNote(this.noteForm.value.title, this.noteForm.value.content)
+      .addNote(
+        this.noteForm.value.bookTitle,
+        this.noteForm.value.title,
+        this.noteForm.value.content
+      )
       .subscribe();
   }
 }

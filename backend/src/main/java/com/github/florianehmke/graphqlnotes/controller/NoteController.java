@@ -28,8 +28,8 @@ public class NoteController {
 
   @VerifyUser
   @GraphQLQuery
-  public Collection<Note> notes(@UserId Long userId, String searchTerm) {
-    return noteService.findBy(userId, searchTerm);
+  public Collection<Note> notes(Long bookId, @UserId Long userId, String searchTerm) {
+    return noteService.findBy(bookId, userId, searchTerm);
   }
 
   @GraphQLMutation

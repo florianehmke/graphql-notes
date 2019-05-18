@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { DestructionAware } from '../../lib/destruction-aware';
-import { User } from '../../generated/graphql';
+import { Book, User } from '../../generated/graphql';
 
 @Component({
   selector: 'app-filter',
@@ -13,6 +13,15 @@ import { User } from '../../generated/graphql';
     <div class="d-flex align-items-start">
       <app-filter-container class="mr-3" label="Search by Title/Content">
         <input class="w-100" [formControl]="searchControl" />
+      </app-filter-container>
+      <app-filter-container label="Filter by Book" [showBorder]="true">
+        <app-filter-book
+          *ngFor="let book of books$ | async"
+          [book]="book"
+          [selectedBookId]="selectedBookId$ | async"
+          (bookIdSelected)="selectBookId($event)"
+        >
+        </app-filter-book>
       </app-filter-container>
       <app-filter-container label="Filter by Author" [showBorder]="true">
         <app-filter-user
@@ -30,12 +39,18 @@ import { User } from '../../generated/graphql';
 export class FilterComponent extends DestructionAware implements OnInit {
   users$: Observable<User[]>;
   selectedUserId$: Observable<number>;
+
+  books$: Observable<Book[]>;
+  selectedBookId$: Observable<number>;
+
   searchControl: FormControl;
 
   constructor(private notesState: NotesStateService) {
     super();
     this.users$ = this.notesState.users$;
     this.selectedUserId$ = this.notesState.selectedUserId$;
+    this.books$ = this.notesState.books$;
+    this.selectedBookId$ = this.notesState.selectedBookId$;
     this.searchControl = new FormControl('');
   }
 
@@ -44,6 +59,13 @@ export class FilterComponent extends DestructionAware implements OnInit {
     const selectedUserId = currentId !== userId ? userId : null;
 
     this.notesState.setSelectedUserId(selectedUserId);
+  }
+
+  selectBookId(bookId: number) {
+    const currentId = this.notesState.state.selectedBookId;
+    const selectedBookId = currentId !== bookId ? bookId : null;
+
+    this.notesState.setSelectedBookId(selectedBookId);
   }
 
   ngOnInit(): void {

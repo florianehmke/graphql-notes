@@ -10,6 +10,7 @@ import { FilterComponent } from './filter.component';
 import { FilterContainerComponent } from './components/filter-container.component';
 import { FilterUserComponent } from './components/filter-user.component';
 import { NoteComponent } from './components/note.component';
+import { FilterBookComponent } from './components/filter-book.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NoteComponent } from './components/note.component';
     ListComponent,
     NoteComponent,
     FilterContainerComponent,
-    FilterUserComponent
+    FilterUserComponent,
+    FilterBookComponent
   ],
   exports: [HeaderComponent, ListComponent, FilterComponent, FormComponent],
   imports: [CommonModule, ReactiveFormsModule],

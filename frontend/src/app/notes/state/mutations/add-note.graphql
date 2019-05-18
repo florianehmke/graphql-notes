@@ -1,4 +1,4 @@
-mutation addNote($bookTitle: String, $title: String!, $content: String!) {
+mutation addNote($bookTitle: String!, $title: String!, $content: String!) {
   addNote(bookTitle: $bookTitle, title: $title, content: $content) {
     id
   }
