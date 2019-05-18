@@ -5,9 +5,9 @@ import { Apollo, ApolloModule } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { split } from 'apollo-link';
-
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
+
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -18,12 +18,12 @@ export class GraphQLModule {
     const subscriptionLink = new WebSocketLink({
       uri: environment.gqlWebsocketEndpoint,
       options: {
-        reconnect: true,
+        reconnect: true
       }
     });
 
     const httpLink = new HttpLink(httpClient).create({
-      uri: environment.gqlEndpoint,
+      uri: environment.gqlEndpoint
     });
 
     const link = split(
@@ -32,7 +32,7 @@ export class GraphQLModule {
         return kind === 'OperationDefinition' && operation === 'subscription';
       },
       subscriptionLink,
-      httpLink,
+      httpLink
     );
 
     apollo.create({

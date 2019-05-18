@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { QueryRef } from 'apollo-angular';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, skip, tap } from 'rxjs/operators';
@@ -40,7 +40,7 @@ const initialState: NotesState = {
 };
 
 @Injectable()
-export class NotesStateService extends LocalStateService<NotesState> {
+export class NotesStateService extends LocalStateService<NotesState> implements OnInit {
   selectedUserId$ = this.state$.pipe(map(s => s.selectedUserId));
   selectedBookId$ = this.state$.pipe(map(s => s.selectedBookId));
   noteSearchTerm$ = this.state$.pipe(map(s => s.noteSearchTerm));
@@ -66,26 +66,28 @@ export class NotesStateService extends LocalStateService<NotesState> {
     private notificationsGQL: NotificationsGQL
   ) {
     super(initialState);
+  }
 
-    this.notesQueryRef = notesGQL.watch();
+  ngOnInit(): void {
+    this.notesQueryRef = this.notesGQL.watch();
     this.notes$ = this.notesQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),
       map(vc => vc.data.notes)
     );
 
-    this.usersQueryRef = usersGQL.watch();
+    this.usersQueryRef = this.usersGQL.watch();
     this.users$ = this.usersQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),
       map(vc => vc.data.users)
     );
 
-    this.booksQueryRef = booksGQL.watch();
+    this.booksQueryRef = this.booksGQL.watch();
     this.books$ = this.booksQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),
       map(vc => vc.data.books)
     );
 
-    this.loginQueryRef = currentUserGQL.watch();
+    this.loginQueryRef = this.currentUserGQL.watch();
     this.login$ = this.loginQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),
       map(vc => vc.data.currentUser)
