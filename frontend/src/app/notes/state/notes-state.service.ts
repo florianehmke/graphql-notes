@@ -40,7 +40,7 @@ const initialState: NotesState = {
 };
 
 @Injectable()
-export class NotesStateService extends LocalStateService<NotesState> implements OnInit {
+export class NotesStateService extends LocalStateService<NotesState> {
   selectedUserId$ = this.state$.pipe(map(s => s.selectedUserId));
   selectedBookId$ = this.state$.pipe(map(s => s.selectedBookId));
   noteSearchTerm$ = this.state$.pipe(map(s => s.noteSearchTerm));
@@ -66,9 +66,7 @@ export class NotesStateService extends LocalStateService<NotesState> implements 
     private notificationsGQL: NotificationsGQL
   ) {
     super(initialState);
-  }
 
-  ngOnInit(): void {
     this.notesQueryRef = this.notesGQL.watch();
     this.notes$ = this.notesQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),

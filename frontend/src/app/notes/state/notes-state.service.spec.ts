@@ -28,7 +28,6 @@ describe('NotesStateService', () => {
       providers: [NotesStateService]
     });
     service = TestBed.get(NotesStateService);
-    service.ngOnInit();
     controller = TestBed.get(ApolloTestingController);
     jest.useFakeTimers();
   });
