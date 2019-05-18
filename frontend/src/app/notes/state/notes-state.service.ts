@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { QueryRef } from 'apollo-angular';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, map, mapTo, skip, tap } from 'rxjs/operators';
+import { filter, map, skip, tap } from 'rxjs/operators';
 
 import { LocalStateService } from '../../../lib/local-state.service';
 import { handleErrors } from '../../../lib/errors';
 import {
   AddNoteGQL,
-  AddNoteMutation,
   Book,
   BooksGQL,
   BooksQuery,
@@ -16,7 +15,6 @@ import {
   CurrentUserQuery,
   CurrentUserQueryVariables,
   DeleteNoteGQL,
-  DeleteNoteMutation,
   Note,
   NotesGQL,
   NotesQuery,
@@ -43,23 +41,20 @@ const initialState: NotesState = {
 
 @Injectable()
 export class NotesStateService extends LocalStateService<NotesState> {
-  users$: Observable<User[]>;
-  notes$: Observable<Note[]>;
-  books$: Observable<Book[]>;
-  currentUser$: Observable<User>;
-  notifications$: Observable<Notification>;
-
   selectedUserId$ = this.state$.pipe(map(s => s.selectedUserId));
   selectedBookId$ = this.state$.pipe(map(s => s.selectedBookId));
   noteSearchTerm$ = this.state$.pipe(map(s => s.noteSearchTerm));
 
+  users$: Observable<User[]>;
+  notes$: Observable<Note[]>;
+  books$: Observable<Book[]>;
+  login$: Observable<User>;
+  notifications$: Observable<Notification>;
+
   private usersQueryRef: QueryRef<UsersQuery, UsersQueryVariables>;
   private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
   private booksQueryRef: QueryRef<BooksQuery, BooksQueryVariables>;
-  private currentUserQueryRef: QueryRef<
-    CurrentUserQuery,
-    CurrentUserQueryVariables
-  >;
+  private loginQueryRef: QueryRef<CurrentUserQuery, CurrentUserQueryVariables>;
 
   constructor(
     private addNoteGQL: AddNoteGQL,
@@ -90,8 +85,8 @@ export class NotesStateService extends LocalStateService<NotesState> {
       map(vc => vc.data.books)
     );
 
-    this.currentUserQueryRef = currentUserGQL.watch();
-    this.currentUser$ = this.currentUserQueryRef.valueChanges.pipe(
+    this.loginQueryRef = currentUserGQL.watch();
+    this.login$ = this.loginQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),
       map(vc => vc.data.currentUser)
     );
@@ -102,7 +97,33 @@ export class NotesStateService extends LocalStateService<NotesState> {
     );
   }
 
-  refetchNotesOnFilterChanges(): Observable<any> {
+  deleteNote(noteId: number): Observable<any> {
+    return this.deleteNoteGQL.mutate({ noteId }).pipe(
+      filter(response => handleErrors(response)),
+      tap(() => this.refetchQueries())
+    );
+  }
+
+  addNote(bookTitle, title: string, content: string): Observable<any> {
+    return this.addNoteGQL.mutate({ bookTitle, title, content }).pipe(
+      filter(response => handleErrors(response)),
+      tap(() => this.refetchQueries())
+    );
+  }
+
+  setSelectedUserId(userId: number): void {
+    this.setState({ selectedUserId: userId });
+  }
+
+  setSelectedBookId(bookId: number): void {
+    this.setState({ selectedBookId: bookId });
+  }
+
+  setNoteSearchTerm(searchTerm: string): void {
+    this.setState({ noteSearchTerm: searchTerm });
+  }
+
+  refetchNotesVariableChanges(): Observable<any> {
     return combineLatest(
       this.selectedBookId$,
       this.selectedUserId$,
@@ -115,46 +136,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
     );
   }
 
-  deleteNote(noteId: number): Observable<DeleteNoteMutation> {
-    return this.deleteNoteGQL.mutate({ noteId }).pipe(
-      filter(response => handleErrors(response)),
-      tap(() => this.refetch())
-    );
-  }
-
-  addNote(
-    bookTitle: string,
-    title: string,
-    content: string
-  ): Observable<AddNoteMutation> {
-    return this.addNoteGQL.mutate({ bookTitle, title, content }).pipe(
-      filter(response => handleErrors(response)),
-      tap(() => this.refetch())
-    );
-  }
-
-  setSelectedUserId(userId: number): void {
-    this.setState({
-      ...this.state,
-      selectedUserId: userId
-    });
-  }
-
-  setSelectedBookId(bookId: number): void {
-    this.setState({
-      ...this.state,
-      selectedBookId: bookId
-    });
-  }
-
-  setNoteSearchTerm(searchTerm: string): void {
-    this.setState({
-      ...this.state,
-      noteSearchTerm: searchTerm
-    });
-  }
-
-  private refetch() {
+  private refetchQueries() {
     this.notesQueryRef.refetch();
     this.usersQueryRef.refetch();
     this.booksQueryRef.refetch();

@@ -5,13 +5,14 @@ import {
 import { TestBed } from '@angular/core/testing';
 import { NotesStateService } from './notes-state.service';
 import {
-  UsersDocument,
-  NotesDocument,
-  NotificationsDocument,
   AddNoteDocument,
   AddNoteMutationVariables,
+  BooksDocument,
+  DeleteNoteDocument,
   DeleteNoteMutationVariables,
-  DeleteNoteDocument
+  NotesDocument,
+  NotificationsDocument,
+  UsersDocument
 } from '../../../generated/graphql';
 import { userFactory } from '../../../testing/mocks/user';
 import { noteFactory } from '../../../testing/mocks/note';
@@ -56,9 +57,9 @@ describe('NotesStateService', () => {
         expect(notes[0].id).toEqual(testNote.id);
         expect(notes[0].noteTitle).toEqual(testNote.noteTitle);
         expect(notes[0].noteContent).toEqual(testNote.noteContent);
-        expect(notes[0].user).toEqual({
-          firstName: testNote.user.firstName,
-          lastName: testNote.user.lastName
+        expect(notes[0].createdBy).toEqual({
+          firstName: testNote.createdBy.firstName,
+          lastName: testNote.createdBy.lastName
         });
         done();
       });
@@ -91,11 +92,16 @@ describe('NotesStateService', () => {
     it('addNote should add a note and refresh notes and users', done => {
       const testNote = noteFactory.build();
       service
-        .addNote(testNote.noteTitle, testNote.noteContent)
+        .addNote(
+          testNote.book.bookTitle,
+          testNote.noteTitle,
+          testNote.noteContent
+        )
         .subscribe(() => {
           // Expect a refetch of notes and users.
           controller.expectOne(NotesDocument);
           controller.expectOne(UsersDocument);
+          controller.expectOne(BooksDocument);
           done();
         });
       const op = controller.expectOne(AddNoteDocument);
@@ -114,6 +120,7 @@ describe('NotesStateService', () => {
         // Expect a refetch of notes and users.
         controller.expectOne(NotesDocument);
         controller.expectOne(UsersDocument);
+        controller.expectOne(BooksDocument);
         done();
       });
       const op = controller.expectOne(DeleteNoteDocument);

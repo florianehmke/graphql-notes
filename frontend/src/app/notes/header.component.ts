@@ -10,7 +10,7 @@ import { Notification, User } from '../../generated/graphql';
       GraphQL Notes
     </h1>
     <div class="d-flex justify-content-between">
-        <small *ngIf="currentUser$ | async as user; else notLoggedIn"
+        <small *ngIf="login$ | async as user; else notLoggedIn"
         >User: {{ user.firstName }} {{ user.lastName }}</small
         >
         <ng-template #notLoggedIn>
@@ -24,11 +24,11 @@ import { Notification, User } from '../../generated/graphql';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  currentUser$: Observable<User>;
+  login$: Observable<User>;
   notifications$: Observable<Notification>;
 
   constructor(private notesState: NotesStateService) {
-    this.currentUser$ = notesState.currentUser$;
+    this.login$ = notesState.login$;
     this.notifications$ = notesState.notifications$;
   }
 }

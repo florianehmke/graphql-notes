@@ -11,11 +11,14 @@ export class LocalStateService<T> extends DestructionAware {
     this.state$ = this._state$.asObservable();
   }
 
-  get state (): T {
+  get state(): T {
     return this._state$.getValue();
   }
 
-  setState(nextState: T) {
-    this._state$.next(nextState);
+  setState(nextState: Partial<T>) {
+    this._state$.next({
+      ...this.state,
+      ...nextState
+    });
   }
 }

@@ -70,7 +70,7 @@ export class FilterComponent extends DestructionAware implements OnInit {
 
   ngOnInit(): void {
     this.notesState
-      .refetchNotesOnFilterChanges()
+      .refetchNotesVariableChanges()
       .pipe(takeUntil(this.destroyed()))
       .subscribe();
 
