@@ -11,7 +11,7 @@ import { Book, User } from '../../generated/graphql';
   template: `
     <h3 class="border-dark border-bottom">Filter Notes</h3>
     <div class="d-flex align-items-start">
-      <app-filter-container class="mr-3" label="Search by Title/Content">
+      <app-filter-container label="Search by Title/Content" class="mr-3">
         <input class="w-100" [formControl]="searchControl" />
       </app-filter-container>
       <app-filter-container label="Filter by Book" [showBorder]="true">
