@@ -3,7 +3,7 @@ query notes ($userId: Long, $searchTerm: String) {
     id
     noteTitle
     noteContent
-    user {
+    createdBy {
       firstName
       lastName
     }

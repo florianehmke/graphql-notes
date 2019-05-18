@@ -26,7 +26,7 @@ public class NoteSpecifications {
         predicates.add(cb.or(title, content));
       }
       if (userId != null) {
-        predicates.add(cb.equal(note.join(Note_.USER).get(User_.ID), userId));
+        predicates.add(cb.equal(note.join(Note_.CREATED_BY).get(User_.ID), userId));
       }
       return andTogether(predicates, cb);
     };

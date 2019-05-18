@@ -107,13 +107,15 @@ export class NotesStateService extends LocalStateService<NotesState> {
   }
 
   addNote(title: string, content: string): Observable<AddNoteMutation> {
-    return this.addNoteGQL.mutate({ title, content }).pipe(
-      filter(response => handleErrors(response)),
-      tap(() => {
-        this.notesQueryRef.refetch();
-        this.usersQueryRef.refetch();
-      })
-    );
+    return this.addNoteGQL
+      .mutate({ bookTitle: 'Default', title, content })
+      .pipe(
+        filter(response => handleErrors(response)),
+        tap(() => {
+          this.notesQueryRef.refetch();
+          this.usersQueryRef.refetch();
+        })
+      );
   }
 
   setSelectedUserId(userId: number): void {

@@ -2,7 +2,7 @@ package com.github.florianehmke.graphqlnotes.controller;
 
 import com.github.florianehmke.graphqlnotes.configuration.Role;
 import com.github.florianehmke.graphqlnotes.persistence.model.User;
-import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;
+import com.github.florianehmke.graphqlnotes.service.NoteService;
 import com.github.florianehmke.graphqlnotes.service.UserService;
 import io.leangen.graphql.annotations.GraphQLContext;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -18,11 +18,11 @@ import java.util.Collection;
 public class UserController {
 
   private UserService userService;
-  private NoteRepository noteRepository;
+  private NoteService noteService;
 
-  public UserController(UserService userService, NoteRepository noteRepository) {
+  public UserController(UserService userService, NoteService noteService) {
     this.userService = userService;
-    this.noteRepository = noteRepository;
+    this.noteService = noteService;
   }
 
   @GraphQLQuery
@@ -38,6 +38,6 @@ public class UserController {
   @GraphQLQuery
   @RolesAllowed(Role.ADMIN)
   public Long noteCount(@GraphQLContext User user) {
-    return noteRepository.countByUserId(user.getId());
+    return noteService.countByCreatedBy(user);
   }
 }

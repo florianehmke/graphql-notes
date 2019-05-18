@@ -9,13 +9,9 @@ import javax.persistence.ManyToOne;
 @Entity
 @Getter
 @Setter
-public class Note extends BaseEntity {
+public class Book extends BaseEntity {
 
-  private String noteTitle;
-
-  private String noteContent;
-
-  @ManyToOne private Book book;
+  private String bookTitle;
 
   @ManyToOne private User createdBy;
 }

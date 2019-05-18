@@ -5,7 +5,7 @@ import { userFactory } from './user';
 
 export const noteFactory = Factory.Sync.makeFactory<Note>({
   id: Factory.each(i => i),
-  user: userFactory.build(),
+  createdBy: userFactory.build(),
   noteTitle: faker.random.words(2),
   noteContent: faker.random.words(30)
 });

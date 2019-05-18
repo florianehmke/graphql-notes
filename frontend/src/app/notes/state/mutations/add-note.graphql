@@ -1,5 +1,5 @@
-mutation addNote($title: String!, $content: String!) {
-  addNote(title: $title, content: $content) {
+mutation addNote($bookTitle: String, $title: String!, $content: String!) {
+  addNote(bookTitle: $bookTitle, title: $title, content: $content) {
     id
   }
 }
