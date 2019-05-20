@@ -1,6 +1,0 @@
-mutation addNote($param: AddNoteInput!) {
-  addNote(param: $param) {
-    id
-  }
-}
-

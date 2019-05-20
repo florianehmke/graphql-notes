@@ -1,6 +1,6 @@
 package com.github.florianehmke.graphqlnotes.service;
 
-import com.github.florianehmke.graphqlnotes.controller.ClientException;
+import com.github.florianehmke.graphqlnotes.graphql.ClientException;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
 import com.github.florianehmke.graphqlnotes.persistence.model.User;
 import com.github.florianehmke.graphqlnotes.persistence.repository.NoteRepository;

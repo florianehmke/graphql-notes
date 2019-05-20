@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlnotes.controller;
+package com.github.florianehmke.graphqlnotes.graphql;
 
 import com.github.florianehmke.graphqlnotes.configuration.Role;
 import com.github.florianehmke.graphqlnotes.persistence.model.User;
@@ -25,17 +25,17 @@ public class UserController {
     this.noteService = noteService;
   }
 
-  @GraphQLQuery
+  @GraphQLQuery(description = "Loads all known application users.")
   public Collection<User> users() {
     return userService.findAll();
   }
 
-  @GraphQLQuery
+  @GraphQLQuery(description = "Loads the current user.")
   public User currentUser() {
     return userService.currentUser();
   }
 
-  @GraphQLQuery
+  @GraphQLQuery(description = "Loads the amount of notes the given users has.")
   @RolesAllowed(Role.ADMIN)
   public Long noteCount(@GraphQLContext User user) {
     return noteService.countByCreatedBy(user);

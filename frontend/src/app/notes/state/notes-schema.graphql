@@ -1,0 +1,54 @@
+mutation addNote($param: AddNoteInput!) {
+  addNote(param: $param) {
+    id
+  }
+}
+
+mutation deleteNote($param: DeleteNoteInput!) {
+    deleteNote(param: $param)
+}
+
+query currentUser {
+  currentUser {
+    firstName
+    lastName
+  }
+}
+
+query users {
+  users {
+    id
+    firstName
+    lastName
+    noteCount
+  }
+}
+
+query books  {
+  books {
+    id
+    bookTitle
+  }
+}
+
+query notes ($param: NotesFilterInput) {
+  notes(param: $param) {
+    id
+    noteTitle
+    noteContent
+    createdBy {
+      firstName
+      lastName
+    }
+    book {
+        bookTitle
+    }
+  }
+}
+
+subscription notifications {
+  notifications {
+    title
+    content
+  }
+}

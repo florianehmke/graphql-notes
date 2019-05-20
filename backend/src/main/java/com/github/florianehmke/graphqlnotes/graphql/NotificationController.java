@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlnotes.controller;
+package com.github.florianehmke.graphqlnotes.graphql;
 
 import com.github.florianehmke.graphqlnotes.service.Notification;
 import com.github.florianehmke.graphqlnotes.service.NotificationService;
@@ -22,7 +22,7 @@ public class NotificationController {
     this.notificationService = notificationService;
   }
 
-  @GraphQLSubscription
+  @GraphQLSubscription(description = "Get notified about creation/deletion of notes.")
   public Publisher<Notification> notifications() {
     return Flux.create(notificationService::addSubscriber, LATEST);
   }

@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlnotes.controller;
+package com.github.florianehmke.graphqlnotes.graphql;
 
 import com.github.florianehmke.graphqlnotes.configuration.Role;
 import com.github.florianehmke.graphqlnotes.persistence.model.Book;
@@ -23,7 +23,7 @@ public class BookController {
     this.bookService = bookService;
   }
 
-  @GraphQLQuery
+  @GraphQLQuery(description = "Loads all books.")
   public Collection<Book> books() {
     return bookService.findAll();
   }

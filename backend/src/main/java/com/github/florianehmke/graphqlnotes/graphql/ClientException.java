@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlnotes.controller;
+package com.github.florianehmke.graphqlnotes.graphql;
 
 import graphql.ErrorType;
 import graphql.GraphQLError;

@@ -136,7 +136,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
     ).pipe(
       skip(1),
       tap(([bookId, userId, searchTerm]) =>
-        this.notesQueryRef.refetch({ bookId, userId, searchTerm })
+        this.notesQueryRef.refetch({ param: { bookId, userId, searchTerm } })
       )
     );
   }

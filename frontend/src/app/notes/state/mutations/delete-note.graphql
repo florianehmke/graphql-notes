@@ -1,4 +1,0 @@
-mutation deleteNote($param: DeleteNoteInput!) {
-    deleteNote(param: $param)
-}
-

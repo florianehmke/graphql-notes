@@ -1,4 +1,4 @@
-package com.github.florianehmke.graphqlnotes.controller.parameters;
+package com.github.florianehmke.graphqlnotes.graphql.parameters;
 
 import lombok.Getter;
 import lombok.Setter;
