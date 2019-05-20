@@ -127,7 +127,7 @@ describe('NotesStateService', () => {
       const op = controller.expectOne(DeleteNoteDocument);
       const variables = <DeleteNoteMutationVariables>op.operation.variables;
 
-      expect(variables.noteId).toEqual(testNote.id);
+      expect(variables.param.noteId).toEqual(testNote.id);
 
       op.flush({ data: { deleteNote: {} } });
       jest.runAllTimers();

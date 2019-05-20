@@ -1,4 +1,4 @@
-mutation deleteNote($noteId: Long!) {
-    deleteNote(noteId: $noteId)
+mutation deleteNote($param: DeleteNoteInput!) {
+    deleteNote(param: $param)
 }
 

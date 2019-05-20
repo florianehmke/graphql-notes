@@ -57,12 +57,15 @@ export class NotesStateService extends LocalStateService<NotesState> {
   private loginQueryRef: QueryRef<CurrentUserQuery, CurrentUserQueryVariables>;
 
   constructor(
+    // Mutations
     private addNoteGQL: AddNoteGQL,
     private deleteNoteGQL: DeleteNoteGQL,
+    // Queries
     private notesGQL: NotesGQL,
     private usersGQL: UsersGQL,
     private booksGQL: BooksGQL,
     private currentUserGQL: CurrentUserGQL,
+    // Subscriptions
     private notificationsGQL: NotificationsGQL
   ) {
     super(initialState);
@@ -98,7 +101,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
   }
 
   deleteNote(noteId: number): Observable<any> {
-    return this.deleteNoteGQL.mutate({ noteId }).pipe(
+    return this.deleteNoteGQL.mutate({ param: { noteId } }).pipe(
       filter(response => handleErrors(response)),
       tap(() => this.refetchQueries())
     );

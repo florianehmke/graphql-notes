@@ -13,15 +13,19 @@ export type Scalars = {
 };
 
 export type AddNoteInput = {
-  noteTitle?: Maybe<Scalars['String']>;
   content?: Maybe<Scalars['String']>;
   bookTitle?: Maybe<Scalars['String']>;
+  noteTitle?: Maybe<Scalars['String']>;
 };
 
 export type Book = {
   bookTitle?: Maybe<Scalars['String']>;
   createdBy?: Maybe<User>;
   id?: Maybe<Scalars['Long']>;
+};
+
+export type DeleteNoteInput = {
+  noteId?: Maybe<Scalars['Long']>;
 };
 
 /** Mutation root */
@@ -37,7 +41,7 @@ export type MutationAddNoteArgs = {
 
 /** Mutation root */
 export type MutationDeleteNoteArgs = {
-  noteId?: Maybe<Scalars['Long']>;
+  param?: Maybe<DeleteNoteInput>;
 };
 
 export type Note = {
@@ -89,7 +93,7 @@ export type AddNoteMutation = { __typename?: 'Mutation' } & {
 };
 
 export type DeleteNoteMutationVariables = {
-  noteId: Scalars['Long'];
+  param: DeleteNoteInput;
 };
 
 export type DeleteNoteMutation = { __typename?: 'Mutation' } & Pick<
@@ -182,8 +186,8 @@ export class AddNoteGQL extends Apollo.Mutation<
   document = AddNoteDocument;
 }
 export const DeleteNoteDocument = gql`
-  mutation deleteNote($noteId: Long!) {
-    deleteNote(noteId: $noteId)
+  mutation deleteNote($param: DeleteNoteInput!) {
+    deleteNote(param: $param)
   }
 `;
 

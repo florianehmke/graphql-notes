@@ -2,6 +2,7 @@ package com.github.florianehmke.graphqlnotes.controller;
 
 import com.github.florianehmke.graphqlnotes.configuration.Role;
 import com.github.florianehmke.graphqlnotes.controller.parameters.AddNote;
+import com.github.florianehmke.graphqlnotes.controller.parameters.DeleteNote;
 import com.github.florianehmke.graphqlnotes.permission.UserId;
 import com.github.florianehmke.graphqlnotes.permission.VerifyUser;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
@@ -34,8 +35,8 @@ public class NoteController {
   }
 
   @GraphQLMutation
-  public boolean deleteNote(Long noteId) {
-    return noteService.deleteNote(noteId);
+  public boolean deleteNote(DeleteNote param) {
+    return noteService.deleteNote(param.getNoteId());
   }
 
   @GraphQLMutation
