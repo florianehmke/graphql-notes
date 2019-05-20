@@ -1,14 +1,12 @@
 package com.github.florianehmke.graphqlnotes.service;
 
-import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.FluxSink;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@GraphQLApi
+@Service
 public class NotificationService {
 
   private final List<FluxSink<Notification>> subscribers = new ArrayList<>();
