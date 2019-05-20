@@ -1,6 +1,7 @@
 package com.github.florianehmke.graphqlnotes.controller;
 
 import com.github.florianehmke.graphqlnotes.configuration.Role;
+import com.github.florianehmke.graphqlnotes.controller.parameters.AddNote;
 import com.github.florianehmke.graphqlnotes.permission.UserId;
 import com.github.florianehmke.graphqlnotes.permission.VerifyUser;
 import com.github.florianehmke.graphqlnotes.persistence.model.Note;
@@ -38,7 +39,7 @@ public class NoteController {
   }
 
   @GraphQLMutation
-  public Note addNote(String bookTitle, String title, String content) {
-    return noteService.addNote(bookTitle, title, content);
+  public Note addNote(AddNote param) {
+    return noteService.addNote(param.getBookTitle(), param.getNoteTitle(), param.getContent());
   }
 }

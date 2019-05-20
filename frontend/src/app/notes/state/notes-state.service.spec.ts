@@ -107,8 +107,9 @@ describe('NotesStateService', () => {
       const op = controller.expectOne(AddNoteDocument);
       const variables = <AddNoteMutationVariables>op.operation.variables;
 
-      expect(variables.title).toEqual(testNote.noteTitle);
-      expect(variables.content).toEqual(testNote.noteContent);
+      expect(variables.param.bookTitle).toEqual(testNote.book.bookTitle);
+      expect(variables.param.noteTitle).toEqual(testNote.noteTitle);
+      expect(variables.param.content).toEqual(testNote.noteContent);
 
       op.flush({ data: { addNote: { id: testNote.id } } });
       jest.runAllTimers();

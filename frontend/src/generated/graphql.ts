@@ -12,6 +12,12 @@ export type Scalars = {
   UNREPRESENTABLE: any;
 };
 
+export type AddNoteInput = {
+  noteTitle?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
+  bookTitle?: Maybe<Scalars['String']>;
+};
+
 export type Book = {
   bookTitle?: Maybe<Scalars['String']>;
   createdBy?: Maybe<User>;
@@ -26,9 +32,7 @@ export type Mutation = {
 
 /** Mutation root */
 export type MutationAddNoteArgs = {
-  title?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  bookTitle?: Maybe<Scalars['String']>;
+  param?: Maybe<AddNoteInput>;
 };
 
 /** Mutation root */
@@ -77,9 +81,7 @@ export type User = {
   userId?: Maybe<Scalars['String']>;
 };
 export type AddNoteMutationVariables = {
-  bookTitle: Scalars['String'];
-  title: Scalars['String'];
-  content: Scalars['String'];
+  param: AddNoteInput;
 };
 
 export type AddNoteMutation = { __typename?: 'Mutation' } & {
@@ -163,8 +165,8 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 
 export const AddNoteDocument = gql`
-  mutation addNote($bookTitle: String!, $title: String!, $content: String!) {
-    addNote(bookTitle: $bookTitle, title: $title, content: $content) {
+  mutation addNote($param: AddNoteInput!) {
+    addNote(param: $param) {
       id
     }
   }

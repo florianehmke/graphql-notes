@@ -104,11 +104,13 @@ export class NotesStateService extends LocalStateService<NotesState> {
     );
   }
 
-  addNote(bookTitle, title: string, content: string): Observable<any> {
-    return this.addNoteGQL.mutate({ bookTitle, title, content }).pipe(
-      filter(response => handleErrors(response)),
-      tap(() => this.refetchQueries())
-    );
+  addNote(bookTitle, noteTitle: string, content: string): Observable<any> {
+    return this.addNoteGQL
+      .mutate({ param: { bookTitle, noteTitle, content } })
+      .pipe(
+        filter(response => handleErrors(response)),
+        tap(() => this.refetchQueries())
+      );
   }
 
   setSelectedUserId(userId: number): void {
