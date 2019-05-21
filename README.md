@@ -50,5 +50,9 @@ That said, I can imaging that the possibility to combine client and server state
 
 
 # ToDo
+- Use DataLoader
+- Custom Scalars
+- Use Apollo Client State
+- Aliases
 - Authenticate over WebSocket
 

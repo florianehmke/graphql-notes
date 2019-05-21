@@ -128,7 +128,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
     this.setState({ noteSearchTerm: searchTerm });
   }
 
-  refetchNotesVariableChanges(): Observable<any> {
+  refetchNotesOnVariableChanges(): Observable<any> {
     return combineLatest(
       this.selectedBookId$,
       this.selectedUserId$,
