@@ -7,15 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-@Getter
 @Setter
+@Getter
 public class Note extends BaseEntity {
 
   private String noteTitle;
-
   private String noteContent;
-
   @ManyToOne private Book book;
-
   @ManyToOne private User createdBy;
 }

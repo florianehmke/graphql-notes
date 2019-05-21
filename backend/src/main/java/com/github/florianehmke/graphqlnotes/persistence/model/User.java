@@ -6,13 +6,11 @@ import lombok.Setter;
 import javax.persistence.Entity;
 
 @Entity
-@Getter
 @Setter
+@Getter
 public class User extends BaseEntity {
 
   private String userId;
-
   private String firstName;
-
   private String lastName;
 }

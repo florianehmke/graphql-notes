@@ -7,16 +7,14 @@ import { NotesStateService } from './notes-state.service';
 import {
   AddNoteDocument,
   AddNoteMutationVariables,
-  BooksDocument,
   DeleteNoteDocument,
   DeleteNoteMutationVariables,
   NotesDocument,
-  NotificationsDocument,
-  UsersDocument
+  NotificationsDocument
 } from '../../../generated/graphql';
-import { userFactory } from '../../../testing/mocks/user';
 import { noteFactory } from '../../../testing/mocks/note';
 import { notificationFactory } from '../../../testing/mocks/notification';
+import { notesQueryFactory } from '../../../testing/mocks/notes-query';
 
 describe('NotesStateService', () => {
   let service: NotesStateService;
@@ -34,39 +32,28 @@ describe('NotesStateService', () => {
 
   describe('GQL Queries', () => {
     it('users$ should contain data', done => {
-      const testUser = userFactory.build();
+      const notes = notesQueryFactory.build();
       service.users$.subscribe(users => {
-        expect(users.length).toEqual(1);
-        expect(users[0].firstName).toEqual(testUser.firstName);
-        expect(users[0].lastName).toEqual(testUser.lastName);
-        expect(users[0].noteCount).toEqual(testUser.noteCount);
-        expect(users[0].id).toEqual(testUser.id);
+        expect(users.length).toEqual(2);
+        expect(users[0].firstName).toEqual(notes.users[0].firstName);
+        expect(users[0].lastName).toEqual(notes.users[0].lastName);
+        expect(users[0].noteCount).toEqual(notes.users[0].noteCount);
+        expect(users[0].id).toEqual(notes.users[0].id);
         done();
       });
-
-      controller.expectOne(UsersDocument).flush({
-        data: { users: [testUser] }
-      });
+      controller.expectOne(NotesDocument).flush({ data: notes });
       jest.runAllTimers();
     });
 
     it('notes$ should contain data', done => {
-      const testNote = noteFactory.build();
+      const query = notesQueryFactory.build();
       service.notes$.subscribe(notes => {
-        expect(notes.length).toEqual(1);
-        expect(notes[0].id).toEqual(testNote.id);
-        expect(notes[0].noteTitle).toEqual(testNote.noteTitle);
-        expect(notes[0].noteContent).toEqual(testNote.noteContent);
-        expect(notes[0].createdBy).toEqual({
-          firstName: testNote.createdBy.firstName,
-          lastName: testNote.createdBy.lastName
-        });
+        expect(notes.length).toEqual(2);
+        expect(notes[0].noteContent).toEqual(query.notes[0].noteContent);
+        expect(notes[0].noteTitle).toEqual(query.notes[0].noteTitle);
         done();
       });
-
-      controller.expectOne(NotesDocument).flush({
-        data: { notes: [testNote] }
-      });
+      controller.expectOne(NotesDocument).flush({ data: query });
       jest.runAllTimers();
     });
   });
@@ -80,7 +67,6 @@ describe('NotesStateService', () => {
         expect(notification.content).toEqual(testNotification.content);
         done();
       });
-
       controller.expectOne(NotificationsDocument).flush({
         data: { notifications: testNotification }
       });
@@ -98,10 +84,7 @@ describe('NotesStateService', () => {
           testNote.noteContent
         )
         .subscribe(() => {
-          // Expect a refetch of notes and users.
           controller.expectOne(NotesDocument);
-          controller.expectOne(UsersDocument);
-          controller.expectOne(BooksDocument);
           done();
         });
       const op = controller.expectOne(AddNoteDocument);
@@ -118,10 +101,7 @@ describe('NotesStateService', () => {
     it('deleteNote should delete the note and refresh notes and users', done => {
       const testNote = noteFactory.build();
       service.deleteNote(testNote.id).subscribe(() => {
-        // Expect a refetch of notes and users.
         controller.expectOne(NotesDocument);
-        controller.expectOne(UsersDocument);
-        controller.expectOne(BooksDocument);
         done();
       });
       const op = controller.expectOne(DeleteNoteDocument);

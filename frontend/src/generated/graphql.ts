@@ -13,9 +13,9 @@ export type Scalars = {
 };
 
 export type AddNoteInput = {
-  noteTitle?: Maybe<Scalars['String']>;
   content?: Maybe<Scalars['String']>;
   bookTitle?: Maybe<Scalars['String']>;
+  noteTitle?: Maybe<Scalars['String']>;
 };
 
 export type Book = {
@@ -55,9 +55,9 @@ export type Note = {
 };
 
 export type NotesFilterInput = {
+  searchTerm?: Maybe<Scalars['String']>;
   userId?: Maybe<Scalars['Long']>;
   bookId?: Maybe<Scalars['Long']>;
-  searchTerm?: Maybe<Scalars['String']>;
 };
 
 export type Notification = {
@@ -69,10 +69,10 @@ export type Notification = {
 export type Query = {
   /** Loads the current user. */
   currentUser?: Maybe<User>;
-  /** Loads all books. */
-  books?: Maybe<Array<Maybe<Book>>>;
   /** Loads notes matching the given parameters. */
   notes?: Maybe<Array<Maybe<Note>>>;
+  /** Loads all books. */
+  books?: Maybe<Array<Maybe<Book>>>;
   /** Loads all known application users. */
   users?: Maybe<Array<Maybe<User>>>;
 };

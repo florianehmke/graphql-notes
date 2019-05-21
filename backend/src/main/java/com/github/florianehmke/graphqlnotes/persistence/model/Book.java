@@ -7,11 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-@Getter
 @Setter
+@Getter
 public class Book extends BaseEntity {
 
   private String bookTitle;
-
   @ManyToOne private User createdBy;
 }
