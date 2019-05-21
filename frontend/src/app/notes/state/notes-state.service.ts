@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { QueryRef } from 'apollo-angular';
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map, skip, tap } from 'rxjs/operators';
@@ -8,12 +8,6 @@ import { handleErrors } from '../../../lib/errors';
 import {
   AddNoteGQL,
   Book,
-  BooksGQL,
-  BooksQuery,
-  BooksQueryVariables,
-  CurrentUserGQL,
-  CurrentUserQuery,
-  CurrentUserQueryVariables,
   DeleteNoteGQL,
   Note,
   NotesGQL,
@@ -21,10 +15,7 @@ import {
   NotesQueryVariables,
   Notification,
   NotificationsGQL,
-  User,
-  UsersGQL,
-  UsersQuery,
-  UsersQueryVariables
+  User
 } from '../../../generated/graphql';
 
 export interface NotesState {
@@ -51,48 +42,26 @@ export class NotesStateService extends LocalStateService<NotesState> {
   login$: Observable<User>;
   notifications$: Observable<Notification>;
 
-  private usersQueryRef: QueryRef<UsersQuery, UsersQueryVariables>;
   private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
-  private booksQueryRef: QueryRef<BooksQuery, BooksQueryVariables>;
-  private loginQueryRef: QueryRef<CurrentUserQuery, CurrentUserQueryVariables>;
 
   constructor(
-    // Mutations
     private addNoteGQL: AddNoteGQL,
     private deleteNoteGQL: DeleteNoteGQL,
-    // Queries
     private notesGQL: NotesGQL,
-    private usersGQL: UsersGQL,
-    private booksGQL: BooksGQL,
-    private currentUserGQL: CurrentUserGQL,
-    // Subscriptions
     private notificationsGQL: NotificationsGQL
   ) {
     super(initialState);
 
     this.notesQueryRef = this.notesGQL.watch();
-    this.notes$ = this.notesQueryRef.valueChanges.pipe(
+    const query$ = this.notesQueryRef.valueChanges.pipe(
       tap(response => handleErrors(response)),
-      map(vc => vc.data.notes)
+      map(vc => vc.data)
     );
 
-    this.usersQueryRef = this.usersGQL.watch();
-    this.users$ = this.usersQueryRef.valueChanges.pipe(
-      tap(response => handleErrors(response)),
-      map(vc => vc.data.users)
-    );
-
-    this.booksQueryRef = this.booksGQL.watch();
-    this.books$ = this.booksQueryRef.valueChanges.pipe(
-      tap(response => handleErrors(response)),
-      map(vc => vc.data.books)
-    );
-
-    this.loginQueryRef = this.currentUserGQL.watch();
-    this.login$ = this.loginQueryRef.valueChanges.pipe(
-      tap(response => handleErrors(response)),
-      map(vc => vc.data.currentUser)
-    );
+    this.notes$ = query$.pipe(map(value => value.notes));
+    this.users$ = query$.pipe(map(value => value.users));
+    this.books$ = query$.pipe(map(value => value.books));
+    this.login$ = query$.pipe(map(value => value.currentUser));
 
     this.notifications$ = this.notificationsGQL.subscribe().pipe(
       tap(response => handleErrors(response)),
@@ -103,7 +72,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
   deleteNote(noteId: number): Observable<any> {
     return this.deleteNoteGQL.mutate({ param: { noteId } }).pipe(
       filter(response => handleErrors(response)),
-      tap(() => this.refetchQueries())
+      tap(() => this.notesQueryRef.refetch())
     );
   }
 
@@ -112,7 +81,7 @@ export class NotesStateService extends LocalStateService<NotesState> {
       .mutate({ param: { bookTitle, noteTitle, content } })
       .pipe(
         filter(response => handleErrors(response)),
-        tap(() => this.refetchQueries())
+        tap(() => this.notesQueryRef.refetch())
       );
   }
 
@@ -139,11 +108,5 @@ export class NotesStateService extends LocalStateService<NotesState> {
         this.notesQueryRef.refetch({ param: { bookId, userId, searchTerm } })
       )
     );
-  }
-
-  private refetchQueries() {
-    this.notesQueryRef.refetch();
-    this.usersQueryRef.refetch();
-    this.booksQueryRef.refetch();
   }
 }

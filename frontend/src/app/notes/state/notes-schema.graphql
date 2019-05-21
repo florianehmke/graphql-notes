@@ -8,29 +8,6 @@ mutation deleteNote($param: DeleteNoteInput!) {
     deleteNote(param: $param)
 }
 
-query currentUser {
-  currentUser {
-    firstName
-    lastName
-  }
-}
-
-query users {
-  users {
-    id
-    firstName
-    lastName
-    noteCount
-  }
-}
-
-query books  {
-  books {
-    id
-    bookTitle
-  }
-}
-
 query notes ($param: NotesFilterInput) {
   notes(param: $param) {
     id
@@ -41,8 +18,26 @@ query notes ($param: NotesFilterInput) {
       lastName
     }
     book {
-        bookTitle
+      bookTitle
+      createdBy {
+        firstName
+        lastName
+      }
     }
+  }
+  currentUser {
+    firstName
+    lastName
+  }
+  books {
+    id
+    bookTitle
+  }
+  users {
+    id
+    firstName
+    lastName
+    noteCount
   }
 }
 
