@@ -13,9 +13,9 @@ export type Scalars = {
 };
 
 export type AddNoteInput = {
-  content?: Maybe<Scalars['String']>;
-  bookTitle?: Maybe<Scalars['String']>;
   noteTitle?: Maybe<Scalars['String']>;
+  bookTitle?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
 };
 
 export type Book = {
@@ -55,9 +55,9 @@ export type Note = {
 };
 
 export type NotesFilterInput = {
-  searchTerm?: Maybe<Scalars['String']>;
-  userId?: Maybe<Scalars['Long']>;
   bookId?: Maybe<Scalars['Long']>;
+  userId?: Maybe<Scalars['Long']>;
+  searchTerm?: Maybe<Scalars['String']>;
 };
 
 export type Notification = {
@@ -142,9 +142,6 @@ export type NotesQuery = { __typename?: 'Query' } & {
       >
     >
   >;
-  currentUser: Maybe<
-    { __typename?: 'User' } & Pick<User, 'firstName' | 'lastName'>
-  >;
   books: Maybe<
     Array<Maybe<{ __typename?: 'Book' } & Pick<Book, 'id' | 'bookTitle'>>>
   >;
@@ -157,6 +154,14 @@ export type NotesQuery = { __typename?: 'Query' } & {
         >
       >
     >
+  >;
+};
+
+export type CurrentUserQueryVariables = {};
+
+export type CurrentUserQuery = { __typename?: 'Query' } & {
+  currentUser: Maybe<
+    { __typename?: 'User' } & Pick<User, 'firstName' | 'lastName'>
   >;
 };
 
@@ -222,10 +227,6 @@ export const NotesDocument = gql`
         }
       }
     }
-    currentUser {
-      firstName
-      lastName
-    }
     books {
       id
       bookTitle
@@ -244,6 +245,24 @@ export const NotesDocument = gql`
 })
 export class NotesGQL extends Apollo.Query<NotesQuery, NotesQueryVariables> {
   document = NotesDocument;
+}
+export const CurrentUserDocument = gql`
+  query currentUser {
+    currentUser {
+      firstName
+      lastName
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CurrentUserGQL extends Apollo.Query<
+  CurrentUserQuery,
+  CurrentUserQueryVariables
+> {
+  document = CurrentUserDocument;
 }
 export const NotificationsDocument = gql`
   subscription notifications {

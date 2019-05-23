@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NotesStateService } from './state/notes-state.service';
+import { NotesStateService } from '../state/notes-state.service';
 
 @Component({
   selector: 'app-form',

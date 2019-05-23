@@ -2,19 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { FormComponent } from './form.component';
-import { ListComponent } from './list.component';
-import { HeaderComponent } from './header.component';
+import { FormComponent } from './note-create/form.component';
+import { ListComponent } from './note-list/list.component';
 import { NotesStateService } from './state/notes-state.service';
-import { FilterComponent } from './filter.component';
-import { FilterContainerComponent } from './components/filter-container.component';
-import { FilterUserComponent } from './components/filter-user.component';
-import { NoteComponent } from './components/note.component';
-import { FilterBookComponent } from './components/filter-book.component';
+import { FilterComponent } from './note-filter/filter.component';
+import { FilterContainerComponent } from './note-filter/filter-container.component';
+import { FilterUserComponent } from './note-filter/filter-user.component';
+import { NoteComponent } from './note-list/note.component';
+import { FilterBookComponent } from './note-filter/filter-book.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
     FormComponent,
     FilterComponent,
     ListComponent,
@@ -23,7 +21,7 @@ import { FilterBookComponent } from './components/filter-book.component';
     FilterUserComponent,
     FilterBookComponent
   ],
-  exports: [HeaderComponent, ListComponent, FilterComponent, FormComponent],
+  exports: [ListComponent, FilterComponent, FormComponent],
   imports: [CommonModule, ReactiveFormsModule],
   providers: [NotesStateService]
 })

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { NotesStateService } from './state/notes-state.service';
+import { NotesStateService } from '../state/notes-state.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { DestructionAware } from '../../lib/destruction-aware';
-import { Book, User } from '../../generated/graphql';
+import { DestructionAware } from '../../../lib/destruction-aware';
+import { Book, User } from '../../../generated/graphql';
 
 @Component({
   selector: 'app-filter',

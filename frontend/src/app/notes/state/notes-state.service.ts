@@ -13,8 +13,6 @@ import {
   NotesGQL,
   NotesQuery,
   NotesQueryVariables,
-  Notification,
-  NotificationsGQL,
   User
 } from '../../../generated/graphql';
 
@@ -39,16 +37,13 @@ export class NotesStateService extends LocalStateService<NotesState> {
   users$: Observable<User[]>;
   notes$: Observable<Note[]>;
   books$: Observable<Book[]>;
-  login$: Observable<User>;
-  notifications$: Observable<Notification>;
 
   private notesQueryRef: QueryRef<NotesQuery, NotesQueryVariables>;
 
   constructor(
     private addNoteGQL: AddNoteGQL,
     private deleteNoteGQL: DeleteNoteGQL,
-    private notesGQL: NotesGQL,
-    private notificationsGQL: NotificationsGQL
+    private notesGQL: NotesGQL
   ) {
     super(initialState);
 
@@ -61,12 +56,6 @@ export class NotesStateService extends LocalStateService<NotesState> {
     this.notes$ = query$.pipe(map(value => value.notes));
     this.users$ = query$.pipe(map(value => value.users));
     this.books$ = query$.pipe(map(value => value.books));
-    this.login$ = query$.pipe(map(value => value.currentUser));
-
-    this.notifications$ = this.notificationsGQL.subscribe().pipe(
-      tap(response => handleErrors(response)),
-      map(v => v.data.notifications)
-    );
   }
 
   deleteNote(noteId: number): Observable<any> {

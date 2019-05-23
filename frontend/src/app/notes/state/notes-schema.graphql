@@ -25,10 +25,6 @@ query notes ($param: NotesFilterInput) {
       }
     }
   }
-  currentUser {
-    firstName
-    lastName
-  }
   books {
     id
     bookTitle
@@ -38,12 +34,5 @@ query notes ($param: NotesFilterInput) {
     firstName
     lastName
     noteCount
-  }
-}
-
-subscription notifications {
-  notifications {
-    title
-    content
   }
 }

@@ -1,0 +1,13 @@
+query currentUser {
+  currentUser {
+    firstName
+    lastName
+  }
+}
+
+subscription notifications {
+  notifications {
+    title
+    content
+  }
+}

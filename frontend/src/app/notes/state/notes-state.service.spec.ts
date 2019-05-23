@@ -9,12 +9,9 @@ import {
   AddNoteMutationVariables,
   DeleteNoteDocument,
   DeleteNoteMutationVariables,
-  NotesDocument,
-  NotificationsDocument
+  NotesDocument
 } from '../../../generated/graphql';
-import { noteFactory } from '../../../testing/mocks/note';
-import { notificationFactory } from '../../../testing/mocks/notification';
-import { notesQueryFactory } from '../../../testing/mocks/notes-query';
+import { noteFactory, notesQueryFactory } from '../../../testing/mocks/notes';
 
 describe('NotesStateService', () => {
   let service: NotesStateService;
@@ -56,20 +53,16 @@ describe('NotesStateService', () => {
       controller.expectOne(NotesDocument).flush({ data: query });
       jest.runAllTimers();
     });
-  });
 
-  describe('GQL Subscriptions', () => {
-    it('notifications$ should contain data', done => {
-      const testNotification = notificationFactory.build();
-      service.notifications$.subscribe(notification => {
-        expect(notification).toBeTruthy();
-        expect(notification.title).toEqual(testNotification.title);
-        expect(notification.content).toEqual(testNotification.content);
+    it('books$ should contain data', done => {
+      const query = notesQueryFactory.build();
+      service.books$.subscribe(books => {
+        expect(books.length).toEqual(2);
+        expect(books[0].bookTitle).toEqual(query.books[0].bookTitle);
+        expect(books[0].id).toEqual(query.books[0].id);
         done();
       });
-      controller.expectOne(NotificationsDocument).flush({
-        data: { notifications: testNotification }
-      });
+      controller.expectOne(NotesDocument).flush({ data: query });
       jest.runAllTimers();
     });
   });

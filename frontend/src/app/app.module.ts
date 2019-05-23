@@ -5,12 +5,14 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppHeaderComponent } from './app-header.component';
 import { NotesModule } from './notes/notes.module';
 import { GraphQLModule } from './graphql.module';
 import { keycloakInitializer } from './keycloak';
+import { AppStateService } from './state/app-state.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AppHeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +22,7 @@ import { keycloakInitializer } from './keycloak';
     NotesModule
   ],
   providers: [
+    AppStateService,
     {
       provide: APP_INITIALIZER,
       useFactory: keycloakInitializer,
