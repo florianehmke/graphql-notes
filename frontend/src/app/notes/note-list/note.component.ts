@@ -22,7 +22,7 @@ import { Note } from '../../../generated/graphql';
         <span class="m-0 text-muted"> - {{ note.book.bookTitle }}</span>
       </div>
       <span
-        *ngIf="hover"
+        *ngIf="hover && note.deletable"
         class="m-0 text-danger"
         style="cursor:pointer;"
         (click)="delete.emit(note)"

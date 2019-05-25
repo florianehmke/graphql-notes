@@ -13,16 +13,13 @@ query notes ($param: NotesFilterInput) {
     id
     noteTitle
     noteContent
+    deletable
     createdBy {
       firstName
       lastName
     }
     book {
       bookTitle
-      createdBy {
-        firstName
-        lastName
-      }
     }
   }
   books {

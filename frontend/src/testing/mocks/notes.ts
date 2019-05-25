@@ -14,7 +14,8 @@ export const noteFactory = Factory.Sync.makeFactory<Note>({
   createdBy: userFactory.build(),
   noteTitle: faker.random.words(2),
   noteContent: faker.random.words(30),
-  book: bookFactory.build()
+  book: bookFactory.build(),
+  deletable: faker.random.boolean()
 });
 
 export const notesQueryFactory = Factory.Sync.makeFactory<NotesQuery>({
