@@ -8,7 +8,7 @@ import { User } from '../../generated/graphql';
       >{{ user.firstName }} {{ user.lastName }}</span
     >
     <ng-template #notLoggedIn>
-      Not logged in!
+      <span>Not logged in!</span>
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
