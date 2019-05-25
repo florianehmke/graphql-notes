@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  HostListener,
   Input,
   Output
 } from '@angular/core';
@@ -20,7 +21,12 @@ import { Note } from '../../../generated/graphql';
         </span>
         <span class="m-0 text-muted"> - {{ note.book.bookTitle }}</span>
       </div>
-      <span class="m-0" style="cursor:pointer;" (click)="delete.emit(note)">
+      <span
+        *ngIf="hover"
+        class="m-0 text-danger"
+        style="cursor:pointer;"
+        (click)="delete.emit(note)"
+      >
         Delete
       </span>
     </div>
@@ -40,4 +46,16 @@ import { Note } from '../../../generated/graphql';
 export class NoteComponent {
   @Input() note: Note;
   @Output() delete = new EventEmitter<Note>();
+
+  hover = false;
+
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    this.hover = true;
+  }
+
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.hover = false;
+  }
 }

@@ -10,9 +10,11 @@ import { FilterContainerComponent } from './note-filter/filter-container.compone
 import { FilterUserComponent } from './note-filter/filter-user.component';
 import { NoteComponent } from './note-list/note.component';
 import { FilterBookComponent } from './note-filter/filter-book.component';
+import { NotesComponent } from './notes.component';
 
 @NgModule({
   declarations: [
+    NotesComponent,
     FormComponent,
     FilterComponent,
     ListComponent,
@@ -21,7 +23,7 @@ import { FilterBookComponent } from './note-filter/filter-book.component';
     FilterUserComponent,
     FilterBookComponent
   ],
-  exports: [ListComponent, FilterComponent, FormComponent],
+  exports: [NotesComponent],
   imports: [CommonModule, ReactiveFormsModule],
   providers: [NotesStateService]
 })

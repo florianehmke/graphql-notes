@@ -6,21 +6,21 @@ import { TestBed } from '@angular/core/testing';
 import {
   CurrentUserDocument,
   NotificationsDocument
-} from '../../generated/graphql';
-import { notificationFactory } from '../../testing/mocks/notification';
-import { AppStateService } from './app-state.service';
-import { currentUserQueryFactory } from '../../testing/mocks/user';
+} from '../../../generated/graphql';
+import { notificationFactory } from '../../../testing/mocks/notification';
+import { NavbarStateService } from './navbar-state.service';
+import { currentUserQueryFactory } from '../../../testing/mocks/user';
 
 describe('AppStateService', () => {
-  let service: AppStateService;
+  let service: NavbarStateService;
   let controller: ApolloTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ApolloTestingModule],
-      providers: [AppStateService]
+      providers: [NavbarStateService]
     });
-    service = TestBed.get(AppStateService);
+    service = TestBed.get(NavbarStateService);
     controller = TestBed.get(ApolloTestingController);
     jest.useFakeTimers();
   });
@@ -40,9 +40,9 @@ describe('AppStateService', () => {
   });
 
   describe('GQL Subscriptions', () => {
-    it('notifications$ should contain data', done => {
+    it('notification$ should contain data', done => {
       const testNotification = notificationFactory.build();
-      service.notifications$.subscribe(notification => {
+      service.notification$.subscribe(notification => {
         expect(notification).toBeTruthy();
         expect(notification.title).toEqual(testNotification.title);
         expect(notification.content).toEqual(testNotification.content);
