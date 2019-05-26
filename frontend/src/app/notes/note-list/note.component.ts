@@ -28,7 +28,7 @@ import { Note } from '../../../generated/graphql';
           data-test-id="delete-button"
           class="m-0 text-danger"
           style="cursor:pointer;"
-          *ngIf="hover && note.deletable"
+          *ngIf="deleteButtonVisible"
           (click)="delete.emit(note)"
         >
           Delete
@@ -54,15 +54,15 @@ export class NoteComponent {
   @Input() note: Note;
   @Output() delete = new EventEmitter<Note>();
 
-  hover = false;
+  deleteButtonVisible = false;
 
   @HostListener('mouseenter')
   onMouseEnter() {
-    this.hover = true;
+    this.deleteButtonVisible = this.note.deletable;
   }
 
   @HostListener('mouseleave')
   onMouseLeave() {
-    this.hover = false;
+    this.deleteButtonVisible = false;
   }
 }

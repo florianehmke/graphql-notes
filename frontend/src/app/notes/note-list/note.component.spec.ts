@@ -1,4 +1,5 @@
 import { createHostComponentFactory } from '@netbasal/spectator/jest';
+
 import { NoteComponent } from './note.component';
 import { noteFactory } from '../../../testing/mocks/notes';
 
@@ -38,36 +39,45 @@ describe('NavbarComponent', () => {
     expect(el).toHaveText(note.createdBy.lastName);
   });
 
-  describe('Delete Button', () => {
-    it('should be hidden if note is not deletable', () => {
-      const note = noteFactory.build({deletable: false});
+  it('delete button click should emit event', () => {
+    const note = noteFactory.build({ deletable: true });
+    const host = createHost(`<app-note></app-note>`, false, { note: note });
+    let emittedNote;
+
+    host.component.delete.subscribe(v => (emittedNote = v));
+    host.component.deleteButtonVisible = true;
+    host.detectChanges();
+    host.click(host.query('[data-test-id=delete-button]'));
+
+    expect(emittedNote).toEqual(note);
+  });
+
+  describe('showDeleteButton', () => {
+    it('should initially be false', () => {
+      const note = noteFactory.build({ deletable: true });
       const host = createHost(`<app-note></app-note>`, true, { note: note });
 
-      const el = host.query('[data-test-id=delete-button]');
-      expect(el).toBeFalsy();
+      expect(host.component.deleteButtonVisible).toBeFalsy();
     });
 
-    it('should be visible if note is deletable and note is hovered', () => {
-      const note = noteFactory.build({deletable: true});
+    it('should be true on hover for deletable=true', () => {
+      const note = noteFactory.build({ deletable: true });
       const host = createHost(`<app-note></app-note>`, true, { note: note });
 
       host.dispatchMouseEvent(host.element, 'mouseenter');
       host.detectChanges();
 
-      const el = host.query('[data-test-id=delete-button]');
-      expect(el).toHaveText("Delete");
+      expect(host.component.deleteButtonVisible).toBeTruthy();
     });
 
-    it('should be hidden if note is deletable and note is not hovered', () => {
-      const note = noteFactory.build({deletable: true});
+    it('should be false on hover for deletable=false', () => {
+      const note = noteFactory.build({ deletable: false });
       const host = createHost(`<app-note></app-note>`, true, { note: note });
 
       host.dispatchMouseEvent(host.element, 'mouseenter');
-      host.dispatchMouseEvent(host.element, 'mouseleave');
       host.detectChanges();
 
-      const el = host.query('[data-test-id=delete-button]');
-      expect(el).toBeFalsy();
+      expect(host.component.deleteButtonVisible).toBeFalsy();
     });
   });
 });
