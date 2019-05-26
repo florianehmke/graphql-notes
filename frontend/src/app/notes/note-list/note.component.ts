@@ -9,30 +9,37 @@ import {
 import { Note } from '../../../generated/graphql';
 
 @Component({
-  selector: 'app-note-component',
+  selector: 'app-note',
   template: `
-    <div class="d-flex justify-content-between border-bottom">
-      <div>
-        <span class="m-0 font-weight-bold">
-          {{ note.noteTitle }}
+    <ng-container *ngIf="note">
+      <div class="d-flex justify-content-between border-bottom">
+        <div>
+          <span data-test-id="title" class="m-0 font-weight-bold">
+            {{ note.noteTitle }}
+          </span>
+          <span data-test-id="author" class="m-0 text-muted">
+            - {{ note.createdBy.firstName }} {{ note.createdBy.lastName }}
+          </span>
+          <span data-test-id="book-title" class="m-0 text-muted">
+            - {{ note.book.bookTitle }}</span
+          >
+        </div>
+        <span
+          data-test-id="delete-button"
+          class="m-0 text-danger"
+          style="cursor:pointer;"
+          *ngIf="hover && note.deletable"
+          (click)="delete.emit(note)"
+        >
+          Delete
         </span>
-        <span class="m-0 text-muted">
-          - {{ note.createdBy.firstName }} {{ note.createdBy.lastName }}
-        </span>
-        <span class="m-0 text-muted"> - {{ note.book.bookTitle }}</span>
       </div>
-      <span
-        *ngIf="hover && note.deletable"
-        class="m-0 text-danger"
-        style="cursor:pointer;"
-        (click)="delete.emit(note)"
-      >
-        Delete
-      </span>
-    </div>
-    <div>
-      <span class="font-weight-light">{{ note.noteContent }}</span>
-    </div>
+      <div>
+        <span data-test-id="note-content" class="font-weight-light">{{
+          note.noteContent
+        }}</span>
+      </div>
+    </ng-container>
   `,
   styles: [
     `

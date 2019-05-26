@@ -7,13 +7,13 @@ import { Note } from '../../../generated/graphql';
   selector: 'app-note-list',
   template: `
     <h3 class="border-dark border-bottom">Notes</h3>
-    <app-note-component
+    <app-note
       class="mb-2"
       *ngFor="let note of notes$ | async"
       [note]="note"
       (delete)="onDelete($event)"
     >
-    </app-note-component>
+    </app-note>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
