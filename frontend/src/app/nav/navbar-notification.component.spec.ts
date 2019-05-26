@@ -6,14 +6,14 @@ describe('NavbarNotificationComponent', () => {
   const createHost = createHostComponentFactory(NavbarNotificationComponent);
 
   it('should not display anything if no notification is present', () => {
-    const host = createHost(`<app-notification></app-notification>`);
+    const host = createHost(`<app-navbar-notification></app-navbar-notification>`);
 
     expect(host.query('span')).toBeFalsy();
   });
 
   it('should display the notification', () => {
     const notification = notificationFactory.build();
-    const host = createHost(`<app-notification></app-notification>`, true, {
+    const host = createHost(`<app-navbar-notification></app-navbar-notification>`, true, {
       notification: notification
     });
 

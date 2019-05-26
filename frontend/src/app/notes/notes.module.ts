@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { FormComponent } from './note-create/form.component';
-import { ListComponent } from './note-list/list.component';
+import { NoteCreateComponent } from './note-create/note-create.component';
+import { NoteListComponent } from './note-list/note-list.component';
 import { NotesStateService } from './state/notes-state.service';
-import { FilterComponent } from './note-filter/filter.component';
+import { NoteFilterComponent } from './note-filter/note-filter.component';
 import { FilterContainerComponent } from './note-filter/filter-container.component';
 import { FilterUserComponent } from './note-filter/filter-user.component';
 import { NoteComponent } from './note-list/note.component';
@@ -15,9 +15,9 @@ import { NotesComponent } from './notes.component';
 @NgModule({
   declarations: [
     NotesComponent,
-    FormComponent,
-    FilterComponent,
-    ListComponent,
+    NoteCreateComponent,
+    NoteFilterComponent,
+    NoteListComponent,
     NoteComponent,
     FilterContainerComponent,
     FilterUserComponent,

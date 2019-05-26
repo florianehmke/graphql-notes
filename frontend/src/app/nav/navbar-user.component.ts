@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { User } from '../../generated/graphql';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-navbar-user',
   template: `
     <span class="text-light" *ngIf="user; else notLoggedIn"
       >{{ user.firstName }} {{ user.lastName }}</span

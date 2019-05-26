@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Note } from '../../../generated/graphql';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-note-list',
   template: `
     <h3 class="border-dark border-bottom">Notes</h3>
     <app-note-component
@@ -17,7 +17,7 @@ import { Note } from '../../../generated/graphql';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListComponent {
+export class NoteListComponent {
   notes$: Observable<Note[]>;
 
   constructor(private notesState: NotesStateService) {

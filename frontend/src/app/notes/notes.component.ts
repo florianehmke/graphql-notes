@@ -3,15 +3,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-notes',
   template: `
-    <app-form></app-form>
-    <app-filter></app-filter>
-    <app-list></app-list>
+    <app-note-create></app-note-create>
+    <app-note-filter></app-note-filter>
+    <app-note-list></app-note-list>
   `,
   styles: [
     `
-      app-form,
-      app-filter,
-      app-list {
+      app-note-create,
+      app-note-filter,
+      app-note-list {
         display: block;
         margin-top: 1rem;
       }

@@ -8,12 +8,12 @@ import { NavbarStateService } from './state/navbar-state.service';
   template: `
     <nav class="navbar navbar-dark justify-content-between bg-dark">
       <span class="navbar-brand">GraphQL Notes</span>
-      <app-notification
+      <app-navbar-notification
         [notification]="notification$ | async"
-      ></app-notification>
-      <app-user 
+      ></app-navbar-notification>
+      <app-navbar-user 
         [user]="currentUser$ | async"
-      ></app-user>
+      ></app-navbar-user>
     </nav>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

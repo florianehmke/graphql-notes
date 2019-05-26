@@ -7,7 +7,7 @@ import { DestructionAware } from '../../../lib/destruction-aware';
 import { Book, User } from '../../../generated/graphql';
 
 @Component({
-  selector: 'app-filter',
+  selector: 'app-note-filter',
   template: `
     <h3 class="border-dark border-bottom">Filter Notes</h3>
     <div class="d-flex align-items-start">
@@ -36,7 +36,7 @@ import { Book, User } from '../../../generated/graphql';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FilterComponent extends DestructionAware implements OnInit {
+export class NoteFilterComponent extends DestructionAware implements OnInit {
   users$: Observable<User[]>;
   selectedUserId$: Observable<number>;
 

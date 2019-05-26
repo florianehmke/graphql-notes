@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotesStateService } from '../state/notes-state.service';
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-note-create',
   template: `
     <h3 class="border-dark border-bottom">Create Note</h3>
     <form [formGroup]="noteForm" (ngSubmit)="onSubmit()" novalidate>
@@ -43,7 +43,7 @@ import { NotesStateService } from '../state/notes-state.service';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormComponent {
+export class NoteCreateComponent {
   noteForm: FormGroup;
 
   constructor(private fb: FormBuilder, private notesState: NotesStateService) {

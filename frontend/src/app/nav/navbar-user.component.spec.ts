@@ -7,14 +7,14 @@ describe('NavbarUserComponent', () => {
   const createHost = createHostComponentFactory(NavbarUserComponent);
 
   it('should display "Not logged in!" if user is empty', () => {
-    const host = createHost(`<app-user></app-user>`);
+    const host = createHost(`<app-navbar-user></app-navbar-user>`);
 
     expect(host.query('span')).toHaveExactText('Not logged in!');
   });
 
   it('should display user name', () => {
     const user = userFactory.build();
-    const host = createHost(`<app-user></app-user>`, true, { user: user });
+    const host = createHost(`<app-navbar-user></app-navbar-user>`, true, { user: user });
 
     const span = host.query('span');
 

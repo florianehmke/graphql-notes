@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Notification } from '../../generated/graphql';
 
 @Component({
-  selector: 'app-notification',
+  selector: 'app-navbar-notification',
   template: `
     <span class="text-light" *ngIf="notification">
       {{ notification.title }} - {{ notification.content }}
