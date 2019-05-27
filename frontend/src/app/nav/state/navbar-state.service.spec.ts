@@ -11,7 +11,7 @@ import { notificationFactory } from '../../../testing/mocks/notification';
 import { NavbarStateService } from './navbar-state.service';
 import { currentUserQueryFactory } from '../../../testing/mocks/user';
 
-describe('AppStateService', () => {
+describe('NavbarStateService', () => {
   let service: NavbarStateService;
   let controller: ApolloTestingController;
 

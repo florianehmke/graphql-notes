@@ -7,7 +7,7 @@ import { NoteCreateComponent } from './note-create/note-create.component';
 import { NoteFilterComponent } from './note-filter/note-filter.component';
 import { NoteListComponent } from './note-list/note-list.component';
 
-describe('NavbarComponent', () => {
+describe('NotesComponent', () => {
   const createHost = createHostComponentFactory({
     component: NotesComponent,
     mocks: [NotesStateService],

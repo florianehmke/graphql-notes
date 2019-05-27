@@ -3,7 +3,7 @@ import { createHostComponentFactory } from '@netbasal/spectator/jest';
 import { NoteComponent } from './note.component';
 import { noteFactory } from '../../../testing/mocks/notes';
 
-describe('NavbarComponent', () => {
+describe('NoteComponent', () => {
   const createHost = createHostComponentFactory({
     component: NoteComponent
   });
